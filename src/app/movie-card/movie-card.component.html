@@ -1,30 +1,31 @@
 <div id="myModal" class="modal" *ngIf="showModal" (click)="showModal=false">
   <div class="modal-content">
-    <iframe [src]="videoUrl" width="1024" height="578" id="trailer"  title="YouTube video player" frameborder="0"
+    <iframe [src]="videoUrl" width="1024" height="578" id="trailer" title="YouTube video player" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
   </div>
 </div>
 
-<app-search
-(valueChange)='onValueChange($event)'></app-search>
+<app-search (valueChange)='onValueChange($event)'></app-search>
 
 <main id="main">
-    <div class="movie"  
-    *ngFor="let movie of movies.results">
-
+  <div class="movie" *ngFor="let movie of movies.results">
+    <a routerLink="/movie-details/{{movie.id}}">
       <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}">
-      <div class="movie-info" data-movieid="567189">
-        <h3>{{movie.original_title}}</h3>
-        <span class="orange">{{movie.vote_average}} ({{movie.vote_count}})</span>
-        <div class="overview-trailer-buttons-wrapper">
-          <span class="show-overview" #showOverview (click)="showOverview.classList.toggle('active')">Overview</span>
-          <span (click)="showTrailer(movie.id)">Trailer</span>
-        </div>
-      </div>
-      <div class="overview" #overview (click)="showOverview.classList.remove('active')" [class.show]="showOverview.classList.contains('active')">
-        <h3>Overview</h3>
-        {{movie.overview}}
+    </a>
+    <div class="movie-info" data-movieid="567189">
+      <h3>{{movie.original_title}}</h3>
+      <span class="orange">{{movie.vote_average}} ({{movie.vote_count}})</span>
+      <div class="overview-trailer-buttons-wrapper">
+        <span class="show-overview" #showOverview (click)="showOverview.classList.toggle('active')">Overview</span>
+        <span (click)="showTrailer(movie.id)">Trailer</span>
       </div>
     </div>
+    <div class="overview" #overview (click)="showOverview.classList.remove('active')"
+      [class.show]="showOverview.classList.contains('active')">
+      <h3>Overview</h3>
+      {{movie.overview}}
+    </div>
+  </div>
 </main>
+<ngb-pagination (click)="getMovies()" *ngIf="movies.total_results>0" class="d-flex justify-content-center" [collectionSize]="movies.total_results" [(page)]="page" [maxSize]="10" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>

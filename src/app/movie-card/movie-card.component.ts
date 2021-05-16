@@ -8,10 +8,12 @@ import { MovieService } from '../movie.service';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss'],
 })
+
 export class MovieCardComponent implements OnInit {
   movies: any;
   showModal: boolean;
   videoUrl: any;
+  page = 1;
 
   constructor(
     private movieService: MovieService,
@@ -23,7 +25,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   getMovies() {
-    this.movieService.getMovies().subscribe((movies) => (this.movies = movies));
+    this.movieService.getMovies(this.page).subscribe((movies) => (this.movies = movies));
   }
 
   getMovieVideo(movieID) {

@@ -1,0 +1,70 @@
+<div class="movie-details-wrapper"
+  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{movie.backdrop_path}});">
+
+  <div class="main">
+    <div class="poster-image">
+      <img src="https://image.tmdb.org/t/p/w1280/{{movie.poster_path}}" alt="">
+    </div>
+
+    <div class="movie-info">
+      <a class="movie-title" href="{{movie.homepage}}" target="_blank">{{movie.title}} ({{movie.release_date |
+        date:"yyyy" }})</a>
+
+      <div class="rating-wrapper">
+        <div class="rating">
+          <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+            <path fill="yellow"
+              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+          </svg>
+          <span class="vote-average">{{movie.vote_average}}</span><span class="max">/10 </span>
+          <span class="vote_count"> ({{movie.vote_count}})</span>
+        </div>
+      </div>
+      <div class="facts">
+        <span class="certification">
+          R
+        </span>
+
+        <span class="release">
+          {{movie.release_date | date }} ({{movie.production_countries[0].iso_3166_1}})
+        </span>
+
+        <div class="genres">
+          <span *ngFor="let genre of movie.genres">{{genre.name}}, </span>
+        </div>
+
+        <span class="runtime">
+          {{movie.runtime}} minutes
+        </span>
+
+      </div>
+
+      <p>{{movie.overview}}</p>
+
+      <div class="play-trailer" (click)="showModal=true">
+        <img
+          src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg"
+          alt="">
+        <span>Play Trailer</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="casts-wrapper">
+    <div *ngFor="let cast of casts.cast" class="cast">
+      <img src="https://image.tmdb.org/t/p/w1280{{cast.profile_path}}" *ngIf="cast.profile_path">
+      <img src="/assets/images/account.png" *ngIf="!cast.profile_path">
+      <p class="realname">{{cast.name}}</p>
+      <p>{{cast.character}}</p>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal" *ngIf="showModal" (click)="showModal=false">
+  <div class="modal-content">
+    <iframe [src]="trailerUrl" width="1024" height="578" id="trailer" title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</div>

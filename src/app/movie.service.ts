@@ -6,29 +6,31 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class MovieService {
-  private moviesUrl =
-    'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
-  private moviesSearchUrl =
-    'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=';
+  private apiKey = '3fd2be6f0c70a2a598f084ddfb75487c';
   
     constructor(private http: HttpClient) {}
 
-  getMovies() {
+  getMovies(page) {
     return this.http
-      .get(this.moviesUrl)
+      .get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&page=${page}`)
       .pipe
-      /*map((responseData) => {
-        return wordsArray;
-      })*/
       ();
   }
 
   getMovieVideo(movieID) {
-    var video_url = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=3fd2be6f0c70a2a598f084ddfb75487c&language=en-US`;
+    var video_url = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${this.apiKey}&language=en-US`;
     return this.http.get(video_url).pipe();
   }
 
   getMoviesBysearchTerm(searchTerm) {
-    return this.http.get(this.moviesSearchUrl+searchTerm).pipe();
+    return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${searchTerm}`).pipe();
+  }
+
+  getMovieById(movieId){
+    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&language=en-US`).pipe();
+  }
+
+  getMovieCastAndCrew(movieId){
+    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${this.apiKey}&language=en-US`).pipe();
   }
 }
