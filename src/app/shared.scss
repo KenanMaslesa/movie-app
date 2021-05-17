@@ -23,18 +23,20 @@ $secondary-color:#051d329e;
       transform: translate(-50%, -50%);
       width: max-content !important;
       border: none !important;
-    }
+      background-color: transparent !important;
 
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
+      .close{
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+        z-index: 9;
+        transition: all 0.4s;
 
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
+        &:hover{
+          color: red;
+        }
+      }
     }

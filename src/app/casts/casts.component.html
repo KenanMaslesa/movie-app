@@ -1,0 +1,11 @@
+<div *ngIf="casts">
+  <h1>Casts</h1>
+  <div class="scroller">
+    <div *ngFor="let cast of casts.cast" class="scroll-item">
+      <img src="https://image.tmdb.org/t/p/w1280{{cast.profile_path}}" *ngIf="cast.profile_path">
+      <img src="/assets/images/account.png" *ngIf="!cast.profile_path">
+      <p class="realname">{{cast.name}}</p>
+      <p>{{cast.character}}</p>
+    </div>
+  </div>
+</div>

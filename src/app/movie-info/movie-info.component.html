@@ -1,4 +1,4 @@
-<div class="movie-details-wrapper"
+<div class="movie-details-wrapper" *ngIf="movie"
   style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{movie.backdrop_path}});">
 
   <div class="main">
@@ -50,21 +50,15 @@
 
     </div>
   </div>
+  <app-casts [movieId]="movieId"></app-casts>
 
-  <div class="casts-wrapper">
-    <div *ngFor="let cast of casts.cast" class="cast">
-      <img src="https://image.tmdb.org/t/p/w1280{{cast.profile_path}}" *ngIf="cast.profile_path">
-      <img src="/assets/images/account.png" *ngIf="!cast.profile_path">
-      <p class="realname">{{cast.name}}</p>
-      <p>{{cast.character}}</p>
-    </div>
-  </div>
 </div>
 
-<div id="myModal" class="modal" *ngIf="showModal" (click)="showModal=false">
+<div id="myModal" class="modal" *ngIf="showModal">
   <div class="modal-content">
-    <iframe [src]="trailerUrl" width="1024" height="578" id="trailer" title="YouTube video player" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
+    <button type="button" class="close" aria-label="Close" (click)="showModal=false">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <app-video-slider [movieId]="movieId"></app-video-slider>
   </div>
 </div>

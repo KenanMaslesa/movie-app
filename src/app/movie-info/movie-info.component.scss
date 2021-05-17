@@ -1,5 +1,5 @@
 .movie-details-wrapper {
-  height: 100%;
+  min-height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -90,32 +90,33 @@
         }
       }
 
-      .rating-wrapper{
+      .rating-wrapper {
         display: inline-block;
         margin-left: 20px;
 
-        .rating{
+        .rating {
           display: flex;
           align-items: center;
-  
-          .vote-average{
+
+          .vote-average {
             font-size: 24px;
           }
-          svg{
-            fill:yellow;
+          svg {
+            fill: yellow;
           }
-          .max, .vote_count{
+          .max,
+          .vote_count {
             margin-right: 5px;
             font-size: 13px;
             color: #7a7b7f;
+            margin-top: 6px;
           }
 
-          .vote_count{
-            color:#919295;
+          .vote_count {
+            color: #919295;
           }
         }
       }
-     
     }
   }
 
@@ -127,61 +128,5 @@
     right: 10px;
     display: none;
   }
-}
 
-.casts-wrapper {
-  height: 285px;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  display: flex;
-  padding: 10px;
-  width: 85%;
-  margin: 0 auto;
-  margin-bottom: 50px;
-  margin-top: 50px;
-
-  .realname{
-    font-weight: bold;
-  }
-
-  /* width */
-  &::-webkit-scrollbar {
-    width: 2px;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: rgb(19 42 61);
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #0b3558;
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #0b35589d;
-  }
-
-  .cast {
-    margin-right: 10px;
-    border-radius: 8px;
-    background: #ddd;
-
-    p {
-      font-size: 14px;
-      margin: 0;
-      text-align: center;
-    }
-    img {
-      min-width: 138px;
-      width: 138px;
-      height: 175px;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-    }
-  }
 }

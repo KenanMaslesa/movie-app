@@ -1,0 +1,87 @@
+@import "../shared.scss";
+.similar-movies-wrapper {
+  h1 {
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .movie {
+      width: 300px;
+      margin: 1rem;
+      background-color: $secondary-color;
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+
+      img {
+        width: 100%;
+      }
+
+      .movie-info {
+        color: #eee;
+        padding: 0.5rem 1rem 1rem;
+        letter-spacing: 0.5px;
+        text-align: center;
+
+        h3 {
+          margin-top: 0;
+        }
+
+        span {
+          background-color: $primary-color;
+          padding: 0.25rem 0.5rem;
+          border-radius: 3px;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+        span {
+          &.green {
+            color: lightgreen;
+          }
+
+          &.orange {
+            color: orange;
+          }
+
+          &.red {
+            color: red;
+          }
+        }
+      }
+
+      .overview-trailer-buttons-wrapper {
+        margin-top: 15px;
+
+        span {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .overview {
+        background-color: #fff;
+        padding: 2rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        max-height: 100%;
+        transform: translateY(101%);
+        overflow-y: auto;
+        transition: transform 0.3s ease-in;
+
+        &.show {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}

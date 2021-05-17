@@ -1,0 +1,45 @@
+<h1>Trending</h1>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li ngbNavItem>
+    <a ngbNavLink>Today</a>
+    <ng-template ngbNavContent>
+      <div class="scroller" *ngIf="trendingToday">
+        <a routerLink="/movie-details/{{trending.id}}" target="_blank" *ngFor="let trending of trendingToday.results" class="scroll-item">
+          <img src="https://image.tmdb.org/t/p/w1280{{trending.poster_path}}" *ngIf="trending.poster_path">
+          <p class="title">{{trending.title}}</p>
+          <p>{{trending.release_date | date}}</p>
+          <div class="rating">
+            <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+              <path fill="yellow"
+                d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+            </svg>
+            <span class="vote-average">{{trending.vote_average}}</span>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink>This week</a>
+    <ng-template ngbNavContent>
+      <div class="scroller" *ngIf="trendingThisWeek">
+        <a routerLink="/movie-details/{{trending.id}}" target="_blank" *ngFor="let trending of trendingThisWeek.results" class="scroll-item">
+          <img src="https://image.tmdb.org/t/p/w1280{{trending.poster_path}}" *ngIf="trending.poster_path">
+          <div class="movie-info">
+            <p class="title">{{trending.title}}</p>
+            <p>{{trending.release_date | date}}</p>
+            <div class="rating">
+              <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+                <path fill="yellow"
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+              </svg>
+              <span class="vote-average">{{trending.vote_average}}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>

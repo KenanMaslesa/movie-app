@@ -1,5 +1,7 @@
 export interface Video {
   results:{
-    key: string
+    key: string;
+    name: string;
+    type: string;
   }
 }
