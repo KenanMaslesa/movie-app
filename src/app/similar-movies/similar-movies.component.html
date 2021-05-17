@@ -1,5 +1,5 @@
 <div class="similar-movies-wrapper" *ngIf="similarMovies">
-  <h1>Similar movies</h1>
+  <h1 *ngIf="similarMovies.results!=0">Similar movies</h1>
   <main id="main">
     <div class="movie" *ngFor="let movie of similarMovies.results">
       <a routerLink="/movie-details/{{movie.id}}" target="_blank">
