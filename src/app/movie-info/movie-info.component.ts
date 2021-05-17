@@ -8,9 +8,17 @@ export class MovieInfoComponent implements OnInit {
   @Input() movie: any;
   @Input() movieId: number;
   showModal: boolean;
-
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getClassNameByRate(vote) {
+    if (vote >= 8) {
+      return 'green';
+    } else if (vote >= 5) {
+      return 'orange';
+    } else {
+      return 'red';
+    }
   }
 }

@@ -15,6 +15,7 @@ import { CastsComponent } from './casts/casts.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { TrendingsComponent } from './trendings/trendings.component';
 import { VideoSliderComponent } from './video-slider/video-slider.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { VideoSliderComponent } from './video-slider/video-slider.component';
     CastsComponent,
     MovieInfoComponent,
     TrendingsComponent,
-    VideoSliderComponent
+    VideoSliderComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

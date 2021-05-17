@@ -24,6 +24,16 @@ export class MovieCardComponent implements OnInit {
     this.getMovies();
   }
 
+  getClassNameByRate(vote) {
+    if (vote >= 8) {
+      return 'green';
+    } else if (vote >= 5) {
+      return 'orange';
+    } else {
+      return 'red';
+    }
+  }
+
   getMovies() {
     this.movieService.getMovies(this.page).subscribe((movies) => (this.movies = movies));
   }
