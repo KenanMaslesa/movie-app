@@ -7,6 +7,11 @@
   width: 85%;
   margin: 25px ​0;
 
+    @media(max-width:768px){
+      width: 100%;
+      padding: 0;
+    }
+
   .rating {
     position: absolute;
     bottom: 5px;
