@@ -1,4 +1,4 @@
-<main class="main">
+<main class="main" *ngIf="person">
   <div class="left-column">
     <div class="perosnal-info-wrapper">
       <div class="profile-img">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="acting">
-
+      <app-persons-credits [personId]="person.id"></app-persons-credits>
     </div>
   </div>
 </main>

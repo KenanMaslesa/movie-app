@@ -1,0 +1,74 @@
+<div class="scroller" *ngIf="credits">
+  <a routerLink="/movie-details/{{cast.id}}" *ngFor="let cast of credits.cast; let i = index" class="scroll-item">
+    <div *ngIf="i<8">
+      <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path">
+      <div class="movie-info">
+        <p class="title">{{cast.title}}</p>
+        <p>{{cast.release_date | date}}</p>
+        <div class="rating">
+          <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+            <path fill="yellow"
+              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+          </svg>
+          <span class="vote-average">{{cast.vote_average}}</span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+
+<!--Movies-->
+<div *ngIf="credits">
+  <h1>Movies</h1>
+  <div *ngFor="let credit of credits.cast | sortBy: 'desc':'release_date'">
+    <p *ngIf="credit.media_type == 'movie'">
+      <span *ngIf="credit.release_date">{{credit.release_date|date:"yyyy"}} * </span>
+      <strong>{{credit.original_title}}</strong> as {{credit.character}}
+    </p>
+
+  </div>
+</div>
+
+<!--TV shows-->
+<div *ngIf="credits">
+  <h1>TV shows</h1>
+  <div *ngFor="let credit of credits.cast | sortBy: 'desc':'first_air_date'">
+    <p *ngIf="credit.media_type == 'tv'">
+      <span *ngIf="credit.first_air_date">{{credit.first_air_date | date: "yyyy"}} * </span>
+      <strong>{{credit.original_name}}</strong> <span *ngIf="credit.episode_count"> ({{credit.episode_count}}
+        {{credit.episode_count>1?"episodes":"episode"}})</span> as {{credit.character}}
+    </p>
+  </div>
+</div>
+
+
+<div *ngIf="showProduction">
+  <h1>Production</h1>
+  <div *ngFor="let credit of credits.crew | sortBy: 'desc':'release_date'">
+    <p *ngIf="credit.department == 'Production'">
+      <span *ngIf="credit.release_date">{{credit.release_date | date: "yyyy"}} * </span>
+      <strong>{{credit.title}}</strong> as {{credit.job}}
+    </p>
+  </div>
+</div>
+
+<div *ngIf="showDirecting">
+  <h1>Directing</h1>
+  <div *ngFor="let credit of credits.crew | sortBy: 'desc':'release_date'">
+    <p *ngIf="credit.department == 'Directing'">
+      <span *ngIf="credit.release_date">{{credit.release_date | date: "yyyy"}} * </span>
+      <strong>{{credit.title}}</strong> as {{credit.job}}
+    </p>
+  </div>
+</div>
+
+<div *ngIf="showCrew">
+  <h1>Crew</h1>
+  <div *ngFor="let credit of credits.crew | sortBy: 'desc':'release_date'">
+    <p *ngIf="credit.department == 'Crew'">
+      <span *ngIf="credit.release_date">{{credit.release_date | date: "yyyy"}} * </span>
+      <strong>{{credit.title}}</strong> as {{credit.job}}
+    </p>
+  </div>
+</div>

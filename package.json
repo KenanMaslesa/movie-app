@@ -24,6 +24,7 @@
     "angular-crumbs": "^3.0.1",
     "angular-responsive-carousel": "^2.0.2",
     "bootstrap": "^4.5.0",
+    "ngp-sort-pipe": "0.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { MovieCardDetailsComponent } from './movie-details/movie-details.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import {BreadcrumbModule} from 'angular-crumbs';
+import { NgpSortModule } from "ngp-sort-pipe";
 import { SimilarMoviesComponent } from './similar-movies/similar-movies.component';
 import { CastsComponent } from './casts/casts.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
@@ -17,6 +18,7 @@ import { TrendingsComponent } from './trendings/trendings.component';
 import { VideoSliderComponent } from './video-slider/video-slider.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { PersonComponent } from './person/person.component';
+import { PersonsCreditsComponent } from './persons-credits/persons-credits.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { PersonComponent } from './person/person.component';
     TrendingsComponent,
     VideoSliderComponent,
     LoaderComponent,
-    PersonComponent
+    PersonComponent,
+    PersonsCreditsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { PersonComponent } from './person/person.component';
     IvyCarouselModule,
     NgbModule,
     NgbPaginationModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    NgpSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
