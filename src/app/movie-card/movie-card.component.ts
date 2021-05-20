@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video } from '../models/Video';
 import { MovieService } from '../movie.service';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -10,14 +11,15 @@ import { MovieService } from '../movie.service';
 })
 
 export class MovieCardComponent implements OnInit {
-  movies: any;
+  multiSearchData: any;
   showModal: boolean;
   videoUrl: any;
   currentPage = 1;
 
   constructor(
     private movieService: MovieService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
@@ -35,17 +37,17 @@ export class MovieCardComponent implements OnInit {
   }
 
   getMovies(page) {
-    this.movieService.getMovies(page).subscribe((movies) => (this.movies = movies));
+    this.movieService.getMovies(page).subscribe((movies) => (this.multiSearchData = movies));
   }
 
-  getMovieVideo(movieID) {
-    this.movieService.getMovieVideo(movieID).subscribe((video: Video) => {
+  getMovieVideo(movieID, mediaType) {
+    this.movieService.getVideos(mediaType, movieID).subscribe((video: Video) => {
       this.updateVideoUrl(video.results[0].key);
     });
   }
 
-  showTrailer(movieID) {
-    this.getMovieVideo(movieID);
+  showTrailer(movieID, mediaType = 'movie') {
+    this.getMovieVideo(movieID, mediaType);
     this.showModal = true;
   }
 
@@ -59,11 +61,18 @@ export class MovieCardComponent implements OnInit {
   search(searchTerm) {
     if (searchTerm == '') this.getMovies(this.currentPage);
     else
-      this.movieService
-        .getMoviesBysearchTerm(searchTerm)
-        .subscribe((movies) => (this.movies = movies));
+      this.multiSearch(searchTerm, this.currentPage);
   }
+
+  multiSearch(query, page){
+    this.searchService.multiSearch(query, page).subscribe((data) => (this.multiSearchData = data));
+  }
+
   onValueChange(value: string): void {
     this.search(value);
+  }
+
+  discover(mediaType, page, genres){
+    this.searchService.discover(mediaType,page,genres).subscribe((data) => (this.multiSearchData = data));
   }
 }

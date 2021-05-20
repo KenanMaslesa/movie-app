@@ -26,6 +26,7 @@ export class VideoSliderComponent implements OnInit {
   trailerUrls: any;
   slides: Array<any> = [];
   @Input() movieId: number;
+  @Input() mediaType: string;
 
   constructor(
     private movieService: MovieService,
@@ -39,11 +40,11 @@ export class VideoSliderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getMovieVideo(this.movieId);
+    this.getVideos(this.mediaType, this.movieId);
   }
 
-  getMovieVideo(movieID) {
-    this.movieService.getMovieVideo(movieID).subscribe((video: Video) => {
+  getVideos(mediaType, movieID) {
+    this.movieService.getVideos(mediaType, movieID).subscribe((video: Video) => {
       this.trailerUrls = video;
 
       this.trailerUrls.results.forEach((item) => {

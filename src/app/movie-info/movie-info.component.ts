@@ -7,7 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MovieInfoComponent implements OnInit {
   @Input() movie: any;
   @Input() movieId: number;
+  @Input() mediaType: string;
   showModal: boolean;
+  backgroundImageOnHover: string;
+  overviewOnHover = null;
   constructor() {}
 
   ngOnInit(): void {}
@@ -21,4 +24,14 @@ export class MovieInfoComponent implements OnInit {
       return 'red';
     }
   }
+
+  onMouseOver(obj){
+    this.backgroundImageOnHover = obj.poster_path;
+    this.overviewOnHover = obj.overview;
+  }
+  onMouseLeave(){
+    //this.backgroundImageOnHover = null;
+    this.overviewOnHover = null;
+  }
+ 
 }

@@ -9,14 +9,15 @@ import { MovieService } from '../movie.service';
 export class CastsComponent implements OnInit {
   casts: any;
   @Input() movieId: number;
+  @Input() mediaType: string;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.getMovieCasts(this.movieId);
+    this.getMovieCasts(this.movieId, this.mediaType);
   }
 
-  getMovieCasts(movieID){
-    this.movieService.getMovieCastAndCrew(movieID).subscribe(casts => this.casts = casts);
+  getMovieCasts(movieID, mediaType){
+    this.movieService.getMovieCastAndCrew(movieID, mediaType).subscribe(casts => this.casts = casts);
   }
 }

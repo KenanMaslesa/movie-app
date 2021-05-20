@@ -14,12 +14,12 @@ export class MovieService {
       .get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&page=${page}`).pipe();
   }
 
-  getSimilarMovies(movieId){
-    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${this.apiKey}&language=en-US&page=1`).pipe();
+  getSimilarMoviesTvShows(mediaType, id){
+    return this.http.get(`https://api.themoviedb.org/3/${mediaType}/${id}/similar?api_key=${this.apiKey}&language=en-US&page=1`).pipe();
   }
 
-  getMovieVideo(movieID) {
-    var video_url = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${this.apiKey}&language=en-US`;
+  getVideos(mediaType, id) {
+    var video_url = `https://api.themoviedb.org/3/${mediaType}/${id}/videos?api_key=${this.apiKey}&language=en-US`;
     return this.http.get(video_url).pipe();
   }
 
@@ -31,8 +31,8 @@ export class MovieService {
     return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&language=en-US`).pipe();
   }
 
-  getMovieCastAndCrew(movieId){
-    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${this.apiKey}&language=en-US`).pipe();
+  getMovieCastAndCrew(movieId, mediaType){
+    return this.http.get(`https://api.themoviedb.org/3/${mediaType}/${movieId}/credits?api_key=${this.apiKey}&language=en-US`).pipe();
   }
 
   getTrendings(mediaType, timeWindow){

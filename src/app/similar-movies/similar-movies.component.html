@@ -1,8 +1,8 @@
 <div class="similar-movies-wrapper" *ngIf="similarMovies">
-  <h1 *ngIf="similarMovies.results!=0">Similar movies</h1>
+  <h1 *ngIf="similarMovies.results!=0">Similar</h1>
   <main id="main">
     <div class="movie" *ngFor="let movie of similarMovies.results">
-      <a routerLink="/movie-details/{{movie.id}}" target="_blank">
+      <a routerLink="/details/{{mediaType}}/{{movie.id}}">
         <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}">
       </a>
       <div class="movie-info" data-movieid="567189">

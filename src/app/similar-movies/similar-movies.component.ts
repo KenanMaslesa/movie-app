@@ -9,15 +9,16 @@ import {MovieService} from '../movie.service';
 export class SimilarMoviesComponent implements OnInit {
   similarMovies: any;
   @Input() movieId: number;
+  @Input() mediaType: string;
 
   constructor(private movieService:MovieService) { }
 
   ngOnInit(): void {
-    this.getSimilarMovies(this.movieId);
+    this.getSimilarMoviesTvShows(this.mediaType, this.movieId);
   }
 
-  getSimilarMovies(movieId){
-    this.movieService.getSimilarMovies(movieId).subscribe((movies) => (this.similarMovies = movies));
+  getSimilarMoviesTvShows(mediaType, movieId){
+    this.movieService.getSimilarMoviesTvShows(mediaType, movieId).subscribe((data) => (this.similarMovies = data));
   }
 }
 

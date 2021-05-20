@@ -1,14 +1,17 @@
 <div class="movie-details-wrapper" *ngIf="movie"
-  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{movie.backdrop_path}});">
+  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{!backgroundImageOnHover?movie.backdrop_path:backgroundImageOnHover}});">
 
   <div class="main">
     <div class="poster-image">
-      <img src="https://image.tmdb.org/t/p/w1280/{{movie.poster_path}}" alt="">
+      <img src="https://image.tmdb.org/t/p/w1280/{{!backgroundImageOnHover?movie.poster_path:backgroundImageOnHover}}" alt="">
     </div>
 
     <div class="movie-info">
-      <a class="movie-title" href="{{movie.homepage}}" target="_blank">{{movie.title}} ({{movie.release_date |
-        date:"yyyy" }})</a>
+      <a class="movie-title" href="{{movie.homepage}}" target="_blank">{{movie.title == null? movie.original_name:
+        movie.title}}
+        <span *ngIf="mediaType == 'movie'">({{movie.release_date | date:"yyyy" }})</span>
+        <span *ngIf="mediaType == 'tv'">({{movie.first_air_date | date:"yyyy"}} - {{movie.last_air_date |
+          date:"yyyy"}})</span></a>
 
       <div class="rating-wrapper">
         <div class="rating">
@@ -16,30 +19,28 @@
             <path fill="yellow"
               d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
           </svg>
-          <span class="vote-average {{getClassNameByRate(movie.vote_average)}}">{{movie.vote_average}}</span><span class="max">/10 </span>
+          <span class="vote-average {{getClassNameByRate(movie.vote_average)}}">{{movie.vote_average}}</span><span
+            class="max">/10 </span>
           <span class="vote_count"> ({{movie.vote_count}})</span>
         </div>
       </div>
       <div class="facts">
-        <span class="certification">
-          R
-        </span>
 
         <span class="release">
           {{movie.release_date | date }} ({{movie.production_countries[0].iso_3166_1}})
         </span>
 
         <div class="genres">
-          <span *ngFor="let genre of movie.genres">{{genre.name}}, </span>
+          <span *ngFor="let genre of movie.genres"> {{genre.name}}, </span>
         </div>
 
-        <span class="runtime">
+        <span class="runtime" *ngIf="mediaType == 'movie'">
           {{movie.runtime}} minutes
         </span>
 
       </div>
 
-      <p [innerText]="movie.overview"></p>
+      <p [innerText]="(overviewOnHover? overviewOnHover: movie.overview)"></p>
 
       <div class="play-trailer" (click)="showModal=true">
         <img
@@ -48,8 +49,23 @@
         <span>Play Trailer</span>
       </div>
 
+
     </div>
   </div>
+
+  <div class="scroller" *ngIf="movie.seasons">
+    <a routerLink="/details/tv/{{season.id}}" *ngFor="let season of movie.seasons" class="scroll-item" 
+    on-mouseover="onMouseOver(season)"
+    on-mouseleave="onMouseLeave()"
+    [attr.id]="actionName">
+      <img src="https://image.tmdb.org/t/p/w1280{{season.poster_path}}" *ngIf="season.poster_path">
+      <div class="movie-info">
+        <p class="title">{{season.name}}</p>
+        <p>{{season.air_date | date}}</p>
+      </div>
+    </a>
+  </div>
+
 
 </div>
 
@@ -58,6 +74,6 @@
     <button type="button" class="close" aria-label="Close" (click)="showModal=false">
       <span aria-hidden="true">&times;</span>
     </button>
-    <app-video-slider [movieId]="movieId"></app-video-slider>
+    <app-video-slider [movieId]="movieId" [mediaType]="mediaType"></app-video-slider>
   </div>
 </div>
