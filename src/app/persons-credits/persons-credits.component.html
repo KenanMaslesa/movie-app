@@ -1,6 +1,6 @@
 <div class="scroller" *ngIf="credits">
-  <a routerLink="/movie-details/{{cast.id}}" *ngFor="let cast of credits.cast; let i = index" class="scroll-item">
-    <div *ngIf="i<8">
+  <ng-container *ngFor="let cast of credits.cast; let i = index">
+    <a routerLink="/movie-details/{{cast.id}}" class="scroll-item" *ngIf="i<8">
       <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path">
       <div class="movie-info">
         <p class="title">{{cast.title}}</p>
@@ -13,8 +13,9 @@
           <span class="vote-average">{{cast.vote_average}}</span>
         </div>
       </div>
-    </div>
-  </a>
+    </a>
+  </ng-container>
+
 </div>
 
 
