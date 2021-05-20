@@ -9,6 +9,12 @@
     display: flex;
     padding: 0 85px;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 0;
+      text-align: center;
+    }
+
     .poster-image {
       width: auto;
       height: 400px;
@@ -27,6 +33,10 @@
         display: flex;
         margin-bottom: 40px;
 
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
+
         .certification {
           display: inline-flex;
           white-space: nowrap;
@@ -38,6 +48,10 @@
           line-height: 1;
           border-radius: 2px;
           margin-right: 7px;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
         }
 
         .release {
@@ -100,16 +114,16 @@
 
           .vote-average {
             font-size: 24px;
-           
-            &.green{
+
+            &.green {
               color: lime;
             }
-            
-            &.orange{
+
+            &.orange {
               color: orange;
             }
 
-            &.red{
+            &.red {
               color: red;
             }
           }
@@ -126,7 +140,6 @@
 
           .vote_count {
             color: #919295;
-           
           }
         }
       }
@@ -141,5 +154,4 @@
     right: 10px;
     display: none;
   }
-
 }
