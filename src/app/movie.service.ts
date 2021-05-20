@@ -44,7 +44,7 @@ export class MovieService {
   }
 
   getPersonsCombinedCredits(personId){
-    return this.http.get(`https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${this.apiKey}&language=en-US`).pipe();
+    return this.http.get(`https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${this.apiKey}&language=en-US&include_adult=false`).pipe();
   }
 
 }

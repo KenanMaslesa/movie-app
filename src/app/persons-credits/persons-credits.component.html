@@ -1,6 +1,6 @@
 <div class="scroller" *ngIf="credits">
   <ng-container *ngFor="let cast of credits.cast | sortBy: 'desc':'vote_average'; let i = index">
-    <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" *ngIf="i<10 ">
+    <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" *ngIf="i<100 ">
       <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path">
       <img *ngIf="!cast.poster_path" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxIDE3LjJMNi44IDNIMTlDMjAuMSAzIDIxIDMuOSAyMSA1VjE3LjJNMjAuNyAyMkwxOS43IDIxSDVDMy45IDIxIDMgMjAuMSAzIDE5VjQuM0wyIDMuM0wzLjMgMkwyMiAyMC43TDIwLjcgMjJNMTYuOCAxOEwxMi45IDE0LjFMMTEgMTYuNUw4LjUgMTMuNUw1IDE4SDE2LjhaIiAvPjwvc3ZnPg==">
       <div class="movie-info">
@@ -20,27 +20,26 @@
 
 
 <!--Movies-->
-<div *ngIf="credits">
+<div *ngIf="credits" class="movies">
   <h1>Movies</h1>
-  <div *ngFor="let credit of credits.cast | sortBy: 'desc':'release_date'">
+  <a routerLink="/details/movie/{{credit.id}}" *ngFor="let credit of credits.cast | sortBy: 'desc':'release_date'" [class.adult]="credit.adult">
     <p *ngIf="credit.media_type == 'movie'">
       <span *ngIf="credit.release_date">{{credit.release_date|date:"yyyy"}} * </span>
       <strong>{{credit.original_title}}</strong> as {{credit.character}}
     </p>
-
-  </div>
+  </a>
 </div>
 
 <!--TV shows-->
 <div *ngIf="credits">
   <h1>TV shows</h1>
-  <div *ngFor="let credit of credits.cast | sortBy: 'desc':'first_air_date'">
+  <a routerLink="/details/tv/{{credit.id}}" *ngFor="let credit of credits.cast | sortBy: 'desc':'first_air_date'">
     <p *ngIf="credit.media_type == 'tv'">
       <span *ngIf="credit.first_air_date">{{credit.first_air_date | date: "yyyy"}} * </span>
       <strong>{{credit.original_name}}</strong> <span *ngIf="credit.episode_count"> ({{credit.episode_count}}
         {{credit.episode_count>1?"episodes":"episode"}})</span> as {{credit.character}}
     </p>
-  </div>
+  </a>
 </div>
 
 
