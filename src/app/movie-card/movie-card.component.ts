@@ -13,7 +13,7 @@ export class MovieCardComponent implements OnInit {
   movies: any;
   showModal: boolean;
   videoUrl: any;
-  page = 1;
+  currentPage = 1;
 
   constructor(
     private movieService: MovieService,
@@ -21,7 +21,7 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies();
+    this.getMovies(this.currentPage);
   }
 
   getClassNameByRate(vote) {
@@ -34,8 +34,8 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
-  getMovies() {
-    this.movieService.getMovies(this.page).subscribe((movies) => (this.movies = movies));
+  getMovies(page) {
+    this.movieService.getMovies(page).subscribe((movies) => (this.movies = movies));
   }
 
   getMovieVideo(movieID) {
@@ -57,7 +57,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   search(searchTerm) {
-    if (searchTerm == '') this.getMovies();
+    if (searchTerm == '') this.getMovies(this.currentPage);
     else
       this.movieService
         .getMoviesBysearchTerm(searchTerm)

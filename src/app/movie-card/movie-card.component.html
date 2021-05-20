@@ -39,6 +39,6 @@
 <app-trendings></app-trendings>
 
 
-<div *ngIf="movies" class="pagination-wrapper" style="margin-top: 40px;">
-  <ngb-pagination (click)="getMovies()" *ngIf="movies.total_pages > 1" class="d-flex justify-content-center" [collectionSize]="movies.total_pages" [(page)]="page" [maxSize]="10" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+<div *ngIf="movies" class="pagination-wrapper">
+  <ngb-pagination  (pageChange)="getMovies($event)" *ngIf="movies.total_pages > 1" class="d-flex justify-content-center" [collectionSize]="movies.total_pages" [(page)]="currentPage" [maxSize]="10" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
 </div>

@@ -17,6 +17,11 @@ main {
 
   img {
     width: 100%;
+    transition: all 0.6s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
   .movie-info {
@@ -104,5 +109,21 @@ main {
       right: 5px;
       cursor: pointer;
     }
+  }
+}
+
+.pagination-wrapper {
+  margin-top: 40px;
+
+  ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    background-color: #032541;
+    color: white;
+    border-color: #032541;
+  }
+
+  ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: #144166;
+    border-color: #144166;
+    border-radius: 5px;
   }
 }
