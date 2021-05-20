@@ -18,6 +18,7 @@ main {
   img {
     width: 100%;
     transition: all 0.6s;
+    min-height: 450px;
 
     &:hover {
       transform: scale(1.04);

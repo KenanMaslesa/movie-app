@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovieCardDetailsComponent } from './movie-details/movie-details.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { PersonComponent } from './person/person.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MovieCardComponent, data: {breadcrumb: 'home'} },
   { path: 'movie-details/:id', component: MovieCardDetailsComponent, data: {breadcrumb: 'movie-details'} },
+  { path: 'person/:id', component: PersonComponent, data: {breadcrumb: 'person'} },
+
 ];
 
 @NgModule({

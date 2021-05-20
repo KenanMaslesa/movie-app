@@ -39,4 +39,8 @@ export class MovieService {
     return this.http.get(`https://api.themoviedb.org/3/trending/${mediaType}/${timeWindow}?api_key=${this.apiKey}`).pipe();
   }
 
+  getPerson(personId){
+    return this.http.get(`https://api.themoviedb.org/3/person/${personId}?api_key=${this.apiKey}&language=en-US`).pipe();
+  }
+
 }

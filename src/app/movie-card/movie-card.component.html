@@ -11,7 +11,8 @@
 <main id="main" *ngIf="movies">
   <div class="movie" *ngFor="let movie of movies.results">
     <a routerLink="/movie-details/{{movie.id}}">
-      <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}">
+      <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}" *ngIf="movie.poster_path">
+      
     </a>
     <div class="movie-info" data-movieid="567189">
       <h4>{{movie.original_title}}</h4>

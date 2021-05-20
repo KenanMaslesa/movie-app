@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+
+  .left-column {
+    width: 20%;
+    padding: 30px;
+
+    .perosnal-info-wrapper {
+      .profile-img {
+        img {
+          width: 300px;
+          height: 450px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  .right-column {
+    padding: 30px;
+    width: 70%;
+  }
+}

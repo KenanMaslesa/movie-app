@@ -1,0 +1,47 @@
+<main class="main">
+  <div class="left-column">
+    <div class="perosnal-info-wrapper">
+      <div class="profile-img">
+        <img src="https://image.tmdb.org/t/p/w1280{{person.profile_path}}" alt="{{person.name}}">
+      </div>
+      <div>
+
+        <div>
+          <strong>Known For</strong>
+          <p>{{person.known_for_department}}</p>
+        </div>
+        <div>
+          <strong>Birthday</strong>
+          <p>{{person.birthday}}</p>
+        </div>
+
+        <div>
+          <strong>Place of Birth</strong>
+          <p>{{person.place_of_birth}}</p>
+        </div>
+
+        <div>
+          <strong>Also Known As</strong>
+          <p *ngFor="let item of person.also_known_as">{{item}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-column">
+    <div class="biography">
+      <h1 class="name">{{person.name}}</h1>
+      <h4>Biography</h4>
+      <p [innerText]="person.biography"></p>
+
+      
+    </div>
+
+    <div class="known-for">
+
+    </div>
+
+    <div class="acting">
+
+    </div>
+  </div>
+</main>

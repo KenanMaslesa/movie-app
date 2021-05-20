@@ -39,7 +39,7 @@
 
       </div>
 
-      <p>{{movie.overview}}</p>
+      <p [innerText]="movie.overview"></p>
 
       <div class="play-trailer" (click)="showModal=true">
         <img
