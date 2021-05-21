@@ -5,7 +5,7 @@
     <a ngbNavLink>Today</a>
     <ng-template ngbNavContent>
       <div class="scroller" *ngIf="trendingToday">
-        <a routerLink="/movie-details/{{trending.id}}" *ngFor="let trending of trendingToday.results"
+        <a routerLink="/details/movie/{{trending.id}}" *ngFor="let trending of trendingToday.results"
           class="scroll-item">
           <img src="https://image.tmdb.org/t/p/w1280{{trending.poster_path}}" *ngIf="trending.poster_path">
           <p class="title">{{trending.title}}</p>
@@ -25,7 +25,7 @@
     <a ngbNavLink>This week</a>
     <ng-template ngbNavContent>
       <div class="scroller" *ngIf="trendingThisWeek">
-        <a routerLink="/movie-details/{{trending.id}}" *ngFor="let trending of trendingThisWeek.results"
+        <a routerLink="/details/movie/{{trending.id}}" *ngFor="let trending of trendingThisWeek.results"
           class="scroll-item">
           <img src="https://image.tmdb.org/t/p/w1280{{trending.poster_path}}" *ngIf="trending.poster_path">
           <div class="movie-info">
