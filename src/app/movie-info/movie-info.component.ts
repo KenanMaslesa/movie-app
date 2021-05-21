@@ -25,13 +25,12 @@ export class MovieInfoComponent implements OnInit {
     }
   }
 
-  onMouseOver(obj){
+  onMouseOver(obj) {
     this.backgroundImageOnHover = obj.poster_path;
     this.overviewOnHover = obj.overview;
   }
-  onMouseLeave(){
-    //this.backgroundImageOnHover = null;
+  onMouseLeave() {
+    this.backgroundImageOnHover = null;
     this.overviewOnHover = null;
   }
- 
 }
