@@ -11,7 +11,7 @@ export class MovieService {
 
   getMovies(page) {
     return this.http
-      .get(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}&page=${page}`).pipe();
+      .get(`https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=${this.apiKey}&page=${page}`).pipe();
   }
 
   getSimilarMoviesTvShows(mediaType, id){

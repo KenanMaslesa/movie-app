@@ -23,7 +23,7 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies(this.currentPage);
+    this.discover('movie',this.currentPage,'');
   }
 
   getClassNameByRate(vote) {
