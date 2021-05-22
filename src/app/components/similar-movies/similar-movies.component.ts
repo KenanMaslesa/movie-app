@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieService } from 'src/app/services/movie/movie.service';
+import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
 
 @Component({
   selector: 'app-similar-movies',
@@ -11,14 +11,14 @@ export class SimilarMoviesComponent implements OnInit {
   @Input() movieId: number;
   @Input() mediaType: string;
 
-  constructor(private movieService:MovieService) { }
+  constructor(private movieAndTVService:MovieAndTvService) { }
 
   ngOnInit(): void {
     this.getSimilarMoviesTvShows(this.mediaType, this.movieId);
   }
 
   getSimilarMoviesTvShows(mediaType, movieId){
-    this.movieService.getSimilarMoviesTvShows(mediaType, movieId).subscribe((data) => (this.similarMovies = data));
+    this.movieAndTVService.getSimilarMoviesTvShows(mediaType, movieId).subscribe((data) => (this.similarMovies = data));
   }
 }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video } from 'src/app/models/Video';
-import { MovieService } from 'src/app/services/movie/movie.service';
+import { KeywordService } from 'src/app/services/keyword/keyword.service';
+import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
 import { SearchService } from 'src/app/services/search/search.service';
 import { VideoService } from 'src/app/services/video/video.service';
 
@@ -19,10 +20,11 @@ export class MovieCardComponent implements OnInit {
   keywords:any;
 
   constructor(
-    private movieService: MovieService,
+    private movieAndTVService: MovieAndTvService,
     private sanitizer: DomSanitizer,
     private searchService: SearchService,
-    private videoService: VideoService
+    private videoService: VideoService,
+    private keywordService: KeywordService
   ) {}
 
   ngOnInit(): void {
@@ -75,10 +77,10 @@ export class MovieCardComponent implements OnInit {
   }
 
   getKeywords(query){
-    this.searchService.getKeywords(query).subscribe((data)=>(this.keywords = data));
+    this.keywordService.getKeywords(query).subscribe((data)=>(this.keywords = data));
   }
 
   getMoviesByKeyword(keyword){
-    this.movieService.getMoviesByKeyword(keyword).subscribe((data)=>(this.multiSearchData = data));
+    this.movieAndTVService.getMoviesByKeyword(keyword).subscribe((data)=>(this.multiSearchData = data));
   }
 }

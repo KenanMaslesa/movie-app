@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from 'src/app/services/movie/movie.service';
-import { TvShowService } from 'src/app/services/tv/tv-show.service';
+import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
 
 
 @Component({
@@ -15,9 +14,8 @@ export class MovieCardDetailsComponent implements OnInit {
   mediaType: string;
 
   constructor(
-    private movieService: MovieService,
-    private route: ActivatedRoute,
-    private tvService: TvShowService
+    private movieAndTVService: MovieAndTvService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -29,12 +27,12 @@ export class MovieCardDetailsComponent implements OnInit {
     this.mediaType = this.route.snapshot.params['type'];
 
     if (this.mediaType == 'movie') {
-      this.movieService
-        .getMovieById(this.movieID)
+      this.movieAndTVService
+        .getMovieDetails(this.movieID)
         .subscribe((movie) => (this.movie = movie));
     }
      else if (this.mediaType == 'tv') {
-       this.tvService.getTvShowDetails(this.movieID).subscribe((data)=>(this.movie = data));
+       this.movieAndTVService.getTvShowDetails(this.movieID).subscribe((data)=>(this.movie = data));
     }
   }
 }

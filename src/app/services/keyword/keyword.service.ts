@@ -5,10 +5,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class TvShowService {
+export class KeywordService {
+
   constructor(private http: HttpClient) { }
 
-  getTvShowDetails(tvId){
-    return this.http.get(`${environment.tmdbAPIUrl}/tv/${tvId}?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  getKeywords(query){
+    return this.http.get(`${environment.tmdbAPIUrl}/search/keyword?api_key=${environment.tmdbAPIKey}&query=${query}`).pipe();
   }
 }

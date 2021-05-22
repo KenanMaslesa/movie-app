@@ -19,7 +19,4 @@ export class SearchService {
     return this.http.get(`${environment.tmdbAPIUrl}/discover/${mediaType}?api_key=${environment.tmdbAPIKey}&language=en-US&sort_by=popularity.desc&include_adult=false&page=${page}&with_genres=${genres}&without_keywords=${this.keywords}&with_keywords=${keywwords}`).pipe();
   }
 
-  getKeywords(query){
-    return this.http.get(`${environment.tmdbAPIUrl}/search/keyword?api_key=${environment.tmdbAPIKey}&query=${query}`).pipe();
-  }
 }
