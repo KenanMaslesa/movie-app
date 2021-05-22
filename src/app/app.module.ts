@@ -19,6 +19,7 @@ import { VideoSliderComponent } from './components/video-slider/video-slider.com
 import { LoaderComponent } from './shared/loader/loader.component';
 import { PersonComponent } from './components/person/person.component';
 import { PersonsCreditsComponent } from './components/persons-credits/persons-credits.component';
+import { ForbiddenContentComponent } from './components/forbidden-content/forbidden-content.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PersonsCreditsComponent } from './components/persons-credits/persons-cr
     VideoSliderComponent,
     LoaderComponent,
     PersonComponent,
-    PersonsCreditsComponent
+    PersonsCreditsComponent,
+    ForbiddenContentComponent
   ],
   imports: [
     BrowserModule,
