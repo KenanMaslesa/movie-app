@@ -5,8 +5,8 @@ import { MovieCardDetailsComponent } from './components/movie-details/movie-deta
 import { PersonComponent } from './components/person/person.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: MovieCardComponent, data: {breadcrumb: 'home'} },
+  //{ path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', component: MovieCardComponent, data: {breadcrumb: 'home'} },
   { path: 'details/:type/:id', component: MovieCardDetailsComponent, data: {breadcrumb: 'movie-details'} },
   { path: 'person/:id', component: PersonComponent, data: {breadcrumb: 'person'} },
 
