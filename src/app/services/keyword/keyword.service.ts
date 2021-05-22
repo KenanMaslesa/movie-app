@@ -232,8 +232,8 @@ export class KeywordService {
     return this.http.get(`${environment.tmdbAPIUrl}/search/keyword?api_key=${environment.tmdbAPIKey}&query=${query}`).pipe();
   }
 
-  containsForbiddenKeywords(movieId){
-    return this.http.get(`${environment.tmdbAPIUrl}/movie/${movieId}/keywords?api_key=${environment.tmdbAPIKey}`).pipe(
+  containsForbiddenKeywords(mediaType, movieId){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/${movieId}/keywords?api_key=${environment.tmdbAPIKey}`).pipe(
       map((responseData:ApiData)=>{
         for(let i in responseData.keywords){
           for(let j in this.forbiddenKeywords){

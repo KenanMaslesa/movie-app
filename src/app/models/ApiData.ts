@@ -1,9 +1,10 @@
 export interface ApiData {
-  results:{
+  results:[{
     key: string;
     name: string;
     type: string;
-  }, 
+    id: string;
+  }], 
   keywords:[{
     id: string;
     name: string;

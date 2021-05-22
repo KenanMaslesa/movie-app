@@ -30,7 +30,7 @@ export class MovieCardDetailsComponent implements OnInit {
     
 
     this.keywordService
-      .containsForbiddenKeywords(this.movieID)
+      .containsForbiddenKeywords(this.mediaType,this.movieID)
       .subscribe((contains) => {
         this.forbiddenContent = contains;
       });

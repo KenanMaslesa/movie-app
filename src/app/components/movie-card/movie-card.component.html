@@ -8,92 +8,99 @@
 
 <app-search (valueChange)='onValueChange($event)'></app-search>
 
-<input #searchBox (input)="getKeywords(searchBox.value)" class="search" placeholder="Search keywords"/>
+<input #searchBox (input)="getKeywords(searchBox.value)" class="search" placeholder="Search keywords" />
 
 <ul class="keywords" *ngIf="keywords" style="color: white">
-  <li *ngFor="let keyword of keywords.results" (click)="discover('movie',currentPage,'',keyword.id)">{{keyword.name}}({{keyword.id}})</li>
+  <li *ngFor="let keyword of keywords.results" (click)="discover('movie',currentPage,'',keyword.id)">
+    {{keyword.name}}({{keyword.id}})</li>
 </ul>
 
 
 <div class="filter">
   <ul class="genres" style="color: white">
-    
-      <li data-value="28"><a (click)="discover('movie', '1', '28')">Action</a></li>
-    
-      <li data-value="12"><a (click)="discover('movie', '1', '12')">Adventure</a></li>
-    
-      <li data-value="16"><a (click)="discover('movie', '1', '16')">Animation</a></li>
-    
-      <li data-value="35"><a (click)="discover('movie', '1', '35')">Comedy</a></li>
-    
-      <li data-value="80"><a (click)="discover('movie', '1', '80')">Crime</a></li>
-    
-      <li data-value="99"><a (click)="discover('movie', '1', '99')">Documentary</a></li>
-    
-      <li data-value="18"><a (click)="discover('movie', '1', '18')">Drama</a></li>
-    
-      <li data-value="10751"><a (click)="discover('movie', '1', '10751')">Family</a></li>
-    
-      <li data-value="14"><a (click)="discover('movie', '1', '14')">Fantasy</a></li>
-    
-      <li data-value="36"><a (click)="discover('movie', '1', '36')">History</a></li>
-    
-      <li data-value="27"><a (click)="discover('movie', '1', '27')">Horror</a></li>
-    
-      <li data-value="10402"><a (click)="discover('movie', '1', '10402')">Music</a></li>
-    
-      <li data-value="9648"><a (click)="discover('movie', '1', '9648')">Mystery</a></li>
-    
-      <li data-value="10749"><a (click)="discover('movie', '1', '10749')">Romance</a></li>
-    
-      <li data-value="878"><a (click)="discover('movie', '1', '878')">Science Fiction</a></li>
-    
-      <li data-value="10770"><a (click)="discover('movie', '1', '10770')">TV Movie</a></li>
-    
-      <li data-value="53"><a (click)="discover('movie', '1', '53')">Thriller</a></li>
-    
-      <li data-value="10752"><a (click)="discover('movie', '1', '10752')">War</a></li>
-    
-      <li data-value="37"><a (click)="discover('movie', '1', '37')">Western</a></li>
-    
+
+    <li data-value="28"><a (click)="discover('movie', '1', '28')">Action</a></li>
+
+    <li data-value="12"><a (click)="discover('movie', '1', '12')">Adventure</a></li>
+
+    <li data-value="16"><a (click)="discover('movie', '1', '16')">Animation</a></li>
+
+    <li data-value="35"><a (click)="discover('movie', '1', '35')">Comedy</a></li>
+
+    <li data-value="80"><a (click)="discover('movie', '1', '80')">Crime</a></li>
+
+    <li data-value="99"><a (click)="discover('movie', '1', '99')">Documentary</a></li>
+
+    <li data-value="18"><a (click)="discover('movie', '1', '18')">Drama</a></li>
+
+    <li data-value="10751"><a (click)="discover('movie', '1', '10751')">Family</a></li>
+
+    <li data-value="14"><a (click)="discover('movie', '1', '14')">Fantasy</a></li>
+
+    <li data-value="36"><a (click)="discover('movie', '1', '36')">History</a></li>
+
+    <li data-value="27"><a (click)="discover('movie', '1', '27')">Horror</a></li>
+
+    <li data-value="10402"><a (click)="discover('movie', '1', '10402')">Music</a></li>
+
+    <li data-value="9648"><a (click)="discover('movie', '1', '9648')">Mystery</a></li>
+
+    <li data-value="10749"><a (click)="discover('movie', '1', '10749')">Romance</a></li>
+
+    <li data-value="878"><a (click)="discover('movie', '1', '878')">Science Fiction</a></li>
+
+    <li data-value="10770"><a (click)="discover('movie', '1', '10770')">TV Movie</a></li>
+
+    <li data-value="53"><a (click)="discover('movie', '1', '53')">Thriller</a></li>
+
+    <li data-value="10752"><a (click)="discover('movie', '1', '10752')">War</a></li>
+
+    <li data-value="37"><a (click)="discover('movie', '1', '37')">Western</a></li>
+
   </ul>
 </div>
 
 <main id="main" *ngIf="multiSearchData">
 
-  <div class="movie" *ngFor="let movie of multiSearchData.results">
-    <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}">
-      <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}" *ngIf="movie.poster_path">
-      <img *ngIf="!movie.poster_path" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxIDE3LjJMNi44IDNIMTlDMjAuMSAzIDIxIDMuOSAyMSA1VjE3LjJNMjAuNyAyMkwxOS43IDIxSDVDMy45IDIxIDMgMjAuMSAzIDE5VjQuM0wyIDMuM0wzLjMgMkwyMiAyMC43TDIwLjcgMjJNMTYuOCAxOEwxMi45IDE0LjFMMTEgMTYuNUw4LjUgMTMuNUw1IDE4SDE2LjhaIiAvPjwvc3ZnPg==">
-    </a>
+  <ng-container *ngFor="let movie of multiSearchData.results">
+    <div class="movie" *ngIf="!movie.forbidden">
+      <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}">
+        <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}"
+          *ngIf="movie.poster_path">
+        <img *ngIf="!movie.poster_path"
+          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxIDE3LjJMNi44IDNIMTlDMjAuMSAzIDIxIDMuOSAyMSA1VjE3LjJNMjAuNyAyMkwxOS43IDIxSDVDMy45IDIxIDMgMjAuMSAzIDE5VjQuM0wyIDMuM0wzLjMgMkwyMiAyMC43TDIwLjcgMjJNMTYuOCAxOEwxMi45IDE0LjFMMTEgMTYuNUw4LjUgMTMuNUw1IDE4SDE2LjhaIiAvPjwvc3ZnPg==">
+      </a>
 
-    <div class="movie-info" data-movieid="567189">
-      <h4>{{movie.original_title == null ? movie.original_name: movie.original_title}}</h4>
-      <div class="rating">
-        <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
-          <path fill="yellow"
-            d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
-        </svg>
-        <span class="vote-average {{getClassNameByRate(movie.vote_average)}}">{{movie.vote_average}}</span>
+      <div class="movie-info" data-movieid="567189">
+        <h4>{{movie.original_title == null ? movie.original_name: movie.original_title}}</h4>
+        <div class="rating">
+          <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+            <path fill="yellow"
+              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+          </svg>
+          <span class="vote-average {{getClassNameByRate(movie.vote_average)}}">{{movie.vote_average}}</span>
+        </div>
+        <div class="overview-trailer-buttons-wrapper">
+          <span class="show-overview" #showOverview (click)="showOverview.classList.toggle('active')">Overview</span>
+          <span (click)="showTrailer(movie.id, movie.media_type)">Trailer</span>
+        </div>
       </div>
-      <div class="overview-trailer-buttons-wrapper">
-        <span class="show-overview" #showOverview (click)="showOverview.classList.toggle('active')">Overview</span>
-        <span (click)="showTrailer(movie.id, movie.media_type)">Trailer</span>
+
+      <div class="overview" #overview [class.show]="showOverview.classList.contains('active')">
+        <h3>Overview</h3>
+        <img class="close-icon" (click)="showOverview.classList.remove('active')"
+          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDJDMTcuNTMsMiAyMiw2LjQ3IDIyLDEyQzIyLDE3LjUzIDE3LjUzLDIyIDEyLDIyQzYuNDcsMjIgMiwxNy41MyAyLDEyQzIsNi40NyA2LjQ3LDIgMTIsMk0xNS41OSw3TDEyLDEwLjU5TDguNDEsN0w3LDguNDFMMTAuNTksMTJMNywxNS41OUw4LjQxLDE3TDEyLDEzLjQxTDE1LjU5LDE3TDE3LDE1LjU5TDEzLjQxLDEyTDE3LDguNDFMMTUuNTksN1oiIC8+PC9zdmc+">
+        {{movie.overview}}
       </div>
-    </div>
 
-    <div class="overview" #overview 
-      [class.show]="showOverview.classList.contains('active')">
-      <h3>Overview</h3>
-      <img class="close-icon" (click)="showOverview.classList.remove('active')" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDJDMTcuNTMsMiAyMiw2LjQ3IDIyLDEyQzIyLDE3LjUzIDE3LjUzLDIyIDEyLDIyQzYuNDcsMjIgMiwxNy41MyAyLDEyQzIsNi40NyA2LjQ3LDIgMTIsMk0xNS41OSw3TDEyLDEwLjU5TDguNDEsN0w3LDguNDFMMTAuNTksMTJMNywxNS41OUw4LjQxLDE3TDEyLDEzLjQxTDE1LjU5LDE3TDE3LDE1LjU5TDEzLjQxLDEyTDE3LDguNDFMMTUuNTksN1oiIC8+PC9zdmc+">
-      {{movie.overview}}
     </div>
-
-  </div>
+  </ng-container>
 </main>
 
 <div *ngIf="multiSearchData" class="pagination-wrapper">
-  <ngb-pagination  (pageChange)="getMovies($event)" *ngIf="multiSearchData.total_pages > 1" class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+  <ngb-pagination (pageChange)="getMovies($event)" *ngIf="multiSearchData.total_pages > 1"
+    class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPage"
+    [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
 </div>
 
 
