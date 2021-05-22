@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Video } from 'src/app/models/Video';
-import { MovieService } from 'src/app/services/movie.service';
+import { VideoService } from 'src/app/services/video/video.service';
 
 @Component({
   selector: 'app-video-slider',
@@ -29,7 +29,7 @@ export class VideoSliderComponent implements OnInit {
   @Input() mediaType: string;
 
   constructor(
-    private movieService: MovieService,
+    private videoService: VideoService,
     private sanitizer: DomSanitizer,
     config: NgbCarouselConfig
   ) {
@@ -44,7 +44,7 @@ export class VideoSliderComponent implements OnInit {
   }
 
   getVideos(mediaType, movieID) {
-    this.movieService.getVideos(mediaType, movieID).subscribe((video: Video) => {
+    this.videoService.getVideos(mediaType, movieID).subscribe((video: Video) => {
       this.trailerUrls = video;
 
       this.trailerUrls.results.forEach((item) => {

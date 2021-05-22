@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { PersonService } from 'src/app/services/person/person.service';
 
 @Component({
   selector: 'app-persons-credits',
@@ -12,14 +12,14 @@ export class PersonsCreditsComponent implements OnInit {
   showDirecting = false;
   showProduction = false;
   showCrew = false;
-  constructor(private movieService: MovieService) {}
+  constructor(private personService: PersonService) {}
 
   ngOnInit(): void {
     this.getPersonsCombinedCredits(this.personId);
   }
 
   getPersonsCombinedCredits(personId) {
-    this.movieService.getPersonsCombinedCredits(personId).subscribe(
+    this.personService.getPersonsCombinedCredits(personId).subscribe(
       (credits) => (
         this.credits = credits,
         this.credits.crew.forEach((crew) => {

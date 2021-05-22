@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/services/movie/movie.service';
 
 
 @Component({
@@ -15,10 +15,10 @@ export class CastsComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.getMovieCasts(this.movieId, this.mediaType);
+    this.getCastAndCrew(this.movieId, this.mediaType);
   }
 
-  getMovieCasts(movieID, mediaType){
-    this.movieService.getMovieCastAndCrew(movieID, mediaType).subscribe(casts => this.casts = casts);
+  getCastAndCrew(movieID, mediaType){
+    this.movieService.getCastAndCrew(movieID, mediaType).subscribe(casts => this.casts = casts);
   }
 }

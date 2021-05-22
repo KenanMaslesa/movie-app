@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video } from 'src/app/models/Video';
-import { MovieService } from 'src/app/services/movie.service';
-import { SearchService } from 'src/app/services/search.service';
+import { MovieService } from 'src/app/services/movie/movie.service';
+import { SearchService } from 'src/app/services/search/search.service';
+import { VideoService } from 'src/app/services/video/video.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -20,7 +21,8 @@ export class MovieCardComponent implements OnInit {
   constructor(
     private movieService: MovieService,
     private sanitizer: DomSanitizer,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private videoService: VideoService
   ) {}
 
   ngOnInit(): void {
@@ -37,12 +39,9 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
-  getMovies(page) {
-    this.movieService.getMovies(page).subscribe((movies) => (this.multiSearchData = movies));
-  }
 
   getMovieVideo(movieID, mediaType) {
-    this.movieService.getVideos(mediaType, movieID).subscribe((video: Video) => {
+    this.videoService.getVideos(mediaType, movieID).subscribe((video: Video) => {
       this.updateVideoUrl(video.results[0].key);
     });
   }
@@ -60,8 +59,6 @@ export class MovieCardComponent implements OnInit {
   }
 
   search(searchTerm) {
-    if (searchTerm == '') this.getMovies(this.currentPage);
-    else
       this.multiSearch(searchTerm, this.currentPage);
   }
 

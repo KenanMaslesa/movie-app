@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { TrendingService } from 'src/app/services/trending/trending.service';
 
 @Component({
   selector: 'app-trendings',
@@ -9,7 +9,7 @@ import { MovieService } from 'src/app/services/movie.service';
 export class TrendingsComponent implements OnInit {
   trendingToday:any;
   trendingThisWeek:any;
-  constructor(private moviesService: MovieService) { }
+  constructor(private trendingService: TrendingService) { }
 
   ngOnInit(): void {
     this.getTrendingMoviesToday();
@@ -17,11 +17,11 @@ export class TrendingsComponent implements OnInit {
   }
 
   getTrendingMoviesToday(){
-    this.moviesService.getTrendings('movie','day').subscribe((trendings)=>(this.trendingToday = trendings));
+    this.trendingService.getTrendings('movie','day').subscribe((trendings)=>(this.trendingToday = trendings));
   }
 
   getTrendingMoviesThisWeek(){
-    this.moviesService.getTrendings('movie','week').subscribe((trendings)=>(this.trendingThisWeek = trendings));
+    this.trendingService.getTrendings('movie','week').subscribe((trendings)=>(this.trendingThisWeek = trendings));
   }
 
 }
