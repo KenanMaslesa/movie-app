@@ -61,32 +61,29 @@ export class MovieCardComponent implements OnInit {
     );
   }
 
-  search(searchTerm) {
-    this.multiSearch(searchTerm, this.currentPage);
-  }
+
 
   multiSearch(query, page) {
     if (query != '') {
       this.searchService.multiSearch(query, page).subscribe((data: ApiData) => {
-        this.createNewAray(data);
+        this.createNewArayWithoutPorn(data);
       });
     } else {
       this.discover('movie', this.currentPage);
     }
   }
 
-  createNewAray(data) {
+  createNewArayWithoutPorn(data) {
     const tempArray = { results: [] };
+    
     data.results.forEach((element) => {
       if (element.media_type != 'person') {
         this.keywordService
           .containsForbiddenKeywords(element.media_type, element.id)
           .subscribe((contains) => {
-            if (contains) {
-              tempArray.results.push({ ...element, forbidden: true });
-            } else {
-              tempArray.results.push({ ...element, forbidden: false });
-            }
+            if (!contains)
+              tempArray.results.push({ ...element});
+           
             this.multiSearchData = tempArray;
           });
       }
@@ -94,7 +91,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   onValueChange(value: string): void {
-    this.search(value);
+    this.multiSearch(value, this.currentPage);
   }
 
   discover(mediaType = 'movie', page, genres = '', keywords = '') {

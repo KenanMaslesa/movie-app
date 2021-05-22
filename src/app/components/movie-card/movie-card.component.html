@@ -63,7 +63,7 @@
 <main id="main" *ngIf="multiSearchData">
 
   <ng-container *ngFor="let movie of multiSearchData.results">
-    <div class="movie" *ngIf="!movie.forbidden">
+    <div class="movie">
       <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}">
         <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}"
           *ngIf="movie.poster_path">
