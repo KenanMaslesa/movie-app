@@ -26,7 +26,7 @@
       </div>
       <div class="facts">
 
-        <span class="release">
+        <span class="release" *ngIf="movie.production_countries.lenght>0">
           {{movie.release_date | date }} ({{movie.production_countries[0].iso_3166_1}})
         </span>
 

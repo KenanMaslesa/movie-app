@@ -40,6 +40,7 @@ export class VideoSliderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.movieId!=null)
     this.getVideos(this.mediaType, this.movieId);
   }
 

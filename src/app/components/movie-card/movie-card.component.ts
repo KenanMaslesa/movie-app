@@ -78,6 +78,7 @@ export class MovieCardComponent implements OnInit {
 
   getKeywords(query){
     this.keywordService.getKeywords(query).subscribe((data)=>(this.keywords = data));
+    
   }
 
   getMoviesByKeyword(keyword){
