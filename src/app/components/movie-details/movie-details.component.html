@@ -1,3 +1,12 @@
+<ng-container *ngIf="movie">
 
-<app-movie-info [movie]="movie" [movieId]="movieID" [mediaType]="mediaType"></app-movie-info>
-<app-similar-movies [movieId]="movieID" [mediaType]="mediaType"></app-similar-movies>
+  <ng-container *ngIf="!movie.adult">
+    <app-movie-info [movie]="movie" [movieId]="movieID" [mediaType]="mediaType"></app-movie-info>
+    <app-similar-movies [movieId]="movieID" [mediaType]="mediaType"></app-similar-movies>
+  </ng-container>
+  
+  <ng-container *ngIf="movie.adult">
+    <app-forbidden-content></app-forbidden-content>
+  </ng-container>
+
+</ng-container>
