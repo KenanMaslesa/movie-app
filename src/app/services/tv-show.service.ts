@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TvShowService {
-  private apiKey = '3fd2be6f0c70a2a598f084ddfb75487c';
   constructor(private http: HttpClient) { }
 
   getTvShowDetails(tvId){
-    return this.http.get(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${this.apiKey}&language=en-US`).pipe();
+    return this.http.get(`${environment.tmdbAPIUrl}/tv/${tvId}?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
   }
 }
