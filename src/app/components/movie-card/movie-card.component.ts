@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Video } from '../models/Video';
-import { MovieService } from '../movie.service';
-import { SearchService } from '../search.service';
+import { Video } from 'src/app/models/Video';
+import { MovieService } from 'src/app/services/movie.service';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -15,6 +15,7 @@ export class MovieCardComponent implements OnInit {
   showModal: boolean;
   videoUrl: any;
   currentPage = 1;
+  keywords:any;
 
   constructor(
     private movieService: MovieService,
@@ -23,7 +24,7 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.discover('movie',this.currentPage,'');
+    this.discover('movie',this.currentPage);
   }
 
   getClassNameByRate(vote) {
@@ -72,7 +73,15 @@ export class MovieCardComponent implements OnInit {
     this.search(value);
   }
 
-  discover(mediaType, page, genres){
-    this.searchService.discover(mediaType,page,genres).subscribe((data) => (this.multiSearchData = data));
+  discover(mediaType='movie', page, genres='', keywords=''){
+    this.searchService.discover(mediaType,page,genres,keywords).subscribe((data) => (this.multiSearchData = data));
+  }
+
+  getKeywords(query){
+    this.searchService.getKeywords(query).subscribe((data)=>(this.keywords = data));
+  }
+
+  getMoviesByKeyword(keyword){
+    this.movieService.getMoviesByKeyword(keyword).subscribe((data)=>(this.multiSearchData = data));
   }
 }

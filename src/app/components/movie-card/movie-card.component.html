@@ -8,6 +8,13 @@
 
 <app-search (valueChange)='onValueChange($event)'></app-search>
 
+<input #searchBox (input)="getKeywords(searchBox.value)" class="search" placeholder="Search keywords"/>
+
+<ul class="keywords" *ngIf="keywords" style="color: white">
+  <li *ngFor="let keyword of keywords.results" (click)="discover('movie',currentPage,'',keyword.id)">{{keyword.name}}({{keyword.id}})</li>
+</ul>
+
+
 <div class="filter">
   <ul class="genres" style="color: white">
     

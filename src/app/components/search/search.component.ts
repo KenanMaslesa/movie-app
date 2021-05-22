@@ -11,7 +11,7 @@ import { EventEmitter } from '@angular/core';
 
 export class SearchComponent implements OnInit {
   constructor() { }
-  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() valueChange = new EventEmitter();
   ngOnInit(): void {
   }
 

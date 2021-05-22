@@ -1,4 +1,4 @@
-@import "../shared.scss";
+@import "/src/app/shared.scss";
 
 main {
   display: flex;
@@ -131,7 +131,7 @@ main {
 }
 
 
-.genres{
+.genres, .keywords{
   text-align: center;
   margin-top: 30px;
 
@@ -153,5 +153,26 @@ main {
     &.active{
       background: cornflowerblue;
     }
+  }
+}
+
+.keywords{
+
+  li{
+    background-color: black;
+  }
+}
+
+.search{
+  background-color: transparent;
+  border: 2px solid #082845;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+
+  &:focus{
+    outline: none;
   }
 }

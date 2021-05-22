@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MovieService } from '../movie.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Video } from '../models/Video';
+import { Video } from 'src/app/models/Video';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-video-slider',

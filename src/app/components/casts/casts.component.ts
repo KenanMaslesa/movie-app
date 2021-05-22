@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from 'src/app/services/movie.service';
+
 
 @Component({
   selector: 'app-casts',

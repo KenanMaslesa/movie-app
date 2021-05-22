@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovieCardDetailsComponent } from './movie-details/movie-details.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
-import { PersonComponent } from './person/person.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { MovieCardDetailsComponent } from './components/movie-details/movie-details.component';
+import { PersonComponent } from './components/person/person.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,4 +16,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

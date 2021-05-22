@@ -14,8 +14,12 @@ export class MovieService {
       .get(`https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&api_key=${this.apiKey}&page=${page}`).pipe();
   }
 
+  getMoviesByKeyword(keyword){
+    return this.http.get(`https://api.themoviedb.org/3/keyword/${keyword}/movies?api_key=${this.apiKey}&language=en-US&include_adult=false`).pipe();
+  }
+
   getSimilarMoviesTvShows(mediaType, id){
-    return this.http.get(`https://api.themoviedb.org/3/${mediaType}/${id}/similar?api_key=${this.apiKey}&language=en-US&page=1`).pipe();
+    return this.http.get(`https://api.themoviedb.org/3/${mediaType}/${id}/similar?api_key=${this.apiKey}&language=en-US`).pipe();
   }
 
   getVideos(mediaType, id) {
