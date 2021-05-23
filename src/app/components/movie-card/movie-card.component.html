@@ -6,9 +6,11 @@
   </div>
 </div>
 
-<app-search (valueChange)='onValueChange($event)'></app-search>
 
-<div class="filter" style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
+<app-search (valueChange)='onValueChange($event)'></app-search>
+<app-wellcome></app-wellcome>
+
+<div class="filter">
   <ul ngbNav #nav="ngbNav" class="nav-tabs">
     <li ngbNavItem>
       <a ngbNavLink>Movies</a>
@@ -87,8 +89,6 @@
 
 
 </div>
-
-
 
 <main id="main" *ngIf="multiSearchData"
   style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
