@@ -97,11 +97,24 @@
   </ng-container>
 </main>
 
-<div *ngIf="multiSearchData" class="pagination-wrapper">
-  <ngb-pagination (pageChange)="getMovies($event)" *ngIf="multiSearchData.total_pages > 1"
-    class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPage"
-    [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-</div>
+<!--DISCOVER PAGINATION-->
+<ng-container *ngIf="multiSearchData">
+  <div *ngIf="!searchQuery"class="pagination-wrapper">
+    <ngb-pagination (pageChange)="discover('movie',$event)" *ngIf="multiSearchData.total_pages > 1"
+      class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPageDiscover"
+      [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</ng-container>
+
+<!--SEARCH PAGINATION-->
+<ng-container *ngIf="multiSearchData">
+  <div *ngIf="searchQuery"class="pagination-wrapper">
+    <ngb-pagination (pageChange)="multiSearch(searchQuery,$event)" *ngIf="multiSearchData.total_pages > 1"
+      class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPageSearch"
+      [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</ng-container>
+
 
 
 

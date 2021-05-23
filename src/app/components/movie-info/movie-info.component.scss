@@ -73,13 +73,18 @@
       .play-trailer {
         display: inline-flex;
         align-items: center;
-        &:hover {
-          cursor: pointer;
-        }
+        position: absolute;
+        top: 50px;
+        right: 10%;
+        cursor: pointer;
 
         img {
           height: 40px;
           filter: invert(1);
+          background: #f5743a;
+          border-radius: 50%;
+          padding: 5px;
+         animation: shadowAnimation 1.5s infinite;
         }
       }
 
@@ -141,6 +146,25 @@
           .vote_count {
             color: #919295;
           }
+        }
+      }
+
+      .keywords {
+        width: 65%;
+        li {
+          cursor: pointer;
+          display: inline-block;
+          padding: 8px 16px 10px 16px;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1;
+          text-transform: uppercase;
+          color: #fff;
+          margin-bottom: 10px;
+          transition: all 0.3s ease-in-out;
+          border-radius: 4px;
+          background: #09497b7a;
+          margin-right: 5px;
         }
       }
     }
@@ -221,5 +245,14 @@
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
     }
+  }
+}
+
+@keyframes shadowAnimation{
+  0%{
+    box-shadow: -1px 1px 10px 2px red;
+  }
+  100%{
+    box-shadow: -1px 1px 20px 2px red;
   }
 }

@@ -13,6 +13,7 @@ export class MovieCardDetailsComponent implements OnInit {
   movieID: number;
   mediaType: string;
   forbiddenContent: boolean;
+  keywords: any;
 
   constructor(
     private movieAndTVService: MovieAndTvService,
@@ -27,7 +28,7 @@ export class MovieCardDetailsComponent implements OnInit {
   getMovie(): void {
     this.movieID = +this.route.snapshot.paramMap.get('id');
     this.mediaType = this.route.snapshot.params['type'];
-    
+    this.getMovieKeywords(this.mediaType, this.movieID);
 
     this.keywordService
       .containsForbiddenKeywords(this.mediaType,this.movieID)
@@ -44,5 +45,9 @@ export class MovieCardDetailsComponent implements OnInit {
         .getTvShowDetails(this.movieID)
         .subscribe((data) => (this.movie = data));
     }
+  }
+
+  getMovieKeywords(mediaType, movieID){
+    this.keywordService.getMovieOrTvKeywords(mediaType, movieID).subscribe((responseData)=>(this.keywords = responseData));
   }
 }

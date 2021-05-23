@@ -8,6 +8,7 @@ export class MovieInfoComponent implements OnInit {
   @Input() movie: any;
   @Input() movieId: number;
   @Input() mediaType: string;
+  @Input() keywords: any;
   showModal: boolean;
   backgroundImageOnHover: string;
   overviewOnHover = null;

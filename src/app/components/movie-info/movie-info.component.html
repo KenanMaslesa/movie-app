@@ -40,13 +40,20 @@
 
       </div>
 
-      <p [innerText]="(overviewOnHover? overviewOnHover: movie.overview)"></p>
+      <div>
+        <h4>Overview</h4>
+        <p [innerText]="(overviewOnHover? overviewOnHover: movie.overview)"></p>
+      </div>
+
+      <div class="keywords" *ngIf="keywords">
+        <h4>Keywords</h4>
+        <li *ngFor="let keyword of keywords.keywords">{{keyword.name}}</li>
+      </div>
 
       <div class="play-trailer" (click)="showModal=true">
         <img
           src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg"
           alt="">
-        <span>Play Trailer</span>
       </div>
 
 

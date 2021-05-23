@@ -1,7 +1,7 @@
 <ng-container *ngIf="movie">
 
   <ng-container *ngIf="!movie.adult && !forbiddenContent">
-    <app-movie-info [movie]="movie" [movieId]="movieID" [mediaType]="mediaType"></app-movie-info>
+    <app-movie-info [movie]="movie" [movieId]="movieID" [mediaType]="mediaType" [keywords]="keywords"></app-movie-info>
     <app-similar-movies [movieId]="movieID" [mediaType]="mediaType"></app-similar-movies>
   </ng-container>
 

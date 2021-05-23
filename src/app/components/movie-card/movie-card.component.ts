@@ -16,8 +16,10 @@ export class MovieCardComponent implements OnInit {
   multiSearchData: any;
   showModal: boolean;
   videoUrl: any;
-  currentPage = 1;
+  currentPageSearch = 1;
+  currentPageDiscover = 1;
   keywords: any;
+  searchQuery:string;
 
   constructor(
     private movieAndTVService: MovieAndTvService,
@@ -28,7 +30,7 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.discover('movie', this.currentPage);
+    this.discover('movie', this.currentPageDiscover);
   }
 
   getClassNameByRate(vote) {
@@ -62,20 +64,21 @@ export class MovieCardComponent implements OnInit {
   }
 
 
-
   multiSearch(query, page) {
     if (query != '') {
       this.searchService.multiSearch(query, page).subscribe((data: ApiData) => {
         this.createNewArayWithoutPorn(data);
       });
     } else {
-      this.discover('movie', this.currentPage);
+      this.currentPageSearch = 1;
+      this.discover('movie', this.currentPageDiscover);
     }
   }
 
   createNewArayWithoutPorn(data) {
-    const tempArray = { results: [] };
-    
+    const tempArray = { results: [],total_pages: Number };
+    tempArray.total_pages = data.total_pages;
+
     data.results.forEach((element) => {
       if (element.media_type != 'person') {
         this.keywordService
@@ -83,7 +86,6 @@ export class MovieCardComponent implements OnInit {
           .subscribe((contains) => {
             if (!contains)
               tempArray.results.push({ ...element});
-           
             this.multiSearchData = tempArray;
           });
       }
@@ -91,7 +93,8 @@ export class MovieCardComponent implements OnInit {
   }
 
   onValueChange(value: string): void {
-    this.multiSearch(value, this.currentPage);
+    this.searchQuery = value;
+    this.multiSearch(value, this.currentPageSearch);
   }
 
   discover(mediaType = 'movie', page, genres = '', keywords = '') {
@@ -103,7 +106,7 @@ export class MovieCardComponent implements OnInit {
   getKeywords(query) {
     this.keywordService
       .getKeywords(query)
-      .subscribe((data) => (this.keywords = data));
+      .subscribe((data) => (this.keywords = data, console.log(data)));
   }
 
   getMoviesByKeyword(keyword) {
