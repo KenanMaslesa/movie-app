@@ -73,10 +73,32 @@
   }
 }
 
-.movies{
+.movies, .tv{
+  margin-top: 50px;
+
   .adult{
     p{
       filter: blur(6px)
     }
   }
+
+  a{
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    color: white;
+    margin: 15px 0;
+
+    &:hover{
+      color: #1c72b9;
+    }
+
+    p{
+      display: inline;
+    }
+    
+  }
+}
+hr{
+  border-color: #ffffff21;
 }

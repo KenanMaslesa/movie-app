@@ -1051,7 +1051,7 @@ export class KeywordService {
       )
       .pipe(
         map((responseData: ApiData) => {
-          if (responseData.keywords.length < 1) return true;
+          //if (responseData.keywords.length < 1) return true; //if no keywords return forbidden
           for (let i in responseData.keywords) {
             for (let j in this.forbiddenKeywords) {
               if (

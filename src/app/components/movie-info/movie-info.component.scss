@@ -84,7 +84,7 @@
           background: #f5743a;
           border-radius: 50%;
           padding: 5px;
-         animation: shadowAnimation 1.5s infinite;
+          animation: shadowAnimation 1.5s infinite;
         }
       }
 
@@ -168,6 +168,10 @@
         }
       }
     }
+
+    .overview {
+      width: 90%;
+    }
   }
 
   iframe {
@@ -248,11 +252,11 @@
   }
 }
 
-@keyframes shadowAnimation{
-  0%{
+@keyframes shadowAnimation {
+  0% {
     box-shadow: -1px 1px 10px 2px red;
   }
-  100%{
-    box-shadow: -1px 1px 20px 2px red;
+  100% {
+    box-shadow: -1px 1px 20px 7px red;
   }
 }

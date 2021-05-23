@@ -67,7 +67,7 @@ export class MovieCardComponent implements OnInit {
   multiSearch(query, page) {
     if (query != '') {
       this.searchService.multiSearch(query, page).subscribe((data: ApiData) => {
-        this.createNewArayWithoutPorn(data);
+        this.createNewArayWithoutForbiddenKeywords(data);
       });
     } else {
       this.currentPageSearch = 1;
@@ -75,7 +75,7 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
-  createNewArayWithoutPorn(data) {
+  createNewArayWithoutForbiddenKeywords(data) {
     const tempArray = { results: [], total_pages: Number };
     tempArray.total_pages = data.total_pages;
 
@@ -104,7 +104,7 @@ export class MovieCardComponent implements OnInit {
   discover(mediaType = 'movie', page, sortBy, genres = '', keywords = '') {
     this.searchService
       .discover(mediaType, page, this.sortBy, genres, keywords)
-      .subscribe((data) => this.createNewArayWithoutPorn(data));
+      .subscribe((data) => this.createNewArayWithoutForbiddenKeywords(data));
   }
 
   getKeywords(query) {
