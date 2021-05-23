@@ -4,13 +4,14 @@
   <div class="main">
     <div class="poster-image">
       <img src="https://image.tmdb.org/t/p/w1280/{{!backgroundImageOnHover?movie.poster_path:backgroundImageOnHover}}" alt="">
+      <img *ngIf="!movie.poster_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
     </div>
 
     <div class="movie-info">
       <a class="movie-title" href="{{movie.homepage}}" target="_blank">{{movie.title == null? movie.original_name:
         movie.title}}
-        <span *ngIf="mediaType == 'movie'">({{movie.release_date | date:"yyyy" }})</span>
-        <span *ngIf="mediaType == 'tv'">({{movie.first_air_date | date:"yyyy"}} - {{movie.last_air_date |
+        <span *ngIf="mediaType == 'movie' && movie.release_date">({{movie.release_date | date:"yyyy" }})</span>
+        <span *ngIf="mediaType == 'tv' && movie.first_air_date">({{movie.first_air_date | date:"yyyy"}} - {{movie.last_air_date |
           date:"yyyy"}})</span></a>
 
       <div class="rating-wrapper">
@@ -49,6 +50,8 @@
         <h4>Keywords</h4>
         <li *ngFor="let keyword of keywords.keywords">{{keyword.name}}</li>
       </div>
+      <p>Status: {{movie.status}}</p>
+
 
       <div class="play-trailer" (click)="showModal=true">
         <img
