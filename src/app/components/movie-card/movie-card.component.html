@@ -76,11 +76,11 @@
   </ul>
 </div>
 
-<main id="main" *ngIf="multiSearchData">
+<main id="main" *ngIf="multiSearchData" style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
 
   <ng-container *ngFor="let movie of multiSearchData.results">
     <div class="movie">
-      <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}">
+      <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}" on-mouseover="onMouseOver(movie)">
         <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}"
           *ngIf="movie.poster_path">
         <img *ngIf="!movie.poster_path"

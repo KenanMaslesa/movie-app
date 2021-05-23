@@ -19,9 +19,9 @@ export class MovieCardComponent implements OnInit {
   currentPageSearch = 1;
   currentPageDiscover = 1;
   keywords: any;
-  searchQuery:string;
-  sortBy='popularity.desc';
-
+  searchQuery: string;
+  sortBy = 'popularity.desc';
+  backgroundImage: string;
   constructor(
     private movieAndTVService: MovieAndTvService,
     private sanitizer: DomSanitizer,
@@ -64,7 +64,6 @@ export class MovieCardComponent implements OnInit {
     );
   }
 
-
   multiSearch(query, page) {
     if (query != '') {
       this.searchService.multiSearch(query, page).subscribe((data: ApiData) => {
@@ -72,21 +71,20 @@ export class MovieCardComponent implements OnInit {
       });
     } else {
       this.currentPageSearch = 1;
-      this.discover('movie',this.sortBy, this.currentPageDiscover);
+      this.discover('movie', this.sortBy, this.currentPageDiscover);
     }
   }
 
   createNewArayWithoutPorn(data) {
-    const tempArray = { results: [],total_pages: Number };
+    const tempArray = { results: [], total_pages: Number };
     tempArray.total_pages = data.total_pages;
-    
+
     data.results.forEach((element) => {
       if (element.media_type != 'person') {
         this.keywordService
           .containsForbiddenKeywords(element.media_type, element.id)
           .subscribe((contains) => {
-            if (!contains)
-              tempArray.results.push({ ...element});
+            if (!contains) tempArray.results.push({ ...element });
             this.multiSearchData = tempArray;
           });
       }
@@ -98,7 +96,7 @@ export class MovieCardComponent implements OnInit {
     this.multiSearch(value, this.currentPageSearch);
   }
 
-  onSortingChange(value){
+  onSortingChange(value) {
     this.sortBy = value;
     this.discover('movie', this.currentPageDiscover, this.sortBy);
   }
@@ -106,18 +104,21 @@ export class MovieCardComponent implements OnInit {
   discover(mediaType = 'movie', page, sortBy, genres = '', keywords = '') {
     this.searchService
       .discover(mediaType, page, this.sortBy, genres, keywords)
-      .subscribe((data) => (this.createNewArayWithoutPorn(data)));
+      .subscribe((data) => this.createNewArayWithoutPorn(data));
   }
 
   getKeywords(query) {
     this.keywordService
       .getKeywords(query)
-      .subscribe((data) => (this.keywords = data, console.log(data)));
+      .subscribe((data) => ((this.keywords = data), console.log(data)));
   }
 
   getMoviesByKeyword(keyword) {
     this.movieAndTVService
       .getMoviesByKeyword(keyword)
       .subscribe((data) => (this.multiSearchData = data));
+  }
+  onMouseOver(movie) {
+    this.backgroundImage = movie.backdrop_path;
   }
 }
