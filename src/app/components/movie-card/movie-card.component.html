@@ -8,79 +8,95 @@
 
 <app-search (valueChange)='onValueChange($event)'></app-search>
 
-<input #searchBox (input)="getKeywords(searchBox.value)" class="search" placeholder="Search keywords" />
+<div class="filter" style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink>Movies</a>
+      <ng-template ngbNavContent>
+        <div class="sort-wrapper">
+        <p class="title"> Sort Results By</p>
+        <select class="sort" placeholder="String" (change)="onSortingChange($event.target.value)">
+          <option value="popularity.asc">popularity.asc</option>
+          <option value="popularity.desc" selected>popularity.desc</option>
+          <option value="release_date.asc">release_date.asc</option>
+          <option value="release_date.desc">release_date.desc</option>
+          <option value="revenue.asc">revenue.asc</option>
+          <option value="revenue.desc">revenue.desc</option>
+          <option value="primary_release_date.asc">primary_release_date.asc</option>
+          <option value="primary_release_date.desc">primary_release_date.desc</option>
+          <option value="original_title.asc">original_title.asc</option>
+          <option value="original_title.desc">original_title.desc</option>
+          <option value="vote_average.asc">vote_average.asc</option>
+          <option value="vote_average.desc">vote_average.desc</option>
+          <option value="vote_count.asc">vote_count.asc</option>
+          <option value="vote_count.desc">vote_count.desc</option>
+        </select>
+      </div>
+        <ul class="genres" style="color: white">
+          <p>Movie filters</p>
+          <li *ngFor="let filter of movieFilters" (click)="discover('movie', '1', 'popularity.desc',filter.id)">
+            {{filter.name}}</li>
+        </ul>
 
-<ul class="keywords" *ngIf="keywords" style="color: white">
-  <li *ngFor="let keyword of keywords.results" (click)="discover('movie',currentPage,'',keyword.id)">
-    {{keyword.name}}({{keyword.id}})</li>
-</ul>
+        <input #searchBoxMovie (input)="getMovieKeywords(searchBoxMovie.value)" class="search" placeholder="Search keywords" />
 
+        <ul class="keywords" *ngIf="movieKeywords" style="color: royalblue">
+          <li *ngFor="let keyword of movieKeywords.results" (click)="discover('movie',currentPageDiscover,sortBy,'',keyword.id)">
+            {{keyword.name}}</li>
+        </ul>
 
-<div class="filter">
-  <select class="f-1" placeholder="String" (change)="onSortingChange($event.target.value)">
-    <option value="popularity.asc">popularity.asc</option>
-    <option value="popularity.desc" selected>popularity.desc</option>
-    <option value="release_date.asc">release_date.asc</option>
-    <option value="release_date.desc">release_date.desc</option>
-    <option value="revenue.asc">revenue.asc</option>
-    <option value="revenue.desc">revenue.desc</option>
-    <option value="primary_release_date.asc">primary_release_date.asc</option>
-    <option value="primary_release_date.desc">primary_release_date.desc</option>
-    <option value="original_title.asc">original_title.asc</option>
-    <option value="original_title.desc">original_title.desc</option>
-    <option value="vote_average.asc">vote_average.asc</option>
-    <option value="vote_average.desc">vote_average.desc</option>
-    <option value="vote_count.asc">vote_count.asc</option>
-    <option value="vote_count.desc">vote_count.desc</option>
-  </select>
-  <ul class="genres" style="color: white">
+      </ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>TV</a>
+      <ng-template ngbNavContent>
+        <select class="sort" placeholder="String" (change)="onSortingChange($event.target.value)">
+          <option value="popularity.asc">popularity.asc</option>
+          <option value="popularity.desc" selected>popularity.desc</option>
+          <option value="release_date.asc">release_date.asc</option>
+          <option value="release_date.desc">release_date.desc</option>
+          <option value="revenue.asc">revenue.asc</option>
+          <option value="revenue.desc">revenue.desc</option>
+          <option value="primary_release_date.asc">primary_release_date.asc</option>
+          <option value="primary_release_date.desc">primary_release_date.desc</option>
+          <option value="original_title.asc">original_title.asc</option>
+          <option value="original_title.desc">original_title.desc</option>
+          <option value="vote_average.asc">vote_average.asc</option>
+          <option value="vote_average.desc">vote_average.desc</option>
+          <option value="vote_count.asc">vote_count.asc</option>
+          <option value="vote_count.desc">vote_count.desc</option>
+        </select>
+        <ul class="genres" style="color: white">
+          <p>TV filters</p>
+          <li *ngFor="let filter of tvFilters" (click)="discover('tv', '1', 'popularity.desc',filter.id)">
+            {{filter.name}}</li>
+        </ul>
 
-    <li data-value="28"><a (click)="discover('movie', '1', 'popularity.desc','28')">Action</a></li>
+        <input #searchBoxTV (input)="getTVKeywords(searchBoxTV.value)" class="search" placeholder="Search keywords" />
 
-    <li data-value="12"><a (click)="discover('movie', '1', '12')">Adventure</a></li>
+        <ul class="keywords" *ngIf="tvKeywords" style="color: red">
+          <li *ngFor="let keyword of tvKeywords.results" (click)="discover('tv',currentPageDiscover,sortBy,'',keyword.id)">
+            {{keyword.name}}</li>
+        </ul>
 
-    <li data-value="16"><a (click)="discover('movie', '1', '16')">Animation</a></li>
-
-    <li data-value="35"><a (click)="discover('movie', '1', '35')">Comedy</a></li>
-
-    <li data-value="80"><a (click)="discover('movie', '1', '80')">Crime</a></li>
-
-    <li data-value="99"><a (click)="discover('movie', '1','popularity.desc', '99')">Documentary</a></li>
-
-    <li data-value="18"><a (click)="discover('movie', '1', '18')">Drama</a></li>
-
-    <li data-value="10751"><a (click)="discover('movie', '1', '10751')">Family</a></li>
-
-    <li data-value="14"><a (click)="discover('movie', '1', '14')">Fantasy</a></li>
-
-    <li data-value="36"><a (click)="discover('movie', '1', '36')">History</a></li>
-
-    <li data-value="27"><a (click)="discover('movie', '1', '27')">Horror</a></li>
-
-    <li data-value="10402"><a (click)="discover('movie', '1', '10402')">Music</a></li>
-
-    <li data-value="9648"><a (click)="discover('movie', '1', '9648')">Mystery</a></li>
-
-    <li data-value="10749"><a (click)="discover('movie', '1', '10749')">Romance</a></li>
-
-    <li data-value="878"><a (click)="discover('movie', '1', '878')">Science Fiction</a></li>
-
-    <li data-value="10770"><a (click)="discover('movie', '1', '10770')">TV Movie</a></li>
-
-    <li data-value="53"><a (click)="discover('movie', '1', '53')">Thriller</a></li>
-
-    <li data-value="10752"><a (click)="discover('movie', '1', '10752')">War</a></li>
-
-    <li data-value="37"><a (click)="discover('movie', '1', '37')">Western</a></li>
-
+      </ng-template>
+    </li>
+   
   </ul>
+  <div [ngbNavOutlet]="nav"></div>
+
+
 </div>
 
-<main id="main" *ngIf="multiSearchData" style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
+
+
+<main id="main" *ngIf="multiSearchData"
+  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
 
   <ng-container *ngFor="let movie of multiSearchData.results">
     <div class="movie">
-      <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}" on-mouseover="onMouseOver(movie)">
+      <a routerLink="/details/{{movie.media_type == null ? 'movie':movie.media_type}}/{{movie.id}}"
+        on-mouseover="onMouseOver(movie)">
         <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}"
           *ngIf="movie.poster_path">
         <img *ngIf="!movie.poster_path"

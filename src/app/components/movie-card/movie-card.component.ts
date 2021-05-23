@@ -18,10 +18,158 @@ export class MovieCardComponent implements OnInit {
   videoUrl: any;
   currentPageSearch = 1;
   currentPageDiscover = 1;
-  keywords: any;
+  movieKeywords: any;
+  tvKeywords: any;
   searchQuery: string;
   sortBy = 'popularity.desc';
   backgroundImage: string;
+  movieFilters = [
+    {
+      name: 'Action',
+      id: 28,
+    },
+    {
+      name: 'Adventure',
+      id: 12,
+    },
+    {
+      name: 'Animation',
+      id: 16,
+    },
+    {
+      name: 'Comedy',
+      id: 35,
+    },
+    {
+      name: 'Crime',
+      id: 80,
+    },
+    {
+      name: 'Documentary',
+      id: 99,
+    },
+    {
+      name: 'Drama',
+      id: 18,
+    },
+    {
+      name: 'Family',
+      id: 10751,
+    },
+    {
+      name: 'Fantasy',
+      id: 14,
+    },
+    {
+      name: 'History',
+      id: 36,
+    },
+    {
+      name: 'Horror',
+      id: 27,
+    },
+    {
+      name: 'Music',
+      id: 10402,
+    },
+    {
+      name: 'Mystery',
+      id: 9648,
+    },
+    {
+      name: 'Romance',
+      id: 10749,
+    },
+    {
+      name: 'Science Fiction',
+      id: 878,
+    },
+    {
+      name: 'TV Movie',
+      id: 10770,
+    },
+    {
+      name: 'Thriller',
+      id: 53,
+    },
+    {
+      name: 'War',
+      id: 10752,
+    },
+    {
+      name: 'Western',
+      id: 37,
+    },
+  ];
+
+  tvFilters = [
+    {
+      name: 'Action & Adventure',
+      id: 10759,
+    },
+
+    {
+      name: 'Animation',
+      id: 16,
+    },
+    {
+      name: 'Comedy',
+      id: 35,
+    },
+    {
+      name: 'Crime',
+      id: 80,
+    },
+    {
+      name: 'Documentary',
+      id: 99,
+    },
+    {
+      name: 'Drama',
+      id: 18,
+    },
+    {
+      name: 'Family',
+      id: 10751,
+    },
+    {
+      name: 'Kids',
+      id: 10762,
+    },
+
+    {
+      name: 'Mystery',
+      id: 9648,
+    },
+    {
+      name: 'News',
+      id: 10763,
+    },
+    {
+      name: 'Sci-Fi & Fantasy',
+      id: 10765,
+    },
+    {
+      name: 'Reality',
+      id: 10764,
+    },
+    {
+      name: 'Soap',
+      id: 10766,
+    },
+    {
+      name: 'War & Politics',
+      id: 10768,
+    },
+    {
+      name: 'Western',
+      id: 37,
+    },
+    {
+      name: 'Talk',
+      id: 10767,
+    },
+  ];
   constructor(
     private movieAndTVService: MovieAndTvService,
     private sanitizer: DomSanitizer,
@@ -80,9 +228,16 @@ export class MovieCardComponent implements OnInit {
     tempArray.total_pages = data.total_pages;
 
     data.results.forEach((element) => {
+      var mediaType;
+      if(element.media_type == null){
+        if(element.first_air_date == null)
+        mediaType = 'movie';
+        else
+        mediaType = 'tv';
+      }
       if (element.media_type != 'person') {
         this.keywordService
-          .containsForbiddenKeywords(element.media_type, element.id)
+          .containsForbiddenKeywords(mediaType, element.id)
           .subscribe((contains) => {
             if (!contains) tempArray.results.push({ ...element });
             this.multiSearchData = tempArray;
@@ -101,16 +256,30 @@ export class MovieCardComponent implements OnInit {
     this.discover('movie', this.currentPageDiscover, this.sortBy);
   }
 
-  discover(mediaType = 'movie', page, sortBy, genres = '', keywords = '') {
+  discover(mediaType, page, sortBy, genres = '', keywords = '') {
     this.searchService
       .discover(mediaType, page, this.sortBy, genres, keywords)
       .subscribe((data) => this.createNewArayWithoutForbiddenKeywords(data));
   }
 
-  getKeywords(query) {
+  getMovieKeywords(query) {
+    if (query == '') {
+      this.movieKeywords = null;
+      return;
+    }
     this.keywordService
       .getKeywords(query)
-      .subscribe((data) => ((this.keywords = data), console.log(data)));
+      .subscribe((data) => (this.movieKeywords = data));
+  }
+
+  getTVKeywords(query) {
+    if (query == '') {
+      this.tvKeywords = null;
+      return;
+    }
+    this.keywordService
+      .getKeywords(query)
+      .subscribe((data) => (this.tvKeywords = data));
   }
 
   getMoviesByKeyword(keyword) {

@@ -7,10 +7,10 @@
   width: 85%;
   margin: 25px ​0;
 
-    @media(max-width:768px){
-      width: 100%;
-      padding: 0;
-    }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+  }
 
   .rating {
     position: absolute;
@@ -73,16 +73,42 @@
   }
 }
 
-.movies, .tv, .production, .directing, .crew{
+.movies,
+.tv,
+.production,
+.directing,
+.crew {
   margin-top: 50px;
+  max-height: 400px;
+  overflow-y: scroll;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 
-  .adult{
-    p{
-      filter: blur(6px)
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgb(19 42 61);
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #0b3558;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #0b35589d;
+  }
+  .adult {
+    p {
+      filter: blur(6px);
     }
   }
 
-  a{
+  a {
     cursor: pointer;
     transition: all 0.3s;
     display: block;
@@ -91,16 +117,15 @@
     border-bottom: 1px solid #0d304d;
     padding-bottom: 10px;
 
-    &:hover{
+    &:hover {
       color: #1c72b9;
     }
 
-    p{
+    p {
       display: inline;
     }
-    
   }
 }
-hr{
+hr {
   border-color: #ffffff21;
 }
