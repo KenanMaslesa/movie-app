@@ -20,6 +20,7 @@ export class MovieCardComponent implements OnInit {
   currentPageDiscover = 1;
   keywords: any;
   searchQuery:string;
+  sortBy='popularity.desc';
 
   constructor(
     private movieAndTVService: MovieAndTvService,
@@ -30,7 +31,7 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.discover('movie', this.currentPageDiscover);
+    this.discover('movie', this.currentPageDiscover, this.sortBy);
   }
 
   getClassNameByRate(vote) {
@@ -71,14 +72,14 @@ export class MovieCardComponent implements OnInit {
       });
     } else {
       this.currentPageSearch = 1;
-      this.discover('movie', this.currentPageDiscover);
+      this.discover('movie',this.sortBy, this.currentPageDiscover);
     }
   }
 
   createNewArayWithoutPorn(data) {
     const tempArray = { results: [],total_pages: Number };
     tempArray.total_pages = data.total_pages;
-
+    
     data.results.forEach((element) => {
       if (element.media_type != 'person') {
         this.keywordService
@@ -97,10 +98,15 @@ export class MovieCardComponent implements OnInit {
     this.multiSearch(value, this.currentPageSearch);
   }
 
-  discover(mediaType = 'movie', page, genres = '', keywords = '') {
+  onSortingChange(value){
+    this.sortBy = value;
+    this.discover('movie', this.currentPageDiscover, this.sortBy);
+  }
+
+  discover(mediaType = 'movie', page, sortBy, genres = '', keywords = '') {
     this.searchService
-      .discover(mediaType, page, genres, keywords)
-      .subscribe((data) => (this.multiSearchData = data));
+      .discover(mediaType, page, this.sortBy, genres, keywords)
+      .subscribe((data) => (this.createNewArayWithoutPorn(data)));
   }
 
   getKeywords(query) {

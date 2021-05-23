@@ -405,6 +405,626 @@ export class KeywordService {
         name: 'lesbophobia',
         id: 279532,
       },
+      {
+        name: 'sadomazo',
+        id: 212787,
+      },
+      {
+        name: 'sadomazo',
+        id: 6373,
+      },
+      {
+        name: 'prostitution',
+        id: 13059,
+      },
+      {
+        name: 'illegal prostitution',
+        id: 33625,
+      },
+      {
+        name: 'forced prostitution',
+        id: 173251,
+      },
+      {
+        name: 'prostitution ring',
+        id: 193316,
+      },
+      {
+        name: 'underage prostitution ring',
+        id: 208271,
+      },
+      {
+        name: 'street prostitution',
+        id: 211088,
+      },
+      {
+        name: 'child prostitution',
+        id: 225582,
+      },
+      {
+        name: 'male prostitution',
+        id: 247614,
+      },
+      {
+        name: 'softcore',
+        id: 155477,
+      },
+      {
+        name: 'prostitute',
+        id: 549,
+      },
+      {
+        name: 'murder of prostitute',
+        id: 5489,
+      },
+      {
+        name: 'young prostitute',
+        id: 8640,
+      },
+      {
+        name: 'male prostitute',
+        id: 11722,
+      },
+      {
+        name: 'teenage prostitute',
+        id: 15048,
+      },
+      {
+        name: 'ex prostitute',
+        id: 160934,
+      },
+      {
+        name: 'pretending to be a prostitute',
+        id: 175529,
+      },
+      {
+        name: 'prostitute mother',
+        id: 179385,
+      },
+      {
+        name: 'transsexual prostitute',
+        id: 222581,
+      },
+      {
+        name: 'former prostitute',
+        id: 238102,
+      },
+      {
+        name: 'murder of a prostitute',
+        id: 248835,
+      },
+      {
+        name: 'middle-aged prostitute',
+        id: 255725,
+      },
+      {
+        name: 'prostitute marriage',
+        id: 256422,
+      },
+      {
+        name: 'elder prostitute',
+        id: 279038,
+      },
+      {
+        name: 'sexual murder',
+        id: 7098,
+      },
+      {
+        name: 'sexual humor',
+        id: 11316,
+      },
+      {
+        name: 'sexual intercourse',
+        id: 11474,
+      },
+      {
+        name: 'sexual violence',
+        id: 11534,
+      },
+      {
+        name: 'sexual art',
+        id: 11495,
+      },
+      {
+        name: 'sexual sadism',
+        id: 33439,
+      },
+      {
+        name: 'sexual desire',
+        id: 41404,
+      },
+      {
+        name: 'sexual orientation',
+        id: 186348,
+      },
+      {
+        name: 'sexual liberation',
+        id: 190115,
+      },
+      {
+        name: 'sexual assault',
+        id: 190327,
+      },
+      {
+        name: 'sexual dysfunction',
+        id: 194921,
+      },
+      {
+        name: 'sexual relationship',
+        id: 204207,
+      },
+      {
+        name: 'sexual politics',
+        id: 210088,
+      },
+      {
+        name: 'sexual massage',
+        id: 213493,
+      },
+      {
+        name: 'sexual attitudes',
+        id: 215577,
+      },
+      {
+        name: 'sexual inexperience',
+        id: 228680,
+      },
+      {
+        name: 'sexual blackmail',
+        id: 229194,
+      },
+      {
+        name: 'sexual asault',
+        id: 274056,
+      },
+      {
+        name: 'sexual code',
+        id: 274690,
+      },
+      {
+        name: 'sexual',
+        id: 276574,
+      },
+      {
+        name: 'sexual exploration',
+        id: 186107,
+      },
+      {
+        name: 'sexual experimentation',
+        id: 197100,
+      },
+      {
+        name: 'sexual exploitation',
+        id: 221445,
+      },
+      {
+        name: 'sexual exploitation of children',
+        id: 269113,
+      },
+      {
+        name: 'sexual addiction',
+        id: 5906,
+      },
+      {
+        name: 'gay history',
+        id: 241179,
+      },
+      {
+        name: 'gay bathhouse',
+        id: 173511,
+      },
+      {
+        name: 'sexuality',
+        id: 738,
+      },
+      {
+        name: 'teenage sexuality',
+        id: 156777,
+      },
+      {
+        name: 'exploring sexuality',
+        id: 189464,
+      },
+      {
+        name: 'female sexuality',
+        id: 197758,
+      },
+      {
+        name: 'forbidden sexuality',
+        id: 212023,
+      },
+      {
+        name: 'situational sexuality',
+        id: 245262,
+      },
+      {
+        name: 'male sexuality',
+        id: 251978,
+      },
+      {
+        name: 'repressed sexuality',
+        id: 253979,
+      },
+      {
+        name: 'object sexuality',
+        id: 273129,
+      },
+      {
+        name: 'objectum sexuality',
+        id: 278015,
+      },
+      {
+        name: 'pink film',
+        id: 159551,
+      },
+      {
+        name: 'playboy',
+        id: 9639,
+      },
+      {
+        name: 'playboy magazine',
+        id: 170184,
+      },
+      {
+        name: 'playboy mansion',
+        id: 226428,
+      },
+      {
+        name: 'playback singer',
+        id: 254745,
+      },
+      {
+        name: 'adult education center',
+        id: 6280,
+      },
+      {
+        name: 'becoming an adult',
+        id: 1412,
+      },
+      {
+        name: 'adult humor',
+        id: 11192,
+      },
+      {
+        name: 'adult animation',
+        id: 161919,
+      },
+      {
+        name: 'child as an adult',
+        id: 163069,
+      },
+      {
+        name: 'disbelieving adult',
+        id: 170776,
+      },
+      {
+        name: 'adult filmmaking',
+        id: 195997,
+      },
+      {
+        name: 'adult as a child',
+        id: 198929,
+      },
+      {
+        name: 'young adult',
+        id: 206298,
+      },
+      {
+        name: 'adult in college',
+        id: 215284,
+      },
+      {
+        name: 'adult illiteracy',
+        id: 229628,
+      },
+      {
+        name: 'adult child friendship',
+        id: 236626,
+      },
+      {
+        name: 'adult children',
+        id: 237928,
+      },
+      {
+        name: 'based on young adult novel',
+        id: 246466,
+      },
+      {
+        name: 'adult babies',
+        id: 247411,
+      },
+      {
+        name: 'adult theatre',
+        id: 253976,
+      },
+      {
+        name: 'adult magazine',
+        id: 253977,
+      },
+      {
+        name: 'adult',
+        id: 258403,
+      },
+      {
+        name: 'adult movie star',
+        id: 273931,
+      },
+      {
+        name: 'adult swin',
+        id: 279510,
+      },
+      {
+        name: 'adultery',
+        id: 596,
+      },
+      {
+        name: 'suspicion of adultery',
+        id: 180393,
+      },
+      {
+        name: 'sexism',
+        id: 4411,
+      },
+      {
+        name: 'safe sex',
+        id: 4316,
+      },
+      {
+        name: 'anal sex',
+        id: 11531,
+      },
+      {
+        name: 'sex talk',
+        id: 15128,
+      },
+      {
+        name: 'sex toy',
+        id: 155740,
+      },
+      {
+        name: 'sex doll',
+        id: 171134,
+      },
+      {
+        name: 'sex tape',
+        id: 183728,
+      },
+      {
+        name: 'sexist',
+        id: 194188,
+      },
+      {
+        name: 'sex game',
+        id: 208960,
+      },
+      {
+        name: 'sex show',
+        id: 211069,
+      },
+      {
+        name: 'oral sex',
+        id: 227758,
+      },
+      {
+        name: 'sex club',
+        id: 232651,
+      },
+      {
+        name: 'sex pest',
+        id: 237017,
+      },
+      {
+        name: 'sex mate',
+        id: 238858,
+      },
+      {
+        name: 'solo sex',
+        id: 249196,
+      },
+      {
+        name: 'car sex',
+        id: 262784,
+      },
+      {
+        name: 'sex',
+        id: 267122,
+      },
+      {
+        name: 'sex code',
+        id: 274689,
+      },
+      {
+        name: 'sex ray',
+        id: 276287,
+      },
+      {
+        name: 'sexual',
+        id: 276574,
+      },
+      {
+        name: 'striptease',
+        id: 4378,
+      },
+      {
+        name: 'sex worker',
+        id: 190178,
+      },
+      {
+        name: 'sex work',
+        id: 226543,
+      },
+      {
+        name: 'gay bashing',
+        id: 11137,
+      },
+      {
+        name: 'gay marriage',
+        id: 15130,
+      },
+      {
+        name: 'gay club',
+        id: 40940,
+      },
+      {
+        name: 'gay parent',
+        id: 41515,
+      },
+      {
+        name: 'gay pride',
+        id: 173662,
+      },
+      {
+        name: 'gay adoption',
+        id: 186621,
+      },
+      {
+        name: 'gay culture',
+        id: 196441,
+      },
+      {
+        name: 'gay erotica',
+        id: 238059,
+      },
+      {
+        name: 'gay friends',
+        id: 245045,
+      },
+      {
+        name: 'gay youth',
+        id: 247821,
+      },
+      {
+        name: 'gay slur',
+        id: 250048,
+      },
+      {
+        name: 'gay cruise',
+        id: 257658,
+      },
+      {
+        name: 'gay rugby',
+        id: 257794,
+      },
+      {
+        name: 'gay theme',
+        id: 258533,
+      },
+      {
+        name: 'gay teen',
+        id: 262494,
+      },
+      {
+        name: 'gay',
+        id: 264384,
+      },
+      {
+        name: 'gay rights',
+        id: 264411,
+      },
+      {
+        name: 'gay daddies',
+        id: 267435,
+      },
+      {
+        name: 'ex gay',
+        id: 269644,
+      },
+      {
+        name: 'gay sportsman',
+        id: 280069,
+      },
+      {
+        name: 'sex comedy',
+        id: 170827,
+      },
+      {
+        name: 'sex code',
+        id: 274689,
+      },
+      {
+        name: 'art of seduction',
+        id: 155080,
+      },
+      {
+        name: 'lgbt child',
+        id: 34333,
+      },
+      {
+        name: 'lgbt athlete',
+        id: 156331,
+      },
+      {
+        name: 'lgbt',
+        id: 158718,
+      },
+      {
+        name: 'lgbt teen',
+        id: 163037,
+      },
+      {
+        name: 'lgbt in the military',
+        id: 165614,
+      },
+      {
+        name: 'lgbt activist',
+        id: 173669,
+      },
+      {
+        name: 'black lgbt',
+        id: 195624,
+      },
+      {
+        name: 'lgbt parenting',
+        id: 224000,
+      },
+      {
+        name: 'indigenous lgbt',
+        id: 243575,
+      },
+      {
+        name: 'jewish lgbt',
+        id: 243577,
+      },
+      {
+        name: 'lgbt youth',
+        id: 264674,
+      },
+      {
+        name: 'lgbt romance',
+        id: 264797,
+      },
+      {
+        name: 'lgbt interest',
+        id: 266959,
+      },
+      {
+        name: 'lgbt black',
+        id: 270245,
+      },
+      {
+        name: 'elderly lgbt',
+        id: 271115,
+      },
+      {
+        name: 'lgbt activism',
+        id: 275749,
+      },
+      {
+        name: 'lgbt asian',
+        id: 279152,
+      },
+      {
+        name: 'korean lgbt',
+        id: 279155,
+      },
+      {
+        name: 'lgbt rights',
+        id: 280179,
+      },
+      {
+        name: 'lgbtq',
+        id: 280285,
+      },
     ];
   }
 
@@ -424,13 +1044,14 @@ export class KeywordService {
       .pipe();
   }
 
-  containsForbiddenKeywords(mediaType, movieId) {
+  containsForbiddenKeywords(mediaType = 'movie', movieId) {
     return this.http
       .get(
         `${environment.tmdbAPIUrl}/${mediaType}/${movieId}/keywords?api_key=${environment.tmdbAPIKey}`
       )
       .pipe(
         map((responseData: ApiData) => {
+          if (responseData.keywords.length < 1) return true;
           for (let i in responseData.keywords) {
             for (let j in this.forbiddenKeywords) {
               if (

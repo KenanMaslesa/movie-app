@@ -17,9 +17,25 @@
 
 
 <div class="filter">
+  <select class="f-1" placeholder="String" (change)="onSortingChange($event.target.value)">
+    <option value="popularity.asc">popularity.asc</option>
+    <option value="popularity.desc" selected>popularity.desc</option>
+    <option value="release_date.asc">release_date.asc</option>
+    <option value="release_date.desc">release_date.desc</option>
+    <option value="revenue.asc">revenue.asc</option>
+    <option value="revenue.desc">revenue.desc</option>
+    <option value="primary_release_date.asc">primary_release_date.asc</option>
+    <option value="primary_release_date.desc">primary_release_date.desc</option>
+    <option value="original_title.asc">original_title.asc</option>
+    <option value="original_title.desc">original_title.desc</option>
+    <option value="vote_average.asc">vote_average.asc</option>
+    <option value="vote_average.desc">vote_average.desc</option>
+    <option value="vote_count.asc">vote_count.asc</option>
+    <option value="vote_count.desc">vote_count.desc</option>
+  </select>
   <ul class="genres" style="color: white">
 
-    <li data-value="28"><a (click)="discover('movie', '1', '28')">Action</a></li>
+    <li data-value="28"><a (click)="discover('movie', '1', 'popularity.desc','28')">Action</a></li>
 
     <li data-value="12"><a (click)="discover('movie', '1', '12')">Adventure</a></li>
 
@@ -29,7 +45,7 @@
 
     <li data-value="80"><a (click)="discover('movie', '1', '80')">Crime</a></li>
 
-    <li data-value="99"><a (click)="discover('movie', '1', '99')">Documentary</a></li>
+    <li data-value="99"><a (click)="discover('movie', '1','popularity.desc', '99')">Documentary</a></li>
 
     <li data-value="18"><a (click)="discover('movie', '1', '18')">Drama</a></li>
 
@@ -72,7 +88,7 @@
       </a>
 
       <div class="movie-info" data-movieid="567189">
-        <h4>{{movie.original_title == null ? movie.original_name: movie.original_title}}</h4>
+        <h4>{{movie.title == null ? movie.original_name: movie.title}}</h4>
         <div class="rating">
           <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
             <path fill="yellow"
@@ -99,16 +115,17 @@
 
 <!--DISCOVER PAGINATION-->
 <ng-container *ngIf="multiSearchData">
-  <div *ngIf="!searchQuery"class="pagination-wrapper">
+  <div *ngIf="!searchQuery" class="pagination-wrapper">
     <ngb-pagination (pageChange)="discover('movie',$event)" *ngIf="multiSearchData.total_pages > 1"
-      class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPageDiscover"
-      [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+      class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages"
+      [(page)]="currentPageDiscover" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+    </ngb-pagination>
   </div>
 </ng-container>
 
 <!--SEARCH PAGINATION-->
 <ng-container *ngIf="multiSearchData">
-  <div *ngIf="searchQuery"class="pagination-wrapper">
+  <div *ngIf="searchQuery" class="pagination-wrapper">
     <ngb-pagination (pageChange)="multiSearch(searchQuery,$event)" *ngIf="multiSearchData.total_pages > 1"
       class="d-flex justify-content-center" [collectionSize]="multiSearchData.total_pages" [(page)]="currentPageSearch"
       [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
