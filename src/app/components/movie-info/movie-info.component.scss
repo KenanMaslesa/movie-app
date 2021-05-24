@@ -151,6 +151,10 @@
 
       .keywords {
         width: 65%;
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
         li {
           cursor: pointer;
           display: inline-block;
@@ -171,6 +175,9 @@
 
     .overview {
       width: 90%;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
   }
 
