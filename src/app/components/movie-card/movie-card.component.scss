@@ -135,7 +135,7 @@ main {
 }
 
 .filter {
-  background: #041829;
+  background: #0418296e;
   width: 250px;
   text-align: center;
   border-radius: 5px;
@@ -147,10 +147,39 @@ main {
   top: 0;
   z-index: 9;
   transition: all 1s;
-  opacity: 0;
+  height: auto;
+  max-height: 45px;
+  overflow: hidden;
+  opacity: 0.9;
 
-  &:hover{
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgb(19 42 61);
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #0b3558;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #0b35589d;
+  }
+
+  &:hover {
     opacity: 1;
+    max-height: 100%;
+    width: 250px;
+    overflow-y: scroll;
+    background: #041829;
   }
 
   .genres,
@@ -175,7 +204,7 @@ main {
       margin-right: 5px;
 
       &.active {
-        background: cornflowerblue;
+        background: #216289;
       }
     }
   }
@@ -228,5 +257,17 @@ main {
 
   &:focus {
     outline: none;
+  }
+}
+
+header {
+  background: transparent;
+  padding: 0;
+  margin-top: 20px;
+
+  input {
+    width: 100%;
+    border-color: #1c3d57;
+    background: #03304d;
   }
 }

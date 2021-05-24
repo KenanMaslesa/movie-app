@@ -12,6 +12,8 @@ import { EventEmitter } from '@angular/core';
 export class SearchComponent implements OnInit {
   constructor() { }
   @Output() valueChange = new EventEmitter();
+  @Input() backgroundImage;
+  image = '_and_h600_multi_faces_filter(duotone,032541,01b4e4)/7VrRna8S3x6xbijooeBmxqvHXiu.jpg';
   ngOnInit(): void {
   }
 

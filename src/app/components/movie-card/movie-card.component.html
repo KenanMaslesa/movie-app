@@ -7,10 +7,11 @@
 </div>
 
 
-<app-search (valueChange)='onValueChange($event)'></app-search>
-<app-wellcome></app-wellcome>
+<app-search (valueChange)='onValueChange($event)' [backgroundImage]="backgroundImage"></app-search>
+
 
 <div class="filter">
+  <p style="color: white;">Filters</p>
   <ul ngbNav #nav="ngbNav" class="nav-tabs">
     <li ngbNavItem>
       <a ngbNavLink>Movies</a>
@@ -35,12 +36,12 @@
         </select>
       </div>
         <ul class="genres" style="color: white">
-          <p>Movie filters</p>
-          <li *ngFor="let filter of movieFilters" (click)="discover('movie', '1', 'popularity.desc',filter.id)">
+          <p>Genres</p>
+          <li *ngFor="let filter of movieFilters" (click)="discover('movie', '1', 'popularity.desc',filter.id)" #genre [class.show]="genre.classList.contains('active')" (click)="genre.classList.toggle('active')">
             {{filter.name}}</li>
         </ul>
 
-        <input #searchBoxMovie (input)="getMovieKeywords(searchBoxMovie.value)" class="search" placeholder="Search keywords" />
+        <input #searchBoxMovie (input)="getMovieKeywords(searchBoxMovie.value)" class="search" placeholder="Filter by keywords.." />
 
         <ul class="keywords" *ngIf="movieKeywords" style="color: royalblue">
           <li *ngFor="let keyword of movieKeywords.results" (click)="discover('movie',currentPageDiscover,sortBy,'',keyword.id)">
@@ -52,6 +53,8 @@
     <li ngbNavItem>
       <a ngbNavLink>TV</a>
       <ng-template ngbNavContent>
+        <div class="sort-wrapper">
+        <p class="title"> Sort Results By</p>
         <select class="sort" placeholder="String" (change)="onSortingChange($event.target.value)">
           <option value="popularity.asc">popularity.asc</option>
           <option value="popularity.desc" selected>popularity.desc</option>
@@ -68,13 +71,14 @@
           <option value="vote_count.asc">vote_count.asc</option>
           <option value="vote_count.desc">vote_count.desc</option>
         </select>
+        </div>
         <ul class="genres" style="color: white">
-          <p>TV filters</p>
+          <p>Genres</p>
           <li *ngFor="let filter of tvFilters" (click)="discover('tv', '1', 'popularity.desc',filter.id)">
             {{filter.name}}</li>
         </ul>
 
-        <input #searchBoxTV (input)="getTVKeywords(searchBoxTV.value)" class="search" placeholder="Search keywords" />
+        <input #searchBoxTV (input)="getTVKeywords(searchBoxTV.value)" class="search" placeholder="Filter by keywords.." />
 
         <ul class="keywords" *ngIf="tvKeywords" style="color: red">
           <li *ngFor="let keyword of tvKeywords.results" (click)="discover('tv',currentPageDiscover,sortBy,'',keyword.id)">
@@ -90,8 +94,7 @@
 
 </div>
 
-<main id="main" *ngIf="multiSearchData"
-  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{backgroundImage}});">
+<main id="main" *ngIf="multiSearchData">
 
   <ng-container *ngFor="let movie of multiSearchData.results">
     <div class="movie">

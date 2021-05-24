@@ -1,3 +1,14 @@
-<header>
-    <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search"/>
-</header>
+
+
+
+<div class="wellcome-wrapper" [ngStyle]="{'background-image': (backgroundImage) ? 'linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280'+backgroundImage+')' : ''}">
+    <div class="content-wrapper">
+      <div class="title">
+        <h2>Wellcome.</h2>
+        <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
+      </div>
+      <header>
+        <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search"/>
+    </header>
+    </div>
+  </div>

@@ -20,7 +20,6 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { PersonComponent } from './components/person/person.component';
 import { PersonsCreditsComponent } from './components/persons-credits/persons-credits.component';
 import { ForbiddenContentComponent } from './components/forbidden-content/forbidden-content.component';
-import { WellcomeComponent } from './components/wellcome/wellcome.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { WellcomeComponent } from './components/wellcome/wellcome.component';
     PersonComponent,
     PersonsCreditsComponent,
     ForbiddenContentComponent,
-    WellcomeComponent
   ],
   imports: [
     BrowserModule,
