@@ -182,16 +182,6 @@ export class MovieCardComponent implements OnInit {
     this.discover('movie', this.currentPageDiscover, this.sortBy);
   }
 
-  getClassNameByRate(vote) {
-    if (vote >= 8) {
-      return 'green';
-    } else if (vote >= 5) {
-      return 'orange';
-    } else {
-      return 'red';
-    }
-  }
-
   getMovieVideo(movieID, mediaType) {
     this.videoService
       .getVideos(mediaType, movieID)

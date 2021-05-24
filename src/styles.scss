@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 @import './app/shared.scss';
+@import '~bootstrap/scss/bootstrap';
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,5 @@ body {
 
 body,html{
   height: 100%;
+  @include scrollbar();
 }
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
