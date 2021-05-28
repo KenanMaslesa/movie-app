@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SearchComponent } from './components/search/search.component';
-import { MovieCardDetailsComponent } from './components/movie-details/movie-details.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { NgpSortModule } from "ngp-sort-pipe";
@@ -20,6 +19,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { PersonComponent } from './components/person/person.component';
 import { PersonsCreditsComponent } from './components/persons-credits/persons-credits.component';
 import { ForbiddenContentComponent } from './components/forbidden-content/forbidden-content.component';
+import { MovieCardDetailsComponent } from './pages/movie-details/movie-details.component';
+import { SidebarComponent } from './pages/layout/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ForbiddenContentComponent } from './components/forbidden-content/forbid
     PersonComponent,
     PersonsCreditsComponent,
     ForbiddenContentComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

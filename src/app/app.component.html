@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<app-sidebar (hideSidebar)='onValueChange($event)'></app-sidebar>
+<main id="main" [class.m-l-300]="!addMargin">
+  <router-outlet></router-outlet>
+</main>

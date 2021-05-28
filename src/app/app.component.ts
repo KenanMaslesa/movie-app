@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'movie-app';
+  addMargin: boolean;
+
+  constructor() { }
+
+  onValueChange($event){
+    this.addMargin = $event;
+  }
 }

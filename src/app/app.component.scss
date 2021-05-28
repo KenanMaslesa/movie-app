@@ -1,0 +1,14 @@
+#main{
+  transition: all 0.5s;
+
+  &.m-l-300{
+    margin-left: 250px;
+  }
+}
+
+@media (max-width: 1199px) {
+ 
+  #main {
+    margin-left: 0;
+  }
+}
