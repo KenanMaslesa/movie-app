@@ -1,9 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ApiData } from 'src/app/models/ApiData';
+import { SearchData } from 'src/app/models/SearchData.model';
+import { SearchService } from 'src/app/services/search/search.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
   @Output() hideSidebar = new EventEmitter<boolean>();
@@ -155,14 +158,23 @@ export class SidebarComponent implements OnInit {
       id: 10767,
     },
   ];
-  constructor() { }
+  constructor(private searchService: SearchService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  toggleSidebar(){
-    this.Toggle = this.Toggle? false: true;
+  toggleSidebar() {
+    this.Toggle = this.Toggle ? false : true;
     this.hideSidebar.emit(this.Toggle);
   }
 
+  discover(mediaType: string, genre: number) {
+    debugger;
+    const searchData: SearchData = {
+      mediaType: mediaType,
+      genres: genre
+    }
+  
+
+    this.searchService.onAddedData(searchData);
+  }
 }

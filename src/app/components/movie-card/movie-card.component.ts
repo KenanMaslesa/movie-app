@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 import { ApiData } from 'src/app/models/ApiData';
+import { SearchData } from 'src/app/models/SearchData.model';
 import { Video } from 'src/app/models/Video';
 import { KeywordService } from 'src/app/services/keyword/keyword.service';
 import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
@@ -14,6 +16,8 @@ import { VideoService } from 'src/app/services/video/video.service';
 })
 export class MovieCardComponent implements OnInit {
   multiSearchData: any;
+  genres: any;
+  multiSearchDataFilters: SearchData;
   showModal: boolean;
   videoUrl: any;
   currentPageSearch = 1;
@@ -23,6 +27,7 @@ export class MovieCardComponent implements OnInit {
   searchQuery: string;
   sortBy = 'popularity.desc';
   backgroundImage: string;
+  subscription: Subscription[] = [];
  
   constructor(
     private movieAndTVService: MovieAndTvService,
@@ -33,7 +38,15 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.discover('movie', this.currentPageDiscover, this.sortBy);
+    debugger
+    this.discover('movie', this.currentPageDiscover, this.sortBy, '', '');
+    this.subscription.push(this.searchService.AddedData.subscribe((filters:SearchData)=>{
+  
+      this.searchService.discover(filters.mediaType, this.currentPageDiscover, this.sortBy, filters.genres, filters.keywords).subscribe((responseData)=>{
+        debugger;
+        this.multiSearchData = responseData;
+      });
+    }));
   }
 
   getMovieVideo(movieID, mediaType) {
@@ -102,8 +115,8 @@ export class MovieCardComponent implements OnInit {
 
   discover(mediaType, page, sortBy, genres = '', keywords = '') {
     this.searchService
-      .discover(mediaType, page, this.sortBy, genres, keywords)
-      .subscribe((data) => this.createNewArayWithoutForbiddenKeywords(data));
+      .discover(mediaType, page, this.sortBy, genres, keywords);
+
   }
 
   getMovieKeywords(query) {
@@ -131,7 +144,9 @@ export class MovieCardComponent implements OnInit {
       .getMoviesByKeyword(keyword)
       .subscribe((data) => (this.multiSearchData = data));
   }
+
   onMouseOver(movie) {
     this.backgroundImage = movie.backdrop_path;
   }
+
 }

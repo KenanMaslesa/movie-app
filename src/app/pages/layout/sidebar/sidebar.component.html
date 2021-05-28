@@ -41,7 +41,7 @@
             </div>
               <ul class="genres" style="color: white">
                 <p>Genres</p>
-                <li *ngFor="let filter of movieFilters" (click)="discover('movie', '1', 'popularity.desc',filter.id)" #genre [class.show]="genre.classList.contains('active')" (click)="genre.classList.toggle('active')">
+                <li *ngFor="let filter of movieFilters" (click)="discover('movie', filter.id)" #genre [class.show]="genre.classList.contains('active')" (click)="genre.classList.toggle('active')">
                   {{filter.name}}</li>
               </ul>
       
