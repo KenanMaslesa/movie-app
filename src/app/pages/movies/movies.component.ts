@@ -129,15 +129,7 @@ export class MoviesComponent implements OnInit {
     this.movieService.getTopRated('movie', this.currentPage).subscribe((responseData) => this.movies = responseData);
   }
 
-  discover(mediaType, page, keywordID = '') {
-    if(keywordID != ''){
-      if(this.keywordIDs.indexOf(keywordID) > -1 ){
-        this.keywordIDs.splice(this.keywordIDs.indexOf(keywordID),1);
-      }
-      else{
-        this.keywordIDs.push(keywordID);
-      }
-    }
+  discover(mediaType, page) {
 
     this.searchService
       .discover(mediaType, page, this.sortBy, this.genreFilters, this.keywordIDs)
@@ -146,24 +138,31 @@ export class MoviesComponent implements OnInit {
 
   moviesByKeywordsOnPaginationClick(page, keywords){
 
-    var temp = [];
+    var keywordIDsOnly = [];
    keywords.forEach(element => {
-     temp.push(element.id);
+    keywordIDsOnly.push(element.id);
    });
 
     this.searchService
-      .discover('movie', page, this.sortBy, this.genreFilters, temp)
+      .discover('movie', page, this.sortBy, this.genreFilters, keywordIDsOnly)
       .subscribe((data) => this.movies = data);
 
   }
 
   onSelectedKeywords(keyword){
     if(this.selectedKeywords.indexOf(keyword) > -1 ){
-      this.selectedKeywords.splice(this.selectedKeywords.indexOf(keyword.id),1);
+      this.selectedKeywords.splice(this.selectedKeywords.indexOf(keyword),1);
     }
     else{
       this.selectedKeywords.push(keyword);
     }
+
+    this.keywordIDs = [];
+    this.selectedKeywords.forEach(element => {
+      this.keywordIDs.push(element.id);
+    });
+
+    this.discover('movie', this.currentPage);
   }
 
   search(searchQuery){

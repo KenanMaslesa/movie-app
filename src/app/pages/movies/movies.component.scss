@@ -190,6 +190,12 @@ main {
     }
   }
 
+  .genres{
+    &.hide{
+      display: none;
+    }
+  }
+
   .nav-tabs {
     align-items: center;
     justify-content: center;

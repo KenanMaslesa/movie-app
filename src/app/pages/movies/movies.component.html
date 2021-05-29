@@ -5,24 +5,23 @@
 
       <div class="filter">
 
-        <ul class="genres" *ngIf="movieKeywordsSearchQuery=='' && selectedKeywords.length == 0">
-          <li *ngFor="let filter of movieFilters" (click)="setGenreFilters(filter.id)" #genre
-            [class.passive]="searchQuery" (click)="genre.classList.toggle('active')">
+        <ul class="genres" [class.hide]="searchQuery">
+          <li *ngFor="let filter of movieFilters" (click)="setGenreFilters(filter.id)" #genre (click)="genre.classList.toggle('active')">
             {{filter.name}}</li>
         </ul>
         <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search" />
 
-        <input #searchBoxMovie (input)="getMovieKeywords(searchBoxMovie.value)" class="search"
+        <input #searchBoxMovie *ngIf="searchQuery==''" (input)="getMovieKeywords(searchBoxMovie.value)" class="search"
           placeholder="Filter by keywords.." />
 
-        <ul class="keywords" *ngIf="movieKeywords">
+        <ul class="keywords" *ngIf="movieKeywords && searchQuery==''">
           <li *ngFor="let keyword of movieKeywords.results" (click)="discover('movie',currentPage,keyword.id)"
             (click)="onSelectedKeywords(keyword)">
             {{keyword.name}}
           </li>
         </ul>
 
-        <ul class="keywords" *ngIf="selectedKeywords">
+        <ul class="keywords" *ngIf="selectedKeywords && searchQuery==''">
           <li *ngFor="let keyword of selectedKeywords" class="active" (click)="discover('movie',currentPage,keyword.id)"
             (click)="onSelectedKeywords(keyword)">
             {{keyword.name}}
