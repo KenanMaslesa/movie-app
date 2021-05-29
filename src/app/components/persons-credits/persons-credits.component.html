@@ -22,7 +22,7 @@
 <div *ngIf="credits" class="movies">
   <h1>Movies</h1>
   <ng-container *ngFor="let credit of credits.cast | sortBy: 'desc':'release_date'">
-    <a routerLink="/details/movie/{{credit.adult?x:credit.id}}" [class.adult]="credit.adult"
+    <a routerLink="/details/movie/{{credit.id}}" [class.adult]="credit.adult"
       *ngIf="credit.media_type == 'movie'">
       <p>
         <span *ngIf="credit.release_date">{{credit.release_date|date:"yyyy"}} - </span>
@@ -36,7 +36,7 @@
 <div *ngIf="credits" class="tv">
   <h1>TV shows</h1>
   <ng-container *ngFor="let credit of credits.cast | sortBy: 'desc':'first_air_date'">
-    <a routerLink="/details/tv/{{credit.id}}" *ngIf="credit.media_type == 'tv'">
+    <a routerLink="/details/tv/{{credit.id}}" *ngIf="credit.media_type == 'tv'" [class.adult]="credit.adult">
       <p>
         <span *ngIf="credit.first_air_date">{{credit.first_air_date | date: "yyyy"}} - </span>
         <strong>{{credit.original_name}}</strong> <span *ngIf="credit.episode_count"> ({{credit.episode_count}}
@@ -49,7 +49,7 @@
 <div *ngIf="showProduction" class="production">
   <h1>Production</h1>
   <ng-container *ngFor="let credit of credits.crew | sortBy: 'desc':'release_date'">
-  <a routerLink="/details/{{credit.media_type}}/{{credit.id}}" *ngIf="credit.department == 'Production'">
+  <a routerLink="/details/{{credit.media_type}}/{{credit.id}}" *ngIf="credit.department == 'Production'" [class.adult]="credit.adult">
     <p>
       <span *ngIf="credit.release_date">{{credit.release_date | date: "yyyy"}} - </span>
       <strong>{{credit.title}}</strong> as {{credit.job}}
@@ -61,7 +61,7 @@
 <div *ngIf="showDirecting" class="directing">
   <h1>Directing</h1>
   <ng-container *ngFor="let credit of credits.crew | sortBy: 'desc':'release_date'">
-  <a routerLink="/details/{{credit.media_type}}/{{credit.id}}" *ngIf="credit.department == 'Directing'">
+  <a routerLink="/details/{{credit.media_type}}/{{credit.id}}" *ngIf="credit.department == 'Directing'" [class.adult]="credit.adult">
     <p>
       <span *ngIf="credit.release_date">{{credit.release_date | date: "yyyy"}} - </span>
       <strong>{{credit.title}}</strong> as {{credit.job}}
@@ -73,7 +73,7 @@
 <div *ngIf="showCrew" class="crew">
   <h1>Crew</h1>
   <ng-container *ngFor="let credit of credits.crew | sortBy: 'desc':'release_date'">
-  <a routerLink="/details/{{credit.media_type}}/{{credit.id}}" *ngIf="credit.department == 'Crew'">
+  <a routerLink="/details/{{credit.media_type}}/{{credit.id}}" *ngIf="credit.department == 'Crew'" [class.adult]="credit.adult">
     <p>
       <span *ngIf="credit.release_date">{{credit.release_date | date: "yyyy"}} - </span>
       <strong>{{credit.title}}</strong> as {{credit.job}}
