@@ -11,7 +11,7 @@ export class KeywordService {
   private forbiddenKeywords: any;
 
   constructor(private http: HttpClient) {
-    this.forbiddenKeywords = [
+    /*this.forbiddenKeywords = [
       {
         name: 'pornography',
         id: 445,
@@ -1025,7 +1025,7 @@ export class KeywordService {
         name: 'lgbtq',
         id: 280285,
       },
-    ];
+    ];*/
   }
 
   getKeywords(query) {
