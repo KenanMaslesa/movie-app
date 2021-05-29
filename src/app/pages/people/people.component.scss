@@ -1,11 +1,16 @@
 @import "/src/app/shared.scss";
 
-.person-container{
+.person-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+  margin-top: 330px;
+
+  @media (max-width: 768px) {
+    margin-top: 160px;
+  }
 
   .person {
     width: 200px;
@@ -13,11 +18,94 @@
     margin-bottom: 30px;
     color: white;
 
-    img{
+    @media (max-width: 768px) {
+      width: 180px;
+      margin-right: 0px;
+
+      &:nth-child(odd) {
+        margin-right: 10px;
+      }
+    }
+
+    &.porn {
+      position: relative;
+
+      &::before {
+        content: "pornography";
+        position: absolute;
+        top: -2px;
+        z-index: 9;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: bold;
+        background: red;
+        width: 100%;
+        color: white;
+        text-align: center;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+      }
+      img {
+        filter: blur(3px) grayscale(1);
+      }
+    }
+
+    img {
       height: 100%;
       width: 100%;
       border-radius: 10px;
       min-height: 275px;
     }
+  }
 }
+
+.wellcome-wrapper {
+  position: fixed;
+  width: 100%;
+  top: 64px;
+  min-height: 300px;
+  max-height: 300px;
+  z-index: 999;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    min-height: 130px;
+    padding-bottom: 15px;
+  }
+
+  .main-person-container {
+    margin-left: 50px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    li {
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.5s;
+
+      &:hover {
+        color: #097ede;
+        transform: scale(1.05);
+      }
+
+      .porn {
+        color: red;
+      }
+      .blur {
+        filter: blur(5px);
+      }
+    }
+  }
+
+  .search {
+    @media (max-width: 768px) {
+      width: 80%;
+
+      &:focus {
+        width: 90%;
+      }
+    }
+  }
 }

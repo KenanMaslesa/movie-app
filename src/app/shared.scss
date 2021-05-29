@@ -78,3 +78,67 @@ pre {
     border-radius: 5px;
   }
 }
+
+
+$imgNumber: random(5);
+$imgList: "7VrRna8S3x6xbijooeBmxqvHXiu.jpg", "hreiLoPysWG79TsyQgMzFKaOTF5.jpg", "hPea3Qy5Gd6z4kJLUruBbwAH8Rm.jpg", "rCxdJkk5PMCWIzRWcpqIxUaWnf1.jpg", "jTiQAusGG4dVLSb1WHme9I9R4NN.jpg" ;
+$nth: nth($imgList, $imgNumber);
+
+.wellcome-wrapper {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  background-image: linear-gradient(rgb(3 37 65 / 92%), rgb(3 37 65 / 85%)),
+    url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/"+$nth);
+   
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+
+  .content-wrapper {
+    text-align: center;
+    width: 50%;
+
+    .title {
+      h2 {
+        font-size: 70px;
+        font-family: sans-serif;
+      }
+
+      h3 {
+        font-weight: lighter;
+      }
+    }
+  }
+
+  .search {
+    background-color: transparent;
+    border: 2px solid #d6dadf2e;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    width: 40%;
+    transition: all 0.6s;
+  
+    &:not(:first-of-type) {
+      margin-left: 10px;
+    }
+  
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  
+    &:focus {
+      outline: none;
+      background-color: #03213a;
+      width: 55%;
+    }
+  }
+}

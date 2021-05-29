@@ -1,8 +1,8 @@
 <ng-container *ngIf="person">
-<main class="main" *ngIf="!person.adult">
+<main class="main">
   <div class="left-column">
     <div class="perosnal-info-wrapper">
-      <div class="profile-img">
+      <div class="profile-img" [class.porn]="person.adult">
         <img src="https://image.tmdb.org/t/p/w1280{{person.profile_path}}" alt="{{person.name}}">
       </div>
       <div>
@@ -47,5 +47,5 @@
   </div>
 </main>
 
-<app-forbidden-content *ngIf="person.adult"></app-forbidden-content>
-</ng-container>
+<!--<app-forbidden-content *ngIf="person.adult"></app-forbidden-content>
+</ng-container>-->

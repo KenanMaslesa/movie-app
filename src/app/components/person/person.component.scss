@@ -4,26 +4,54 @@
   padding: 40px;
   color: white;
 
-  @media(max-width:768px){
-   flex-direction: column;
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 
   .left-column {
     width: auto;
     padding: 30px;
 
-    @media(max-width:768px){
+    @media (max-width: 768px) {
       width: 100%;
       padding: 0;
     }
 
     .perosnal-info-wrapper {
       .profile-img {
+        position: relative;
+        text-align: center;
         img {
           width: 300px;
           height: 450px;
           border-radius: 10px;
           margin-bottom: 20px;
+        }
+
+        &.porn {
+          
+          &::before {
+            content: "Pornography";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            right: 0;
+            z-index: 99999999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: red;
+            font-weight: bold;
+            font-size: 25px;
+            filter: drop-shadow(2px 4px 6px #000);
+          }
+
+          img{
+            opacity: 0.5;
+            filter: blur(7px);
+          }
         }
       }
     }
@@ -33,7 +61,7 @@
     padding: 30px;
     width: 70%;
 
-    @media(max-width:768px){
+    @media (max-width: 768px) {
       width: 100%;
       padding: 0;
     }

@@ -1,9 +1,7 @@
 <div class="scroller" *ngIf="credits">
   <ng-container *ngFor="let cast of credits.cast">
-    <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" *ngIf="!cast.adult">
-      <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path">
-      <img *ngIf="!cast.poster_path"
-        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxIDE3LjJMNi44IDNIMTlDMjAuMSAzIDIxIDMuOSAyMSA1VjE3LjJNMjAuNyAyMkwxOS43IDIxSDVDMy45IDIxIDMgMjAuMSAzIDE5VjQuM0wyIDMuM0wzLjMgMkwyMiAyMC43TDIwLjcgMjJNMTYuOCAxOEwxMi45IDE0LjFMMTEgMTYuNUw4LjUgMTMuNUw1IDE4SDE2LjhaIiAvPjwvc3ZnPg==">
+    <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" [class.adult]="cast.adult">
+      <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path && !cast.adult">
       <div class="movie-info">
         <p class="title">{{cast.title == null? (cast.original_name| slice:0:30): (cast.title| slice:0:35)}}</p>
         <div class="rating">
