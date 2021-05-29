@@ -5,10 +5,13 @@
 
       <div class="filter">
 
-        <ul class="genres" [class.hide]="searchQuery">
-          <li *ngFor="let filter of movieFilters" (click)="setGenreFilters(filter.id)" #genre (click)="genre.classList.toggle('active')">
-            {{filter.name}}</li>
-        </ul>
+        <ng-container *ngIf="movieFilters">
+          <ul class="genres" [class.hide]="searchQuery">
+            <li *ngFor="let filter of movieFilters.genres" (click)="setGenreFilters(filter.id)" #genre (click)="genre.classList.toggle('active')">
+              {{filter.name}}</li>
+            </ul>
+          </ng-container>
+          
         <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search for a movie.." />
 
         <input #searchBoxMovie *ngIf="searchQuery==''" (input)="getMovieKeywords(searchBoxMovie.value)" class="search"

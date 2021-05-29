@@ -19,80 +19,13 @@ export class TvComponent implements OnInit {
   searchQuery = '';
   genreFilters = [];
   sortBy = 'popularity.desc';
-
-  tvFilters = [
-    {
-      name: 'Action & Adventure',
-      id: 10759,
-    },
-
-    {
-      name: 'Animation',
-      id: 16,
-    },
-    {
-      name: 'Comedy',
-      id: 35,
-    },
-    {
-      name: 'Crime',
-      id: 80,
-    },
-    {
-      name: 'Documentary',
-      id: 99,
-    },
-    {
-      name: 'Drama',
-      id: 18,
-    },
-    {
-      name: 'Family',
-      id: 10751,
-    },
-    {
-      name: 'Kids',
-      id: 10762,
-    },
-
-    {
-      name: 'Mystery',
-      id: 9648,
-    },
-    {
-      name: 'News',
-      id: 10763,
-    },
-    {
-      name: 'Sci-Fi & Fantasy',
-      id: 10765,
-    },
-    {
-      name: 'Reality',
-      id: 10764,
-    },
-    {
-      name: 'Soap',
-      id: 10766,
-    },
-    {
-      name: 'War & Politics',
-      id: 10768,
-    },
-    {
-      name: 'Western',
-      id: 37,
-    },
-    {
-      name: 'Talk',
-      id: 10767,
-    },
-  ];
+  tvFilters:any;
 
   constructor(private movieService: MovieAndTvService, private keywordService: KeywordService, private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.getMovies(this.currentPage);
+    this.getTvGenres();
   }
 
   getMovies(page){
@@ -192,5 +125,9 @@ export class TvComponent implements OnInit {
       this.genreFilters.push(filterId);
     }
     this.discover('tv', this.currentPage);
+  }
+
+  getTvGenres(){
+    this.movieService.getGenres('tv').subscribe((responseData) => this.tvFilters = responseData);
   }
 }

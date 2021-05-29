@@ -4,12 +4,15 @@
     <div class="title">
 
       <div class="filter">
-
-        <ul class="genres" [class.hide]="searchQuery">
-          <li *ngFor="let filter of tvFilters" (click)="setGenreFilters(filter.id)" #genre (click)="genre.classList.toggle('active')">
-            {{filter.name}}</li>
-        </ul>
-        <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search for a tv show.." />
+        <ng-container *ngIf="tvFilters">
+          <ul class="genres" [class.hide]="searchQuery">
+            <li *ngFor="let filter of tvFilters.genres" (click)="setGenreFilters(filter.id)" #genre
+              (click)="genre.classList.toggle('active')">
+              {{filter.name}}</li>
+          </ul>
+        </ng-container>
+        <input #searchBox id="search" (input)="search(searchBox.value)" class="search"
+          placeholder="Search for a tv show.." />
 
         <input #searchBoxMovie *ngIf="searchQuery==''" (input)="getTvKeywords(searchBoxMovie.value)" class="search"
           placeholder="Filter tv shows by keywords.." />

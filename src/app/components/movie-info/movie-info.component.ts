@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
 @Component({
   selector: 'app-movie-info',
   templateUrl: './movie-info.component.html',
@@ -12,9 +13,15 @@ export class MovieInfoComponent implements OnInit {
   showModal: boolean;
   backgroundImageOnHover: string;
   overviewOnHover = null;
-  constructor() {}
+  reviews: any;
+  images: any;
 
-  ngOnInit(): void {}
+  constructor(private movieService: MovieAndTvService) {}
+
+  ngOnInit(): void {
+    this.getReviews();
+    this.getImages();
+  }
 
   getClassNameByRate(vote) {
     if (vote >= 8) {
@@ -33,5 +40,18 @@ export class MovieInfoComponent implements OnInit {
   onMouseLeave() {
     this.backgroundImageOnHover = null;
     this.overviewOnHover = null;
+  }
+
+  getReviews(){
+    this.movieService.getReviews('movie', this.movieId).subscribe((responseData)=>{
+      this.reviews = responseData
+    });
+  }
+
+
+  getImages(){
+    this.movieService.getImages('movie', this.movieId).subscribe((responseData)=>{
+      this.images = responseData
+    });
   }
 }

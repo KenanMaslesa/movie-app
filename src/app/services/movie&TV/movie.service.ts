@@ -44,4 +44,16 @@ export class MovieAndTvService {
     return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/upcoming?api_key=${environment.tmdbAPIKey}&language=en-US&page=${page}`).pipe();
   }
 
+  getReviews(mediaType, id){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/${id}/reviews?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  }
+
+  getImages(mediaType, id){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/${id}/images?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  }
+
+  getGenres(mediaType){
+    return this.http.get(`${environment.tmdbAPIUrl}/genre/${mediaType}/list?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  }
+
 }
