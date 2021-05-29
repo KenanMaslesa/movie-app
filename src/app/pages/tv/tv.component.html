@@ -51,7 +51,7 @@
       <div class="movie-info">
 
         <div class="overview-trailer-buttons-wrapper">
-          <h4>{{movie.title == null ? movie.original_name: movie.title}} ({{movie.release_date|date:"yyyy"}})</h4>
+          <h4>{{movie.title == null ? movie.original_name: movie.title}} ({{movie.first_air_date|date:"yyyy"}})</h4>
           <p class="show-overview" #showOverview (mouseenter)="showOverview.classList.toggle('active')">Overview</p>
         </div>
 

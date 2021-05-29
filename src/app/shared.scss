@@ -28,13 +28,13 @@ $secondary-color: #051d329e;
     top: 40px;
     right: 40px;
     font-size: 40px;
-    color: white;
     cursor: pointer;
     z-index: 9;
     transition: all 0.4s;
+    color: red;
 
     &:hover {
-      color: red;
+      transform: scale(1.1);
     }
   }
 }
