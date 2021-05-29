@@ -11,11 +11,19 @@ export class SearchService {
   constructor(private http: HttpClient) { }
 
   multiSearch(query, page){
-    return this.http.get(`${environment.tmdbAPIUrl}/search/multi?api_key=${environment.tmdbAPIKey}&language=en-US&query=${query}&page=${page}&include_adult=false`).pipe(debounceTime(3000));
+    return this.http.get(`${environment.tmdbAPIUrl}/search/multi?api_key=${environment.tmdbAPIKey}&language=en-US&query=${query}&page=${page}&include_adult=false`).pipe();
   }
 
-  discover(mediaType='movie', page, sortBy, genres, keywwords=''){
-    return this.http.get(`${environment.tmdbAPIUrl}/discover/${mediaType}?api_key=${environment.tmdbAPIKey}&language=en-US&sort_by=${sortBy}&include_adult=false&page=${page}&with_genres=${genres}&without_keywords=${this.keywords}&with_keywords=${keywwords}`).pipe();
+  searchMovies(query, page){
+    return this.http.get(`${environment.tmdbAPIUrl}/search/movie?api_key=${environment.tmdbAPIKey}&language=en-US&query=${query}&page=${page}&include_adult=false`).pipe();
+  }
+
+  searchTVs(query, page){
+    return this.http.get(`${environment.tmdbAPIUrl}/search/tv?api_key=${environment.tmdbAPIKey}&language=en-US&query=${query}&page=${page}&include_adult=false`).pipe();
+  }
+
+  discover(mediaType='movie', page, sortBy, genres, keywwords){
+    return this.http.get(`${environment.tmdbAPIUrl}/discover/${mediaType}?api_key=${environment.tmdbAPIKey}&language=en-US&sort_by=${sortBy}&include_adult=false&page=${page}&with_genres=${genres}&without_keywords=${this.keywords}&with_keywords=${keywwords.join('|')}`).pipe();
   }
 
 }

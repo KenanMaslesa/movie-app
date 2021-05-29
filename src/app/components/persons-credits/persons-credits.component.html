@@ -1,5 +1,5 @@
 <div class="scroller" *ngIf="credits">
-  <ng-container *ngFor="let cast of credits.cast | sortBy: 'desc':'vote_average'; let i = index">
+  <ng-container *ngFor="let cast of credits.cast">
     <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" *ngIf="!cast.adult">
       <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path">
       <img *ngIf="!cast.poster_path"

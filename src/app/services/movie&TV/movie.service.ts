@@ -28,4 +28,20 @@ export class MovieAndTvService {
     return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/${movieId}/credits?api_key=${environment.tmdbAPIKey}&adult=false&language=en-US`).pipe();
   }
 
+  getPopular(mediaType, page){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/popular?api_key=${environment.tmdbAPIKey}&language=en-US&page=${page}`).pipe();
+  }
+
+  getLatest(mediaType){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/latest?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  }
+
+  getTopRated(mediaType, page){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/top_rated?api_key=${environment.tmdbAPIKey}&language=en-US&page=${page}`).pipe();
+  }
+
+  getUpcoming(mediaType, page){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/upcoming?api_key=${environment.tmdbAPIKey}&language=en-US&page=${page}`).pipe();
+  }
+
 }

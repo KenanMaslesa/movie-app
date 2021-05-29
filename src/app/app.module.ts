@@ -20,6 +20,12 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { PersonComponent } from './components/person/person.component';
 import { PersonsCreditsComponent } from './components/persons-credits/persons-credits.component';
 import { ForbiddenContentComponent } from './components/forbidden-content/forbidden-content.component';
+import { PopularComponent } from './components/popular/popular.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MoviesComponent } from './pages/movies/movies.component';
+import { TvShowsComponent } from './pages/tv-shows/tv-shows.component';
+import { PeopleComponent } from './pages/people/people.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,12 @@ import { ForbiddenContentComponent } from './components/forbidden-content/forbid
     PersonComponent,
     PersonsCreditsComponent,
     ForbiddenContentComponent,
+    PopularComponent,
+    HomeComponent,
+    HeaderComponent,
+    MoviesComponent,
+    TvShowsComponent,
+    PeopleComponent,
   ],
   imports: [
     BrowserModule,

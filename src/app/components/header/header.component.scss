@@ -1,0 +1,35 @@
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #042036;
+  height: 64px;
+  width: 100%;
+  z-index: 10;
+  transition: top 0.2s linear;
+
+  ul{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    li{
+      list-style-type:none;
+      cursor: pointer;
+      transition: all 0.6s;
+
+      &:not(:first-of-type){
+        margin-left: 40px;
+      }
+
+      &:hover{
+        color: #0d5fa3;
+      }
+    }
+  }
+}

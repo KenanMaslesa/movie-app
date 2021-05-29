@@ -1036,6 +1036,14 @@ export class KeywordService {
       .pipe();
   }
 
+  getKeywordDetails(keywordId){
+    return this.http
+    .get(
+      `${environment.tmdbAPIUrl}/keyword/${keywordId}?api_key=${environment.tmdbAPIKey}`
+    )
+    .pipe();
+  }
+
   getMovieOrTvKeywords(mediaType, movieId) {
     return this.http
       .get(
