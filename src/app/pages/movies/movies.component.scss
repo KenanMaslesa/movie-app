@@ -255,6 +255,10 @@ header {
   }
 }
 
+$imgNumber: random(5);
+$imgList: "7VrRna8S3x6xbijooeBmxqvHXiu.jpg", "hreiLoPysWG79TsyQgMzFKaOTF5.jpg", "hPea3Qy5Gd6z4kJLUruBbwAH8Rm.jpg", "rCxdJkk5PMCWIzRWcpqIxUaWnf1.jpg", "jTiQAusGG4dVLSb1WHme9I9R4NN.jpg" ;
+$nth: nth($imgList, $imgNumber);
+
 .wellcome-wrapper {
   position: relative;
   min-height: 340px;
@@ -265,8 +269,9 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  background-image: linear-gradient(rgb(3, 37, 65), rgb(3 37 65 / 85%)),
-    url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/7VrRna8S3x6xbijooeBmxqvHXiu.jpg");
+  background-image: linear-gradient(rgb(3 37 65 / 92%), rgb(3 37 65 / 85%)),
+    url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/"+$nth);
+   
   -webkit-transition: background-image 0.2s ease-in-out;
   transition: background-image 0.2s ease-in-out;
 
