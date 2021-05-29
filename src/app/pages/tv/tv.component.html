@@ -6,23 +6,23 @@
       <div class="filter">
 
         <ul class="genres" [class.hide]="searchQuery">
-          <li *ngFor="let filter of movieFilters" (click)="setGenreFilters(filter.id)" #genre (click)="genre.classList.toggle('active')">
+          <li *ngFor="let filter of tvFilters" (click)="setGenreFilters(filter.id)" #genre (click)="genre.classList.toggle('active')">
             {{filter.name}}</li>
         </ul>
-        <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search for a movie.." />
+        <input #searchBox id="search" (input)="search(searchBox.value)" class="search" placeholder="Search for a tv show.." />
 
-        <input #searchBoxMovie *ngIf="searchQuery==''" (input)="getMovieKeywords(searchBoxMovie.value)" class="search"
-          placeholder="Filter movies by keywords.." />
+        <input #searchBoxMovie *ngIf="searchQuery==''" (input)="getTvKeywords(searchBoxMovie.value)" class="search"
+          placeholder="Filter tv shows by keywords.." />
 
         <ul class="keywords" *ngIf="movieKeywords && searchQuery==''">
-          <li *ngFor="let keyword of movieKeywords.results" (click)="discover('movie',currentPage,keyword.id)"
+          <li *ngFor="let keyword of movieKeywords.results" (click)="discover('tv',currentPage,keyword.id)"
             (click)="onSelectedKeywords(keyword)">
             {{keyword.name}}
           </li>
         </ul>
 
         <ul class="keywords" *ngIf="selectedKeywords && searchQuery==''">
-          <li *ngFor="let keyword of selectedKeywords" class="active" (click)="discover('movie',currentPage,keyword.id)"
+          <li *ngFor="let keyword of selectedKeywords" class="active" (click)="discover('tv',currentPage,keyword.id)"
             (click)="onSelectedKeywords(keyword)">
             {{keyword.name}}
           </li>
@@ -86,7 +86,7 @@
 <!-- GENRE PAGINATION-->
 <ng-container *ngIf="genreFilters && searchQuery =='' && selectedKeywords.length == 0">
   <div class="pagination-wrapper">
-    <ngb-pagination (pageChange)="discover('movie', $event)" *ngIf="movies.total_pages > 1"
+    <ngb-pagination (pageChange)="discover('tv', $event)" *ngIf="movies.total_pages > 1"
       class="d-flex justify-content-center" [collectionSize]="movies.total_pages" [(page)]="currentPage" [maxSize]="5"
       [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
     </ngb-pagination>
@@ -106,7 +106,7 @@
 <!-- KEYWORDS PAGINATION-->
 <ng-container *ngIf="selectedKeywords.length!=0">
   <div class="pagination-wrapper">
-    <ngb-pagination (pageChange)="moviesByKeywordsOnPaginationClick($event, selectedKeywords)"
+    <ngb-pagination (pageChange)="tvByKeywordsOnPaginationClick($event, selectedKeywords)"
       *ngIf="movies.total_pages > 1" class="d-flex justify-content-center" [collectionSize]="movies.total_pages"
       [(page)]="currentPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
     </ngb-pagination>

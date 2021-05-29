@@ -68,10 +68,10 @@ main {
       transition: all 1s;
       transition-delay: 0.3s;
 
-      p{
+      p {
         margin-top: 30px;
         cursor: pointer;
-        color:#ffff005c;
+        color: #ffff005c;
         display: inline-block;
       }
     }
@@ -125,7 +125,6 @@ main {
         padding: 0px 2px;
       }
     }
-
   }
 }
 
@@ -146,34 +145,15 @@ main {
 }
 
 .filter {
-  background: #0418296e;
-  width: 250px;
   text-align: center;
   border-radius: 5px;
   padding: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position: fixed;
   z-index: 9;
   transition: all 1s;
-  height: auto;
-  max-height: 45px;
-  overflow: hidden;
-  opacity: 0.9;
-  top: 340px;
   cursor: pointer;
-
-  &:hover {
-    opacity: 1;
-    max-height: 100%;
-    width: 250px;
-    overflow-y: scroll;
-    background: #041829;
-    top: 20px;
-  }
-
-  @include scrollbar();
 
   .genres,
   .keywords {
@@ -196,9 +176,23 @@ main {
       background: #042038;
       margin-right: 5px;
 
+      &:hover {
+        transform: translateY(-2px);
+      }
+
       &.active {
         background: #216289;
       }
+
+      &.passive {
+        background: #042038 !important;
+      }
+    }
+  }
+
+  .genres{
+    &.hide{
+      display: none;
     }
   }
 
@@ -225,42 +219,12 @@ main {
       }
     }
   }
-  .sort-wrapper {
-    margin-top: 20px;
-    color: white;
-    .sort {
-      background: #042038;
-      color: white;
-      border-color: #042038;
-      padding: 2px 5px 5px;
-      border-radius: 5px;
-      text-align-last: center;
-    }
-  }
-}
-
-.search {
-  background-color: transparent;
-  border: 2px solid #082845;
-  border-radius: 50px;
-  font-family: inherit;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  color: #fff;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 header {
   background: transparent;
   padding: 0;
   margin-top: 20px;
-
-  input {
-    width: 100%;
-    border-color: #1c3d57;
-    background: #03304d;
-  }
 }
+
+@import "/src/app/shared.scss";

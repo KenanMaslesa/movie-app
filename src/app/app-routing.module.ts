@@ -6,13 +6,13 @@ import { MovieCardDetailsComponent } from './components/movie-details/movie-deta
 import { MoviesComponent } from './pages/movies/movies.component';
 import { PeopleComponent } from './pages/people/people.component';
 import { PersonComponent } from './components/person/person.component';
-import { TvShowsComponent } from './pages/tv-shows/tv-shows.component';
+import { TvComponent } from './pages/tv/tv.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', component: HomeComponent, data: {breadcrumb: 'home'} },
   { path: 'movies', component: MoviesComponent, data: {breadcrumb: 'movies'} },
-  { path: 'tv', component: TvShowsComponent, data: {breadcrumb: 'tv'} },
+  { path: 'tv', component: TvComponent, data: {breadcrumb: 'tv'} },
   { path: 'people', component: PeopleComponent, data: {breadcrumb: 'people'} },
   { path: 'details/:type/:id', component: MovieCardDetailsComponent, data: {breadcrumb: 'movie-details'} },
   { path: 'person/:id', component: PersonComponent, data: {breadcrumb: 'person'} },
