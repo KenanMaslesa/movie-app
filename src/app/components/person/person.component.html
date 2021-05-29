@@ -1,51 +1,71 @@
 <ng-container *ngIf="person">
-<main class="main">
-  <div class="left-column">
-    <div class="perosnal-info-wrapper">
-      <div class="profile-img" [class.porn]="person.adult">
-        <img src="https://image.tmdb.org/t/p/w1280{{person.profile_path}}" alt="{{person.name}}">
+  <main class="main">
+    <div class="left-column">
+      <div class="perosnal-info-wrapper">
+        <div class="profile-img" [class.porn]="person.adult">
+          <img (click)="showModal=true" src="https://image.tmdb.org/t/p/w1280{{person.profile_path}}" alt="{{person.name}}">
+        </div>
+        <div>
+
+          <div>
+            <strong>Known For</strong>
+            <p>{{person.known_for_department}}</p>
+          </div>
+          <div>
+            <strong>Birthday</strong>
+            <p>{{person.birthday}}</p>
+          </div>
+
+          <div>
+            <strong>Place of Birth</strong>
+            <p>{{person.place_of_birth}}</p>
+          </div>
+
+          <div>
+            <strong>Also Known As</strong>
+            <p *ngFor="let item of person.also_known_as">{{item}}</p>
+          </div>
+        </div>
       </div>
-      <div>
+    </div>
+    <div class="right-column">
+      <div class="biography">
+        <h1 class="name">{{person.name}}</h1>
+        <h4>Biography</h4>
+        <p [innerText]="person.biography"></p>
 
-        <div>
-          <strong>Known For</strong>
-          <p>{{person.known_for_department}}</p>
-        </div>
-        <div>
-          <strong>Birthday</strong>
-          <p>{{person.birthday}}</p>
-        </div>
 
-        <div>
-          <strong>Place of Birth</strong>
-          <p>{{person.place_of_birth}}</p>
-        </div>
+      </div>
 
-        <div>
-          <strong>Also Known As</strong>
-          <p *ngFor="let item of person.also_known_as">{{item}}</p>
-        </div>
+      <div class="known-for">
+
+      </div>
+
+
+      <div class="acting">
+        <app-persons-credits [personId]="person.id"></app-persons-credits>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" *ngIf="showModal" >
+    <div class="modal-content">
+      <button type="button" class="close" aria-label="Close" (click)="showModal=false">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div class="profile-images">
+        <ngb-carousel *ngIf="images">
+          <ng-template ngbSlide *ngFor="let image of images.profiles">
+            <div class="picsum-img-wrapper">
+              <img src="https://image.tmdb.org/t/p/w1280{{image.file_path}}" alt="Random first slide"
+                style="max-height: 90vh;">
+            </div>
+          </ng-template>
+        </ngb-carousel>
       </div>
     </div>
   </div>
-  <div class="right-column">
-    <div class="biography">
-      <h1 class="name">{{person.name}}</h1>
-      <h4>Biography</h4>
-      <p [innerText]="person.biography"></p>
 
-      
-    </div>
-
-    <div class="known-for">
-
-    </div>
-
-    <div class="acting">
-      <app-persons-credits [personId]="person.id"></app-persons-credits>
-    </div>
-  </div>
-</main>
-
-<!--<app-forbidden-content *ngIf="person.adult"></app-forbidden-content>
+  <!--<app-forbidden-content *ngIf="person.adult"></app-forbidden-content>
 </ng-container>-->

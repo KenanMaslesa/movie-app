@@ -1,6 +1,6 @@
 <div class="scroller" *ngIf="credits">
-  <ng-container *ngFor="let cast of credits.cast">
-    <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" [class.adult]="cast.adult">
+  <ng-container *ngFor="let cast of credits.cast; let i = index">
+    <a routerLink="/details/{{cast.media_type}}/{{cast.id}}" class="scroll-item" [class.adult]="cast.adult" *ngIf="i<=10">
       <img src="https://image.tmdb.org/t/p/w1280{{cast.poster_path}}" *ngIf="cast.poster_path && !cast.adult">
       <div class="movie-info">
         <p class="title">{{cast.title == null? (cast.original_name| slice:0:30): (cast.title| slice:0:35)}}</p>

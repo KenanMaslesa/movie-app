@@ -20,7 +20,16 @@
     .perosnal-info-wrapper {
       .profile-img {
         position: relative;
-        text-align: center;
+        cursor: pointer;
+        transition: all 0.7s;
+
+        &:hover{
+          transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+          text-align: center;
+        }
+
         img {
           width: 300px;
           height: 450px;
@@ -38,7 +47,7 @@
             width: 100%;
             bottom: 0;
             right: 0;
-            z-index: 99999999999;
+            z-index: 9;
             display: flex;
             justify-content: center;
             align-items: center;

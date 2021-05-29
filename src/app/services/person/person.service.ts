@@ -17,4 +17,8 @@ export class PersonService {
     return this.http.get(`${environment.tmdbAPIUrl}/person/${personId}/combined_credits?api_key=${environment.tmdbAPIKey}&language=en-US&include_adult=false`).pipe();
   }
 
+  getPersonImages(personId){
+    return this.http.get(`${environment.tmdbAPIUrl}/person/${personId}/images?api_key=${environment.tmdbAPIKey}&language=en-US&include_adult=false`).pipe();
+  }
+
 }
