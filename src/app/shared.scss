@@ -142,3 +142,57 @@ $nth: nth($imgList, $imgNumber);
     }
   }
 }
+
+
+.scroller {
+  height: 285px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  display: flex;
+  padding: 10px;
+  width: 85%;
+  margin: 0 auto;
+
+  .rating {
+    position: absolute;
+    top: 0;
+    color: white;
+    align-items: center;
+    display: flex;
+  }
+
+  .title {
+    font-weight: bold;
+    padding-top: 5px;
+  }
+
+ @include scrollbar(#0b3558);
+
+  .scroll-item {
+    margin-right: 10px;
+    border-radius: 8px;
+    background: #042038;
+    color: white;
+    max-width: 140px;
+    position: relative;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: translateY(-3px) scale(1.01);
+      z-index: 9;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 0;
+      text-align: center;
+    }
+    img {
+      min-width: 138px;
+      width: 140px;
+      height: 175px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+}

@@ -5,7 +5,6 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SearchComponent } from './components/search/search.component';
 import { MovieCardDetailsComponent } from './components/movie-details/movie-details.component';
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +29,6 @@ import { TvComponent } from './pages/tv/tv.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MovieCardComponent,
     SearchComponent,
     MovieCardDetailsComponent,
     SimilarMoviesComponent,
