@@ -18,7 +18,7 @@
 </div>
 
 <h1>Popular TV shows</h1>
-<div class="scroller" *ngIf="popularTvShows">
+<div class="scroller" *ngIf="popularTvShows" style="margin-bottom: 30px;">
   <ng-container *ngFor="let trending of popularTvShows.results">
   <a routerLink="/details/tv/{{trending.id}}" *ngIf="!trending.adult"
     class="scroll-item">
