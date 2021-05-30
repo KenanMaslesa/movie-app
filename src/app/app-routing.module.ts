@@ -6,12 +6,16 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { PeopleComponent } from './pages/people/people.component';
 import { PersonComponent } from './components/person/person.component';
 import { TvComponent } from './pages/tv/tv.component';
+import { TvSeasonComponent } from './components/tv-season/tv-season.component';
+import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', component: HomeComponent, data: {breadcrumb: 'home'} },
   { path: 'movies', component: MoviesComponent, data: {breadcrumb: 'movies'} },
   { path: 'tv', component: TvComponent, data: {breadcrumb: 'tv'} },
+  { path: 'season/:tvId/:seasonumber', component: TvSeasonComponent, data: {breadcrumb: 'tv'} },
+  { path: 'episode/:tvId/:seasonumber/:episodeNumber', component: TvEpisodeComponent, data: {breadcrumb: 'tv'} },
   { path: 'people', component: PeopleComponent, data: {breadcrumb: 'people'} },
   { path: 'details/:type/:id', component: MovieCardDetailsComponent, data: {breadcrumb: 'movie-details'} },
   { path: 'person/:id', component: PersonComponent, data: {breadcrumb: 'person'} },

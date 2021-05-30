@@ -1,0 +1,135 @@
+@import "/src/app/shared.scss";
+
+.movie-details-wrapper {
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: initial;
+  padding: 25px;
+  min-height: 95vh;
+
+  .main {
+    display: flex;
+    padding: 0 85px;
+    margin-bottom: 100px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 0;
+      text-align: center;
+    }
+
+    .poster-image {
+      width: auto;
+      height: 270px;
+
+      img {
+        height: 100%;
+        border-radius: 5px;
+      }
+    }
+
+    .movie-info {
+      padding: 0 40px;
+      color: white;
+
+       .rating-wrapper {
+        display: inline-block;
+        margin-left: 20px;
+
+        .rating {
+          display: flex;
+          align-items: center;
+
+          .vote-average {
+            font-size: 24px;
+          }
+          svg {
+            fill: yellow;
+          }
+          .max,
+          .vote_count {
+            margin-right: 5px;
+            font-size: 13px;
+            color: #7a7b7f;
+            margin-top: 6px;
+          }
+
+          .vote_count {
+            color: #919295;
+          }
+        }
+      }
+
+      .facts {
+        display: flex;
+        margin-bottom: 40px;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
+
+        .release {
+          margin-right: 7px;
+        }
+
+  
+      }
+
+
+      .movie-title {
+        font-size: 30px;
+        color: white;
+        text-decoration: none;
+        transition: all 0.5s;
+
+        &:hover {
+          color: #005296;
+        }
+      }
+
+     
+    }
+
+    .overview {
+      width: 90%;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+.episodes-title{
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+}
+.scroller{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    overflow: unset;
+    height: auto;
+    margin-top: 30px;
+
+.scroll-item{    
+    margin-right: 30px;
+    border-radius: 8px;
+    background: #042038;
+    color: white;
+    transition: all 0.5s;
+    margin-bottom: 30px;
+    max-width: none;
+    background: transparent;
+    cursor: pointer;
+
+    img{
+      width: auto;
+      border-radius: 8px;
+    }
+    }
+}
+}
+

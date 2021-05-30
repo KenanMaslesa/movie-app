@@ -1,0 +1,61 @@
+
+
+
+<div class="movie-details-wrapper" *ngIf="episode"
+  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{episode.still_path}});">
+
+  <div class="main">
+    <div class="poster-image">
+      <img src="https://image.tmdb.org/t/p/w1280/{{episode.still_path}}" alt="">
+      <img *ngIf="!episode.still_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
+    </div>
+
+    <div class="movie-info">
+      <a class="movie-title" target="_blank">{{episode.name}}
+        <span *ngIf="episode.first_air_date">({{episode.first_air_date | date:"yyyy"}} - {{episode.last_air_date |
+          date:"yyyy"}})</span></a>
+
+      <div class="rating-wrapper">
+        <div class="rating">
+          <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+            <path fill="yellow"
+              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+          </svg>
+          <span class="vote-average {{episode.vote_average}}">{{episode.vote_average}}</span><span
+            class="max">/10 </span>
+          <span class="vote_count"> ({{episode.vote_count}})</span>
+        </div>
+      </div>
+
+      <div class="facts">
+
+        <span class="release" >
+          {{episode.air_date | date }}
+        </span>
+
+      </div>
+ 
+      <div class="overview">
+        <h4>Overview</h4>
+        <p [innerText]="episode.overview"></p>
+      </div>
+
+      <ul>
+        <li routerLink="/person/{{crew.id}}" *ngFor="let crew of episode.crew"> <strong>{{crew.job}}</strong> : {{crew.name}}</li>
+       </ul>
+
+    </div>
+  </div>
+
+  <div class="scroller" *ngIf="episode.guest_stars">
+    <a routerLink="/person/{{star.id}}" *ngFor="let star of episode.guest_stars" class="scroll-item" on-mouseenter="onHover(episode)">
+      <img src="https://image.tmdb.org/t/p/w1280{{star.profile_path}}" *ngIf="star.profile_path">
+      <img *ngIf="!star.profile_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
+      <div class="movie-info">
+        <p class="title">{{star.name}}</p>
+        <p>{{star.character}} </p>
+      </div>
+    </a>
+  </div>
+
+  </div>

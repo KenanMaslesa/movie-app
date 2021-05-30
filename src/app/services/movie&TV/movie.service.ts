@@ -12,8 +12,8 @@ export class MovieAndTvService {
     return this.http.get(`${environment.tmdbAPIUrl}/keyword/${keyword}/movies?api_key=${environment.tmdbAPIKey}&language=en-US&include_adult=false`).pipe();
   }
 
-  getSimilarMoviesTvShows(mediaType, id){
-    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/${id}/similar?api_key=${environment.tmdbAPIKey}&language=en-US&adult=false`).pipe();
+  getSimilarMoviesTvShows(mediaType, id, page){
+    return this.http.get(`${environment.tmdbAPIUrl}/${mediaType}/${id}/similar?api_key=${environment.tmdbAPIKey}&language=en-US&adult=false&page=${page}`).pipe();
   }
 
   getMovieDetails(movieId){
@@ -54,6 +54,14 @@ export class MovieAndTvService {
 
   getGenres(mediaType){
     return this.http.get(`${environment.tmdbAPIUrl}/genre/${mediaType}/list?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  }
+
+  getTvSeasons(tvId, seasonNumber){
+    return this.http.get(`${environment.tmdbAPIUrl}/tv/${tvId}/season/${seasonNumber}?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
+  }
+
+  getTvEpisode(tvId, seasonNumber, episodeNumber){
+    return this.http.get(`${environment.tmdbAPIUrl}/tv/${tvId}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${environment.tmdbAPIKey}&language=en-US`).pipe();
   }
 
 }

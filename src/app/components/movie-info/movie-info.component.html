@@ -1,9 +1,9 @@
 <div class="movie-details-wrapper" *ngIf="movie"
-  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{!backgroundImageOnHover?movie.backdrop_path:backgroundImageOnHover}});">
+  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{movie.backdrop_path}});">
 
   <div class="main">
     <div class="poster-image">
-      <img src="https://image.tmdb.org/t/p/w1280/{{!backgroundImageOnHover?movie.poster_path:backgroundImageOnHover}}" alt="">
+      <img src="https://image.tmdb.org/t/p/w1280/{{movie.poster_path}}" alt="">
       <img *ngIf="!movie.poster_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
     </div>
 
@@ -43,7 +43,7 @@
 
       <div class="overview">
         <h4>Overview</h4>
-        <p [innerText]="(overviewOnHover? overviewOnHover: movie.overview)"></p>
+        <p [innerText]="movie.overview"></p>
       </div>
 
       <div class="keywords" *ngIf="keywords">
@@ -64,9 +64,7 @@
   </div>
 
   <div class="scroller" *ngIf="movie.seasons" style="margin: 15px auto;">
-    <a routerLink="/details/tv/{{season.id}}" target="_blank" *ngFor="let season of movie.seasons" class="scroll-item" 
-    on-mouseover="onMouseOver(season)"
-    on-mouseleave="onMouseLeave()">
+    <a routerLink="/season/{{movie.id}}/{{season.season_number}}" *ngFor="let season of movie.seasons" class="scroll-item">
       <img src="https://image.tmdb.org/t/p/w1280{{season.poster_path}}" *ngIf="season.poster_path">
       <div class="movie-info">
         <p class="title">{{season.name}}</p>

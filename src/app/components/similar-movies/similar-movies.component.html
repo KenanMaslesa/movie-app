@@ -28,3 +28,14 @@
     </a>
   </main>
 </div>
+
+<!-- PAGINATION-->
+
+<ng-container *ngIf="similarMovies">
+  <div class="pagination-wrapper">
+    <ngb-pagination (pageChange)="getSimilarMoviesTvShows(mediaType, movieId, $event)" *ngIf="similarMovies.total_pages > 1"
+      class="d-flex justify-content-center" [collectionSize]="similarMovies.total_pages" [(page)]="currentPage" [maxSize]="5"
+      [rotate]="true" [ellipses]="false" [boundaryLinks]="true">
+    </ngb-pagination>
+  </div>
+</ng-container>

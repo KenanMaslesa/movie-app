@@ -26,6 +26,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { PeopleComponent } from './pages/people/people.component';
 import { TvComponent } from './pages/tv/tv.component';
+import { TvSeasonComponent } from './components/tv-season/tv-season.component';
+import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { TvComponent } from './pages/tv/tv.component';
     HeaderComponent,
     MoviesComponent,
     PeopleComponent,
-    TvComponent
+    TvComponent,
+    TvSeasonComponent,
+    TvEpisodeComponent
   ],
   imports: [
     BrowserModule,

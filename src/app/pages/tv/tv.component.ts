@@ -130,4 +130,5 @@ export class TvComponent implements OnInit {
   getTvGenres(){
     this.movieService.getGenres('tv').subscribe((responseData) => this.tvFilters = responseData);
   }
+
 }

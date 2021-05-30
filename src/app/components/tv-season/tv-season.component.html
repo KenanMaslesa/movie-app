@@ -1,0 +1,47 @@
+
+
+
+<div class="movie-details-wrapper" *ngIf="season"
+  style="background-image: linear-gradient(rgb(3,37,65), rgb(3 37 65 / 85%)),url(https://image.tmdb.org/t/p/w1280{{!backgroundImageOnHover?season.poster_path:backgroundImageOnHover}});">
+
+  <div class="main">
+    <div class="poster-image">
+      <img src="https://image.tmdb.org/t/p/w1280/{{season.poster_path}}" alt="">
+      <img *ngIf="!season.poster_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
+    </div>
+
+    <div class="movie-info">
+      <a class="movie-title" target="_blank">{{season.name}}
+        <span *ngIf="season.first_air_date">({{season.first_air_date | date:"yyyy"}} - {{season.last_air_date |
+          date:"yyyy"}})</span></a>
+
+      <div class="facts">
+
+        <span class="release" >
+          {{season.air_date | date }}
+        </span>
+
+      </div>
+
+      <div class="overview">
+        <h4>Overview</h4>
+        <p [innerText]="season.overview"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <h1 class="episodes-title">Episodes </h1>
+  <div class="scroller" *ngIf="season.episodes">
+    <a routerLink="/episode/{{tvId}}/{{season.season_number}}/{{episode.episode_number}}" *ngFor="let episode of season.episodes" class="scroll-item" on-mouseenter="onHover(episode)">
+      <img src="https://image.tmdb.org/t/p/w1280{{episode.still_path}}" *ngIf="episode.still_path">
+      <img *ngIf="!episode.still_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
+
+      <div class="movie-info">
+        <p class="title">{{episode.name}}</p>
+        <p>{{episode.air_date | date}}</p>
+      </div>
+    </a>
+  </div>
+
+  </div>

@@ -11,8 +11,6 @@ export class MovieInfoComponent implements OnInit {
   @Input() mediaType: string;
   @Input() keywords: any;
   showModal: boolean;
-  backgroundImageOnHover: string;
-  overviewOnHover = null;
   reviews: any;
   images: any;
 
@@ -31,15 +29,6 @@ export class MovieInfoComponent implements OnInit {
     } else {
       return 'red';
     }
-  }
-
-  onMouseOver(obj) {
-    this.backgroundImageOnHover = obj.poster_path;
-    this.overviewOnHover = obj.overview;
-  }
-  onMouseLeave() {
-    this.backgroundImageOnHover = null;
-    this.overviewOnHover = null;
   }
 
   getReviews(){
