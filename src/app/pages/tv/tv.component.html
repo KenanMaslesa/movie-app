@@ -41,7 +41,7 @@
 <main id="main" *ngIf="movies">
 
   <ng-container *ngFor="let movie of movies.results">
-    <a routerLink="/details/movie/{{movie.id}}" class="movie" on-mouseover="onMouseOver(movie)">
+    <a routerLink="/details/tv/{{movie.id}}" class="movie" on-mouseover="onMouseOver(movie)">
       <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}"
         *ngIf="movie.poster_path">
       <img *ngIf="!movie.poster_path"
