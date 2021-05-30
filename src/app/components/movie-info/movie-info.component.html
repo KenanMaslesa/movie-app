@@ -64,7 +64,7 @@
   </div>
 
   <div class="scroller" *ngIf="movie.seasons" style="margin: 15px auto;">
-    <a routerLink="/details/tv/{{season.id}}" target="" *ngFor="let season of movie.seasons" class="scroll-item" 
+    <a routerLink="/details/tv/{{season.id}}" target="_blank" *ngFor="let season of movie.seasons" class="scroll-item" 
     on-mouseover="onMouseOver(season)"
     on-mouseleave="onMouseLeave()">
       <img src="https://image.tmdb.org/t/p/w1280{{season.poster_path}}" *ngIf="season.poster_path">
