@@ -1,23 +1,30 @@
 <div class="similar-movies-wrapper" *ngIf="similarMovies">
-  <h1 *ngIf="similarMovies.results!=0">Similar</h1>
+  <h1 *ngIf="similarMovies.results!=0">Similar {{mediaType == 'movie'?'movies':'TV shows'}}</h1>
   <main id="main">
-    <div class="movie" *ngFor="let movie of similarMovies.results">
-      <a routerLink="/details/{{mediaType}}/{{movie.id}}" target="">
-        <img src="https://image.tmdb.org/t/p/w1280{{movie.poster_path}}" alt="{{movie.original_title}}">
-      </a>
-      <div class="movie-info" data-movieid="567189">
-        <h3>{{movie.original_title}}</h3>
-        <span class="orange">{{movie.vote_average}} ({{movie.vote_count}})</span>
+    <a routerLink="/details/{{mediaType}}/{{obj.id}}" target="_blank" class="movie" *ngFor="let obj of similarMovies.results">
+        <img src="https://image.tmdb.org/t/p/w1280{{obj.poster_path}}" alt="{{obj.original_title}}">
+
+      <div class="movie-info">
+
         <div class="overview-trailer-buttons-wrapper">
-          <span class="show-overview" #showOverview (click)="showOverview.classList.toggle('active')">Overview</span>
-          <span (click)="showTrailer(movie.id)">Trailer</span>
+          <h4>{{obj.title?obj.title:obj.name}} ({{(obj.release_date?obj.release_date:obj.first_air_date)|date:"yyyy"}})</h4>
+          <p class="show-overview" #showOverview (mouseenter)="showOverview.classList.toggle('active')">Overview</p>
         </div>
+
+        <div class="overview" #overview [class.show]="showOverview.classList.contains('active')"
+          (mouseleave)="showOverview.classList.remove('active')">
+          <p>{{obj.overview}}</p>
+        </div>
+
+        <div class="rating">
+          <svg style="width:26px;height:26px;" viewBox="0 0 24 24">
+            <path fill="yellow"
+              d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+          </svg>
+          <span class="vote-average">{{obj.vote_average}}</span>
+        </div>
+
       </div>
-      <div class="overview" #overview (click)="showOverview.classList.remove('active')"
-        [class.show]="showOverview.classList.contains('active')">
-        <h3>Overview</h3>
-        {{movie.overview}}
-      </div>
-    </div>
+    </a>
   </main>
 </div>

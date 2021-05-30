@@ -147,11 +147,12 @@ $nth: nth($imgList, $imgNumber);
 .scroller {
   height: 285px;
   overflow-y: hidden;
-  overflow-x: scroll;
+  overflow-x: auto;
   display: flex;
   padding: 10px;
   width: 85%;
   margin: 0 auto;
+  margin-top: 20px;
 
   .rating {
     position: absolute;
