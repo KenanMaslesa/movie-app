@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  <div class="scroller" *ngIf="movie.seasons" style="margin-left: 15px auto;">
+  <div class="scroller" *ngIf="movie.seasons" style="margin: 15px auto;">
     <a routerLink="/details/tv/{{season.id}}" target="" *ngFor="let season of movie.seasons" class="scroll-item" 
     on-mouseover="onMouseOver(season)"
     on-mouseleave="onMouseLeave()">
