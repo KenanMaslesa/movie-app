@@ -20,7 +20,7 @@
 <h1>Popular TV shows</h1>
 <div class="scroller" *ngIf="popularTvShows">
   <ng-container *ngFor="let trending of popularTvShows.results">
-  <a routerLink="/details/movie/{{trending.id}}" *ngIf="!trending.adult"
+  <a routerLink="/details/tv/{{trending.id}}" *ngIf="!trending.adult"
     class="scroll-item">
     <img src="https://image.tmdb.org/t/p/w1280{{trending.poster_path}}" *ngIf="trending.poster_path">
     <p class="title">{{trending.name}}</p>
