@@ -147,7 +147,7 @@ $nth: nth($imgList, $imgNumber);
 .scroller {
   height: 285px;
   overflow-y: hidden;
-  overflow-x: auto;
+  overflow-x: auto !important;
   display: flex;
   padding: 10px;
   width: 85%;
