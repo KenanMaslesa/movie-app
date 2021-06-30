@@ -35,7 +35,8 @@
         </span>
 
         <div class="genres">
-          <span *ngFor="let genre of movie.genres"> {{genre.name}}, </span>
+          <span *ngFor="let genre of movie.genres; let i = index"> {{genre.name}}<span
+              *ngIf="i+1<movie.genres.length">,</span> </span>
         </div>
 
         <span class="runtime" *ngIf="mediaType == 'movie'">
