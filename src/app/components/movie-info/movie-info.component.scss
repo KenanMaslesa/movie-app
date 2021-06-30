@@ -190,6 +190,10 @@
     top: 10px;
     right: 10px;
     display: none;
+
+    @media(max-width: 768px){
+      width: 100%;
+    }
   }
 }
 

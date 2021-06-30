@@ -12,28 +12,6 @@
     padding-top: 5px;
   }
 
-  /* width */
-  &::-webkit-scrollbar {
-    width: 2px;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: rgb(19 42 61);
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #0b3558;
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: #0b35589d;
-  }
-
   .scroll-item {
     margin-right: 10px;
     border-radius: 8px;

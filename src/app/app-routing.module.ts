@@ -11,14 +11,14 @@ import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '', component: HomeComponent, data: {breadcrumb: 'home'} },
-  { path: 'movies', component: MoviesComponent, data: {breadcrumb: 'movies'} },
-  { path: 'tv', component: TvComponent, data: {breadcrumb: 'tv'} },
-  { path: 'season/:tvId/:seasonumber', component: TvSeasonComponent, data: {breadcrumb: 'tv'} },
-  { path: 'episode/:tvId/:seasonumber/:episodeNumber', component: TvEpisodeComponent, data: {breadcrumb: 'tv'} },
-  { path: 'people', component: PeopleComponent, data: {breadcrumb: 'people'} },
-  { path: 'details/:type/:id', component: MovieCardDetailsComponent, data: {breadcrumb: 'movie-details'} },
-  { path: 'person/:id', component: PersonComponent, data: {breadcrumb: 'person'} },
+  { path: '', component: HomeComponent },
+  { path: 'movies', component: MoviesComponent },
+  { path: 'tv', component: TvComponent },
+  { path: 'season/:tvId/:seasonumber', component: TvSeasonComponent },
+  { path: 'episode/:tvId/:seasonumber/:episodeNumber', component: TvEpisodeComponent},
+  { path: 'people', component: PeopleComponent},
+  { path: 'details/:type/:id', component: MovieCardDetailsComponent },
+  { path: 'person/:id', component: PersonComponent},
 
 ];
 
