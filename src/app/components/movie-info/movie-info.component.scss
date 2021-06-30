@@ -7,6 +7,10 @@
   background-position: initial;
   padding: 25px;
 
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+  
   .main {
     display: flex;
     padding: 0 85px;
@@ -191,12 +195,11 @@
     right: 10px;
     display: none;
 
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       width: 100%;
     }
   }
 }
-
 
 @keyframes shadowAnimation {
   0% {
