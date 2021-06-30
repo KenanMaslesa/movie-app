@@ -8,6 +8,7 @@ import { PersonComponent } from './components/person/person.component';
 import { TvComponent } from './pages/tv/tv.component';
 import { TvSeasonComponent } from './components/tv-season/tv-season.component';
 import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component';
+import { FavoriteComponent } from './components/favorite/favorite.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'people', component: PeopleComponent},
   { path: 'details/:type/:id', component: MovieCardDetailsComponent },
   { path: 'person/:id', component: PersonComponent},
+  { path: 'favorite', component: FavoriteComponent},
 
 ];
 

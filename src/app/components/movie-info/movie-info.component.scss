@@ -10,7 +10,7 @@
   @media (max-width: 768px) {
     padding: 0;
   }
-  
+
   .main {
     display: flex;
     padding: 0 85px;
@@ -72,6 +72,14 @@
           }
           &::after {
             content: "\2022";
+          }
+        }
+
+        .lists-wrapper{
+          margin-left: 20px;
+
+          img{
+            cursor: pointer;
           }
         }
       }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { KeywordService } from 'src/app/services/keyword/keyword.service';
 import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
 
@@ -50,4 +51,5 @@ export class MovieCardDetailsComponent implements OnInit {
   getMovieKeywords(mediaType, movieID){
     this.keywordService.getMovieOrTvKeywords(mediaType, movieID).subscribe((responseData)=>(this.keywords = responseData));
   }
+
 }

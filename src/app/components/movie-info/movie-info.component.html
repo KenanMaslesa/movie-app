@@ -35,7 +35,7 @@
         </span>
 
         <div class="genres">
-          <span *ngFor="let genre of movie.genres; let i = index"> {{genre.name}}<span
+          <span *ngFor="let genre of movie.genres; let i = index"> {{genre.name}} <span
               *ngIf="i+1<movie.genres.length">,</span> </span>
         </div>
 
@@ -43,7 +43,16 @@
           {{movie.runtime}} minutes
         </span>
 
+        <div class="lists-wrapper">
+          <img src="/assets/images/favorite-white.svg" height="30px" *ngIf="!isInFavoriteList" (click)="addMovieToList(movie, favoriteList)" ngbPopover="Mark as favorite" triggers="mouseenter:mouseleave">
+          <img src="/assets/images/favorite-red.svg" height="30px" *ngIf="isInFavoriteList"  (click)="removeMovieFromList(movie, favoriteList)" ngbPopover="Remove from your favorite list" triggers="mouseenter:mouseleave">
+  
+          <img src="/assets/images/bookmark-white.svg" height="30px" *ngIf="!isInWatchlist" (click)="addMovieToList(movie, watchlist)"  ngbPopover="Add to your watchlist" triggers="mouseenter:mouseleave">
+          <img src="/assets/images/bookmark-red.svg" height="30px" *ngIf="isInWatchlist" (click)="removeMovieFromList(movie, watchlist)" ngbPopover="Remove from your watchlist" triggers="mouseenter:mouseleave">
+        </div>
+
       </div>
+      
 
       <div class="overview">
         <h4>Overview</h4>
