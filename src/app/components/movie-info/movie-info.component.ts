@@ -45,7 +45,6 @@ export class MovieInfoComponent implements OnInit {
   
   addMovieToList(movie, list){
     this.firebaseService.addMovieToList(movie, list).subscribe(response => {
-      alert("Uspjesn ste dodali film");
       this.setListVariables(list, true);
     }, error => {
       alert(error.message);
@@ -56,7 +55,6 @@ export class MovieInfoComponent implements OnInit {
     this.firebaseService.getMovieFirebaseId(movie.id, list).subscribe(movieId => {
       
       this.firebaseService.removeMoviFromList(movieId, list).subscribe(response => {
-        alert("Uspjesn ste uklonili film");
         this.setListVariables(list, false);
   
       }, error =>{
