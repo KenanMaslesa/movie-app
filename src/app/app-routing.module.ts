@@ -9,6 +9,7 @@ import { TvComponent } from './pages/tv/tv.component';
 import { TvSeasonComponent } from './components/tv-season/tv-season.component';
 import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'details/:type/:id', component: MovieCardDetailsComponent },
   { path: 'person/:id', component: PersonComponent},
   { path: 'favorite', component: FavoriteComponent},
+  { path: 'watchlist', component: WatchlistComponent},
 
 ];
 

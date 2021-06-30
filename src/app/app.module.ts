@@ -28,6 +28,7 @@ import { TvComponent } from './pages/tv/tv.component';
 import { TvSeasonComponent } from './components/tv-season/tv-season.component';
 import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
     TvComponent,
     TvSeasonComponent,
     TvEpisodeComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
