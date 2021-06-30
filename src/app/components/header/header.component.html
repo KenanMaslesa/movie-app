@@ -5,8 +5,8 @@
      <li routerLink="/movies">Movies</li>
      <li routerLink="/tv">TV Shows</li>
      <li routerLink="/people">People</li>
-     <li routerLink="/favorite">Favorite</li>
-     <li routerLink="/watchlist">Watchlist</li>
+     <li routerLink="/favorite" *ngIf="authService.isLoggedIn">Favorite</li>
+     <li routerLink="/watchlist" *ngIf="authService.isLoggedIn">Watchlist</li>
    </ul>
   </div>
 </header>

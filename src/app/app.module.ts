@@ -30,6 +30,18 @@ import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 
+//firebase
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+// Auth service
+import { AuthService } from "./shared/services/auth.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +65,11 @@ import { WatchlistComponent } from './components/watchlist/watchlist.component';
     TvSeasonComponent,
     TvEpisodeComponent,
     FavoriteComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +79,12 @@ import { WatchlistComponent } from './components/watchlist/watchlist.component';
     NgbModule,
     NgbPaginationModule,
     BreadcrumbModule,
-    NgpSortModule
+    NgpSortModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthService],
 })
 export class AppModule { }

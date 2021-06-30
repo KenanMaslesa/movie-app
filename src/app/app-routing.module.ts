@@ -10,6 +10,11 @@ import { TvSeasonComponent } from './components/tv-season/tv-season.component';
 import { TvEpisodeComponent } from './components/tv-episode/tv-episode.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,8 +26,12 @@ const routes: Routes = [
   { path: 'people', component: PeopleComponent},
   { path: 'details/:type/:id', component: MovieCardDetailsComponent },
   { path: 'person/:id', component: PersonComponent},
-  { path: 'favorite', component: FavoriteComponent},
-  { path: 'watchlist', component: WatchlistComponent},
+  { path: 'favorite', component: FavoriteComponent, canActivate: [AuthGuard] },
+  { path: 'watchlist', component: WatchlistComponent, canActivate: [AuthGuard] },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'register-user', component: SignUpComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email', component: VerifyEmailComponent }
 
 ];
 
