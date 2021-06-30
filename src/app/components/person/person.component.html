@@ -57,9 +57,9 @@
       <div class="profile-images">
         <ngb-carousel *ngIf="images">
           <ng-template ngbSlide *ngFor="let image of images.profiles">
-            <div class="picsum-img-wrapper">
+            <div class="picsum-img-wrapper" style="text-align: center;">
               <img src="https://image.tmdb.org/t/p/w1280{{image.file_path}}" alt="Random first slide"
-                style="max-height: 90vh;">
+                style="max-height: 90vh; width: 35%">
             </div>
           </ng-template>
         </ngb-carousel>

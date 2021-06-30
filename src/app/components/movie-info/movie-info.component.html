@@ -4,14 +4,17 @@
   <div class="main">
     <div class="poster-image">
       <img src="https://image.tmdb.org/t/p/w1280/{{movie.poster_path}}" alt="">
-      <img *ngIf="!movie.poster_path" src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg" alt="">
+      <img *ngIf="!movie.poster_path"
+        src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg"
+        alt="">
     </div>
 
     <div class="movie-info">
       <a class="movie-title" href="{{movie.homepage}}" target="_blank">{{movie.title == null? movie.original_name:
         movie.title}}
         <span *ngIf="mediaType == 'movie' && movie.release_date">({{movie.release_date | date:"yyyy" }})</span>
-        <span *ngIf="mediaType == 'tv' && movie.first_air_date">({{movie.first_air_date | date:"yyyy"}} - {{movie.last_air_date |
+        <span *ngIf="mediaType == 'tv' && movie.first_air_date">({{movie.first_air_date | date:"yyyy"}} -
+          {{movie.last_air_date |
           date:"yyyy"}})</span></a>
 
       <div class="rating-wrapper">
@@ -64,7 +67,8 @@
   </div>
 
   <div class="scroller" *ngIf="movie.seasons" style="margin: 15px auto;">
-    <a routerLink="/season/{{movie.id}}/{{season.season_number}}" *ngFor="let season of movie.seasons" class="scroll-item">
+    <a routerLink="/season/{{movie.id}}/{{season.season_number}}" *ngFor="let season of movie.seasons"
+      class="scroll-item">
       <img src="https://image.tmdb.org/t/p/w1280{{season.poster_path}}" *ngIf="season.poster_path">
       <div class="movie-info">
         <p class="title">{{season.name}}</p>
@@ -75,7 +79,7 @@
 
   <app-casts [movieId]="movie.id" [mediaType]="mediaType"></app-casts>
 
-  </div>
+</div>
 
 <div id="myModal" class="modal" *ngIf="showModal">
   <div class="modal-content">
