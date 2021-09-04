@@ -2,7 +2,7 @@
   "name": "Movies",
   "short_name": "Movies",
   "theme_color": "#1976d2",
-  "background_color": "#042036",
+  "background_color": "#4895af",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
