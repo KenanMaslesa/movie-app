@@ -105,6 +105,10 @@ $nth: nth($imgList, $imgNumber);
   -webkit-transition: background-image 0.2s ease-in-out;
   transition: background-image 0.2s ease-in-out;
 
+  @media(max-width: 768px){
+    min-height: 300px;
+  }
+
   .content-wrapper {
     text-align: center;
     width: 50%;
@@ -117,10 +121,18 @@ $nth: nth($imgList, $imgNumber);
       h2 {
         font-size: 70px;
         font-family: sans-serif;
+
+        @media(max-width: 768px){
+          font-size: 50px;
+        }
       }
 
       h3 {
         font-weight: lighter;
+
+        @media(max-width: 768px){
+          font-size: 20px;
+        }
       }
     }
   }
