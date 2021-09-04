@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { KeywordService } from 'src/app/services/keyword/keyword.service';
 import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
@@ -19,11 +19,18 @@ export class MovieCardDetailsComponent implements OnInit {
   constructor(
     private movieAndTVService: MovieAndTvService,
     private route: ActivatedRoute,
-    private keywordService: KeywordService
-  ) {}
+    private keywordService: KeywordService,
+    private router: Router
+  ) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.getMovie();
+      }
+      
+  });
+  }
 
   ngOnInit(): void {
-    this.getMovie();
   }
 
   getMovie(): void {

@@ -1,7 +1,7 @@
 <div class="similar-movies-wrapper" *ngIf="similarMovies">
   <h1 *ngIf="similarMovies.results!=0">Similar {{mediaType == 'movie'?'movies':'TV shows'}}</h1>
   <main id="main">
-    <a routerLink="/details/{{mediaType}}/{{obj.id}}" target="_blank" class="movie" *ngFor="let obj of similarMovies.results">
+    <a routerLink="/details/{{mediaType}}/{{obj.id}}" class="movie" *ngFor="let obj of similarMovies.results">
         <img src="https://image.tmdb.org/t/p/w1280{{obj.poster_path}}" alt="{{obj.original_title}}">
 
       <div class="movie-info">
