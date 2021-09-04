@@ -36,7 +36,6 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        debugger
         this.ngZone.run(() => {
           this.router.navigate(['favorite']);
         });
@@ -77,10 +76,10 @@ SendVerificationMail() {
     })
   }
 
-  // Returns true when user is looged in and email is verified
+  // Returns true when user is looged in 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null) ? true : false;
   }
 
   // Sign in with Google
@@ -122,8 +121,12 @@ SendVerificationMail() {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['movies']);
     })
+  }
+
+  getCurrentUser(){
+    return JSON.parse(localStorage.getItem('user'));
   }
 
 }

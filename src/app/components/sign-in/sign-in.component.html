@@ -1,43 +1,70 @@
-<div class="displayTable" style="color: white;">
-  <div class="displayTableCell">
 
-    <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Username" #userName required>
-      </div>
+<div class="auth-wrapper">
 
-      <div class="formGroup">
-        <input type="password" class="formControl" placeholder="Password" #userPassword required>
-      </div>
+<div class="row">
+  <div class="col-md-6 mx-auto p-0">
+    <div class="card">
 
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input type="button" style="color: white;" class="btn btnPrimary" value="Log in"
-          (click)="authService.SignIn(userName.value, userPassword.value)">
-      </div>
+      <div class="login-box">
+      
+        <div class="login-snip">
+          <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+          <label for="tab-1" class="tab">Login</label>
 
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
+          <input id="tab-2" type="radio" name="tab" class="sign-up">
+          <label for="tab-2" class="tab">Sign Up</label>
 
-      <!-- Calling GoogleAuth Api from AuthService -->
-      <div class="formGroup">
-        <button type="button" style="color: white;" class="btn googleBtn" (click)="authService.GoogleAuth()">
-          <i class="fab fa-google-plus-g"></i>
-          Log in with Google
-        </button>
-      </div>
-      <button (click)="authService.SignOut()">SignOut</button>
+          <div class="login-space">
 
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
+            <!--SIGN IN-->
+            <div class="login">
+              <div class="group">
+                <span class="loginErrorMsg"></span>
+              </div>
+
+              <div class="group"> 
+                <input id="email" type="text" class="input" placeholder="Email" #emailSignIn required> 
+              </div>
+
+              <div class="group"> 
+                <input id="password" type="password" class="input" data-type="password" placeholder="Password" #passwordSignIn required> 
+              </div>
+
+              <div class="group"> 
+                <input type="submit" id="loginBtn" (click)="authService.SignIn(emailSignIn.value, passwordSignIn.value)" class="button" value="Sign In"> 
+              </div>
+
+              <div class="hr"></div>
+              <div class="foot"> <a routerLink="/forgot-password">Forgot Password?</a> </div>
+            </div>
+
+            <!--SIGN UP-->
+            <div class="sign-up-form">
+              <div class="group">
+                <span class="registerErrorMsg"></span>
+              </div>
+              <div class="group"> 
+                <input id="email" type="text" class="input" placeholder="Email" #emailSignUp> 
+              </div>
+
+              <div class="group"> 
+                <input id="password" type="password" class="input" data-type="password" placeholder="Password" #passwordSignUp> 
+              </div>
+
+              <div class="group"> 
+                <input type="submit" id="signUpBtn" class="button" value="Sign Up" (click)="authService.SignUp(emailSignUp.value, passwordSignUp.value)"> 
+              </div>
+
+              <div class="hr"></div>
+              <div class="foot"> 
+                <label for="tab-1">Already Member?</label> 
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="redirectToLogin">
-      <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
-    </div>
-
   </div>
+</div>
 </div>

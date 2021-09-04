@@ -1,0 +1,160 @@
+  .auth-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  
+  
+  #background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+  
+  
+  .card {
+    background-color: transparent;
+    border: none;
+  
+  .login-box {
+    width: 100%;
+    margin: auto;
+    max-width: 450px;
+    min-height: 670px;
+    position: relative;
+  
+    .login-snip {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 35%;
+      padding: 0px 30px;
+      text-align: center;
+  
+      .login,
+      .sign-up-form {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+        transition: all 0.4s linear;
+      }
+  
+      .sign-in,
+      .sign-up {
+        display: none;
+  
+        &:checked + .tab {
+          color: #fff;
+          border-color: #1161ee;
+        }
+      }
+  
+      .tab {
+        font-size: 22px;
+        margin-right: 15px;
+        padding-bottom: 5px;
+        margin: 0 15px 10px 0;
+        display: inline-block;
+        border-bottom: 2px solid transparent;
+        color: rgb(167, 163, 163);
+        transition: all 0.5s;
+      }
+  
+      .login-space {
+        min-height: 345px;
+        position: relative;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        margin-top: 20px;
+  
+        .group {
+          margin-bottom: 15px;
+  
+          .label,
+          .input,
+          .button {
+            width: 100%;
+            color: #fff;
+            display: block;
+          }
+          .input {
+            color: black;
+            font-weight: bold;
+          }
+  
+          .input,
+          .button {
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 15px;
+            background: #fff;
+            height: 50px;
+            outline: none;
+          }
+  
+          .button {
+            background: #333333;
+            cursor: pointer;
+          }
+        }
+  
+        .hr {
+          height: 2px;
+          margin: 30px 0;
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          background: rgba(255, 255, 255, 0.2);
+        }
+  
+        .foot {
+          text-align: center;
+          color: white;
+  
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+      }
+  
+      .sign-in{
+        &:checked{
+          + .tab + .sign-up + .tab + .login-space .login {
+          transform: rotate(0);
+        }
+      }
+      }
+  
+      .sign-up{
+        &:checked{
+        + .tab + .login-space .sign-up-form {
+          transform: rotate(0);
+        }
+      }
+      }
+    }
+  
+    .registerErrorMsg,
+    .loginErrorMsg {
+      color: red;
+    }
+  
+    ::placeholder {
+      color: #b3b3b3;
+    }
+  }
+  }
+  }
+  

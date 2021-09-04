@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase/firebase.service';
 import { MovieAndTvService } from 'src/app/services/movie&TV/movie.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-movie-info',
   templateUrl: './movie-info.component.html',
@@ -18,12 +20,14 @@ export class MovieInfoComponent implements OnInit {
   favoriteList = "favorite";
   watchlist = "watchlist";
 
-  constructor(private movieService: MovieAndTvService, private firebaseService:FirebaseService) {}
+  constructor(private movieService: MovieAndTvService, private firebaseService:FirebaseService, public authService:AuthService,  public router: Router) {}
 
   ngOnInit(): void {
     this.getImages();
-    this.checkIsMovieInList(this.movieId, this.favoriteList);
-    this.checkIsMovieInList(this.movieId, this.watchlist);
+    if(this.authService.isLoggedIn){
+      this.checkIsMovieInList(this.movieId, this.favoriteList);
+      this.checkIsMovieInList(this.movieId, this.watchlist);
+    }
   }
 
   getClassNameByRate(vote) {
@@ -44,6 +48,9 @@ export class MovieInfoComponent implements OnInit {
 
   
   addMovieToList(movie, list){
+    if(!this.authService.isLoggedIn)
+      this.router.navigate(['sign-in']);
+
     this.firebaseService.addMovieToList(movie, list).subscribe(response => {
       this.setListVariables(list, true);
     }, error => {
@@ -52,6 +59,9 @@ export class MovieInfoComponent implements OnInit {
   }
 
   removeMovieFromList(movie, list){
+    if(!this.authService.isLoggedIn)
+      this.router.navigate(['sign-in']);
+
     this.firebaseService.getMovieFirebaseId(movie.id, list).subscribe(movieId => {
       
       this.firebaseService.removeMoviFromList(movieId, list).subscribe(response => {
@@ -78,6 +88,6 @@ export class MovieInfoComponent implements OnInit {
     else if(list == this.watchlist)
       this.isInWatchlist = booleanValue;
   }
-  
+
 }
 

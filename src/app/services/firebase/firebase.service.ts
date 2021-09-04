@@ -1,26 +1,30 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  private firebaseUrl = "https://movies-8dcb8-default-rtdb.europe-west1.firebasedatabase.app/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public authService: AuthService) { }
 
-  //favorite list
+ 
   addMovieToList(movie, list){
-    return this.http.post(`${this.firebaseUrl}/${list}.json`, movie);
+    var user = this.authService.getCurrentUser();
+    if(user != null){
+      return this.http.post(`${environment.firebase.databaseURL}/${list}/${user.uid}.json`, movie);
+    }
   }
 
   removeMoviFromList(movieId, list){
-    return this.http.delete(`${this.firebaseUrl}/${list}/${movieId}.json`, movieId);
+    return this.http.delete(`${environment.firebase.databaseURL}/${list}/${this.authService.getCurrentUser().uid}/${movieId}.json`);
   }
 
   getMovieFirebaseId(movieId, list){
-    return this.http.get(`${this.firebaseUrl}/${list}.json`).pipe(map(responseData => {
+    return this.http.get(`${environment.firebase.databaseURL}/${list}/${this.authService.getCurrentUser().uid}.json`).pipe(map(responseData => {
       for(const key in responseData){
         if(responseData[key].id == movieId){
           return key;
@@ -31,7 +35,7 @@ export class FirebaseService {
   }
 
   getMoviesFromList(list){
-    return this.http.get(`${this.firebaseUrl}/${list}.json`).pipe(map(responseData => {
+    return this.http.get(`${environment.firebase.databaseURL}/${list}/${this.authService.getCurrentUser().uid}.json`).pipe(map(responseData => {
       var array = [];
       for(const key in responseData){
         array.push({...responseData[key], firebaseId: key})
@@ -40,5 +44,4 @@ export class FirebaseService {
     }))
   }
 
-  //watchlist
 }

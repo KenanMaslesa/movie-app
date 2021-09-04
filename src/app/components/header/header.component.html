@@ -1,13 +1,17 @@
 <header>
-  <div class="content">
-   <ul>
-     <li routerLink="">Home</li>
-     <li routerLink="/movies">Movies</li>
-     <li routerLink="/tv">TV Shows</li>
-     <li routerLink="/people">People</li>
-     <li routerLink="/favorite" *ngIf="authService.isLoggedIn">Favorite</li>
-     <li routerLink="/watchlist" *ngIf="authService.isLoggedIn">Watchlist</li>
-   </ul>
+  <div class="navbar">
+    <a routerLink="">Home</a>
+    <a routerLink="/movies" routerLinkActive="active">Movies</a>
+    <a routerLink="/tv" routerLinkActive="active">TV Shows</a>
+    <a routerLink="/people" routerLinkActive="active">People</a>
+    <a *ngIf="authService.isLoggedIn" routerLinkActive="active" routerLink="/favorite">Favorite</a>
+    <a *ngIf="authService.isLoggedIn" routerLinkActive="active" routerLink="/watchlist">Watchlist</a>
+    <a class="btn btn-danger" routerLink="/sign-in" *ngIf="!authService.isLoggedIn">Login/SignUp</a>
+
+      <a class="dropbtn" *ngIf="authService.isLoggedIn">Welcome, {{authService.getCurrentUser().email.split('@')[0]}}
+      </a>
+        <a class="btn btn-danger" (click)="authService.SignOut()" *ngIf="authService.isLoggedIn">Sign Out</a>
   </div>
+   
 </header>
  

@@ -1,0 +1,80 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  #background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    z-index: -1;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  .content-wrapper {
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+
+    .resendBtn {
+      background: #333333;
+      cursor: pointer;
+      color: white;
+      width: 80%;
+      margin-bottom: 20px;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 25px;
+      font-size: 15px;
+      height: 50px;
+      outline: none;
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    .redirectToLogin {
+      color: #a7a3a3;
+      font-size: 16px;
+
+      .redirect {
+        color: #1161ee;
+        cursor: pointer;
+        font-size: 18px;
+      }
+    }
+
+    .authBlock{
+      .formGroup{
+       p{
+         margin: 0;
+       }
+      }
+    }
+  }
+}

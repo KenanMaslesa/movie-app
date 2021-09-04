@@ -2,7 +2,6 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -11,28 +10,45 @@ header{
   width: 100%;
   z-index: 10;
   transition: top 0.2s linear;
+}
 
-  ul{
-    display: flex;
+.navbar{
+  width: 100%;
+  overflow-y: auto;
+  flex-wrap: nowrap;
+
+  @media(min-width: 768px){
+  justify-content: center;
+  }
+
+  a {
+    float: left;
+    font-size: 16px;
     color: white;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0 5px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
 
-    li{
-      list-style-type:none;
-      cursor: pointer;
-      transition: all 0.6s;
-      text-align: center;
+    &.active{
+      color: #14bece;
+    }
 
-      &:not(:first-of-type){
-        margin-left: 40px;
-      }
-
-      &:hover{
-        color: #0d5fa3;
-      }
+    &.btn-danger{
+      padding: 6px ;
     }
   }
+
+  
 }
+
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover{
+  color: #14bece;
+}
+.dropbtn{
+  color: #d09da2 !important;
+}
+
